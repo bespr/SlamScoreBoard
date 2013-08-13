@@ -1,0 +1,11 @@
+body { font-family: Arial, sans-serif; }
+
+.bl { border: 1px solid #ddd; padding: 6px; cursor: pointer; display: inline-block; }
+
+.modeNormal { display: block; }
+.modeEdit { display: none; }
+
+input.grade { width: 30px; height: 30px; line-height: 30px; }
+
+input.minDropGrade { background: red; }
+input.maxDropGrade { background: red; }
