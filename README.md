@@ -22,6 +22,7 @@ Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit ame
 * Tre
 * Quattro
 * Sette
+* Otto
 * Nove
 
 ## Pausen-Screen
