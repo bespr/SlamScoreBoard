@@ -96,18 +96,35 @@
 
 
 
-
+    <!-- Libs -->
     <script src="js/libs/jquery.js"></script>
     <script src="js/libs/underscore.js"></script>
     <script src="js/libs/backbone.js"></script>
     <script src="js/libs/backboneLocalStorage.js"></script>
+    <script src="js/libs/backbone-relational.js"></script>
     <script src="js/libs/json2.js"></script>
-    <script src="js/scripts.js"></script>
-    <script>
-        $(function() {
-            new app.ContestView().render();
-        });
-    </script>
+
+    <!-- Models -->
+    <script src="js/models/slammer.js"></script>
+    <script src="js/models/contest.js"></script>
+
+    <!-- Collections -->
+    <script src="js/collections/slammers.js"></script>
+    <script src="js/collections/contests.js"></script>
+
+    <!-- Views -->
+    <script src="js/views/contest-view.js"></script>
+    <script src="js/views/contest-item-view.js"></script>
+    <script src="js/views/contest-edit-view.js"></script>
+    <script src="js/views/slammer-setup-view.js"></script>
+    <script src="js/views/slammer-big-view.js"></script>
+    <script src="js/views/slammer-item-view.js"></script>
+
+    <!-- Routers -->
+    <script src="js/routers/router.js"></script>
+
+    <!-- App -->
+    <script src="js/app.js"></script>
 
 </body>
 </html>
