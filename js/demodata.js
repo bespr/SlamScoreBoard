@@ -19,9 +19,11 @@ var app = app || {};
                 ],
                 rounds: [
                     {
+                        id: '1',
                         name: '1',
                         groups: [
                             {
+                                id: '1',
                                 name: 'Vorrunde A',
                                 slammer: [
                                     { id: 1 },
@@ -31,6 +33,7 @@ var app = app || {};
                                 ]
                             },
                             {
+                                id: '2',
                                 name: 'Vorrunde B',
                                 slammer: [
                                     { id: 5 },
@@ -45,6 +48,7 @@ var app = app || {};
                         name: '2',
                         groups: [
                             {
+                                id: '3',
                                 name: 'Finalrunde',
                                 slammer: [
                                     {  },
