@@ -6,7 +6,13 @@ var app = app || {};
     app.data = {
         contests: [
             {
-                name: 'Contest 1',
+                name: 'Slam St. Gallen 2014',
+                config: {
+                    numOfGrades: 7,
+                    numOfMinDropGrades: 1,
+                    numOfMaxDropGrades: 1,
+                    numOfDecimalDigits: 1
+                },
                 slammer: [
                     { id: '1', name: 'Sepp' },
                     { id: '2', name: 'Fritz' },
