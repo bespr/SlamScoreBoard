@@ -70,7 +70,7 @@ var ENTER_KEY = 13;
 
 
 
-    app.currentScreen = { name: 'group', id: '2' }
+    app.currentScreen = { name: 'group', id: '1' }
     app.updateScreen();
 
 
@@ -92,21 +92,36 @@ var ENTER_KEY = 13;
         var allValidGrades = [];
         var v;
 
-        row.find('input:not(.total)').each(function() {
+        row.find('input:not(.total)').each(function(index) {
             v = parseInt($(this).val(), 10);
+            $(this).removeClass('minDropGrade maxDropGrade');
             if (isNaN(v)) {
                 $(this).val('');
                 allFilled = false;
             } else {
+                $(this).val(v);
                 allValidGrades.push(v);
+                if (v < minGrade) {
+                    minGrade = v;
+                    minGradeIndex = index;
+                } else if (v > maxGrade) {
+                    maxGrade = v;
+                    maxGradeIndex = index;
+                }
             }
         });
 
+
+
         if (allFilled) {
             for (var i = 0, len = allValidGrades.length; i < len; i++) {
-                sum += allValidGrades[i];
+                if (i != maxGradeIndex && i != minGradeIndex) {
+                    sum += allValidGrades[i];
+                }
             }
             row.find('input.total').val(sum);
+            row.find('input:nth-child(' + (minGradeIndex + 1) + ')').addClass('minDropGrade');
+            row.find('input:nth-child(' + (maxGradeIndex + 1) + ')').addClass('maxDropGrade');
         } else {
             row.find('input.total').val('');
         }
