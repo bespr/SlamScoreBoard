@@ -9,3 +9,5 @@ body { font-family: Arial, sans-serif; }
 
 input.minDropGrade { background: red; }
 input.maxDropGrade { background: red; }
+
+.contestSelect li { cursor: pointer; }

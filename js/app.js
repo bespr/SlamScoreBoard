@@ -6,15 +6,17 @@ var ENTER_KEY = 13;
 
 
     app.screens = {};
+    app.currentScreen = {
+        name: false,
+        id: false
+    }
 
 
     app.updateScreen = function() {
-        if (typeof app.screens[app.currentScreen.name] === 'function') {
-            var tmpl = app.screens[app.currentScreen.name]();
-            $('#appplace').html(tmpl);
-            location.hash = app.currentScreen.name + '/' + app.currentScreen.id;
+        if (app.currentScreen.id === undefined || !app.currentScreen.id) {
+            location.hash = app.currentScreen.name;
         } else {
-            console.warn('Function for screen ' + app.currentScreen.name + ' does not exists');
+            location.hash = app.currentScreen.name + '/' + app.currentScreen.id;
         }
     }
 
@@ -58,7 +60,10 @@ var ENTER_KEY = 13;
         return tmpl;
     }
 
-    app.screens.contest = function() {
+    app.screens.contest = function(contestId) {
+        app.selected.contest = contestId;
+        app.updateSlammerById();
+
         var groups, gid;
         var tmpl = '<h1>Contest ' + app.data.contests[app.selected.contest].name + '</h1>';
         tmpl += '<span class="changeScreen bl" data-screen="configure">ConfigureScreen</span>';
@@ -86,16 +91,9 @@ var ENTER_KEY = 13;
 
 
 
-//    app.currentScreen = { name: 'group', id: '1' }
-    app.currentScreen = { name: 'configure' }
-    app.updateScreen();
-
-
     // Events
     $(document).on('click', '.contestSelect li', function() {
-        app.selected.contest = $(this).attr('data-contest');
-        app.updateSlammerById();
-        app.currentScreen = { name: 'contest', id: app.selected.contest };
+        app.currentScreen = { name: 'contest', id: $(this).attr('data-contest') };
         app.updateScreen();
     });
 
@@ -154,8 +152,46 @@ var ENTER_KEY = 13;
     });
 
     $(window).on('hashchange', function(a, b, c) {
-        console.log('Todo Hash change: ' + location.hash);
+        app.doWhatHashSays();
     });
+
+
+    app.doWhatHashSays = function() {
+        var n, id, parts;
+        var h = location.hash.substr(1);
+        if (h.indexOf('/') === -1) {
+            n = h;
+            id = false;
+        } else {
+            parts = h.split('/');
+            n = parts[0];
+            id = parts[1];
+        }
+
+        app.currentScreen.name = n;
+        app.currentScreen.id = id;
+
+        if (typeof app.screens[app.currentScreen.name] === 'function') {
+            var tmpl;
+            if (app.currentScreen.id) {
+                tmpl = app.screens[app.currentScreen.name](app.currentScreen.id);
+            } else {
+                tmpl = app.screens[app.currentScreen.name]();
+            }
+            $('#appplace').html(tmpl);
+        } else {
+            console.warn('Function for screen ' + app.currentScreen.name + ' does not exists');
+        }
+    }
+
+
+    // Start
+    if (location.hash === '') {
+        app.currentScreen = { name: 'configure' }
+        app.updateScreen();
+    } else {
+        app.doWhatHashSays();
+    }
 
 
 

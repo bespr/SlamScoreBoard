@@ -68,10 +68,18 @@ var app = app || {};
                 ]
             },
             {
-                name: 'Test Slam (ohne Data)'
+                name: 'Test Slam (ohne Data)',
+                slammer: [
+                    { id: '1', name: 'Sepp' },
+                ],
+                rounds: []
             },
             {
-                name: 'Aha aha test Slam (ohne Data)'
+                name: 'Aha aha test Slam (ohne Data)',
+                slammer: [
+                    { id: '1', name: 'Sepp' },
+                ],
+                rounds: []
             }
         ]
     };
