@@ -59,22 +59,46 @@ var ENTER_KEY = 13;
     }
 
     app.screens.contest = function() {
-        var tmpl = '<h1>Contest</h1>';
-        tmpl += '<span class="changeScreen bl" data-screen="group" data-screen-id="1">GroupScreen</span>';
+        var groups, gid;
+        var tmpl = '<h1>Contest ' + app.data.contests[app.selected.contest].name + '</h1>';
+        tmpl += '<span class="changeScreen bl" data-screen="configure">ConfigureScreen</span>';
+        groups = app.getGroupNames();
+        for (gid in groups) {
+            tmpl += '<span class="changeScreen bl" data-screen="group" data-screen-id="' + gid + '">' + groups[gid] + '</span>';
+        }
         tmpl += '<span class="changeScreen bl" data-screen="pause" data-screen-id="">PauseScreen</span>';
         return tmpl;
     }
 
     app.screens.configure = function() {
+        var contestNames = app.getContestNames();
+
+        var tmpl = '<h1>Config</h1>';
+        tmpl += '<span>Select contest</span>';
+        tmpl += '<ul class="contestSelect">';
+        for (var i = 0, len = contestNames.length; i < len; i++) {
+            tmpl += '<li data-contest="' + i + '">' + contestNames[i] + '</li>';
+        }
+        tmpl += '</ul>';
+
+        return tmpl;
     }
 
 
 
-    app.currentScreen = { name: 'group', id: '1' }
+//    app.currentScreen = { name: 'group', id: '1' }
+    app.currentScreen = { name: 'configure' }
     app.updateScreen();
 
 
     // Events
+    $(document).on('click', '.contestSelect li', function() {
+        app.selected.contest = $(this).attr('data-contest');
+        app.updateSlammerById();
+        app.currentScreen = { name: 'contest', id: app.selected.contest };
+        app.updateScreen();
+    });
+
     $(document).on('click', '.changeScreen', function() {
         app.currentScreen = { name: $(this).attr('data-screen'), id: $(this).attr('data-screen-id') };
         app.updateScreen();

@@ -66,6 +66,12 @@ var app = app || {};
                         ]
                     }
                 ]
+            },
+            {
+                name: 'Test Slam (ohne Data)'
+            },
+            {
+                name: 'Aha aha test Slam (ohne Data)'
             }
         ]
     };

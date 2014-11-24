@@ -5,16 +5,25 @@ var ENTER_KEY = 13;
 	'use strict';
 
     app.slammerById = {};
-    var s;
-    for (var i = 0, len = app.data.contests[0].slammer.length; i < len; i++) {
-        s = app.data.contests[0].slammer[i];
-        app.slammerById[s.id] = s;
+    app.selected = {
+        contest: false,
+        rnd: false,
+        group: false
+    };
+
+
+    app.updateSlammerById = function() {
+        var s;
+        for (var i = 0, len = app.data.contests[app.selected.contest].slammer.length; i < len; i++) {
+            s = app.data.contests[app.selected.contest].slammer[i];
+            app.slammerById[s.id] = s;
+        }
     }
 
 
     app.getGroup = function(id) {
 
-        var r = app.data.contests[0].rounds;
+        var r = app.data.contests[app.selected.contest].rounds;
         var groupFound = false;
 
         outOfLoop:
@@ -25,7 +34,7 @@ var ENTER_KEY = 13;
                 if (g[j].id === id) {
                     groupFound = $.extend({}, g[j]);
                     groupFound.round = $.extend({}, r[i]);
-                    groupFound.contest = $.extend({}, app.data.contests[0]);
+                    groupFound.contest = $.extend({}, app.data.contests[app.selected.contest]);
                     break outOfLoop;
                 }
             }
@@ -43,6 +52,28 @@ var ENTER_KEY = 13;
             slammer.push(app.slammerById[id]);
         }
         return slammer;
+    }
+
+
+    app.getContestNames = function() {
+        var contestNames = [];
+        for (var i = 0, len = app.data.contests.length; i < len; i++) {
+            contestNames.push(app.data.contests[i].name);
+        }
+        return contestNames;
+    }
+
+    app.getGroupNames = function() {
+        var rnd, gr;
+        var groupNames = {};
+        for (var i = 0, len = app.data.contests[app.selected.contest].rounds.length; i < len; i++) {
+            rnd = app.data.contests[app.selected.contest].rounds[i];
+            for (var j = 0, lenj = rnd.groups.length; j < lenj; j++) {
+                gr = rnd.groups[j];
+                groupNames[gr.id] = 'Round «' + rnd.name + '», Group «' + gr.name + '»';
+            }
+        }
+        return groupNames;
     }
 
 
