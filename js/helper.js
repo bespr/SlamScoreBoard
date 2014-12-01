@@ -14,6 +14,7 @@ var ENTER_KEY = 13;
 
     app.updateSlammerById = function() {
         var s;
+        app.slammerById = {};
         for (var i = 0, len = app.data.contests[app.selected.contest].slammer.length; i < len; i++) {
             s = app.data.contests[app.selected.contest].slammer[i];
             app.slammerById[s.id] = s;

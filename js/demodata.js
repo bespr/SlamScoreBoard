@@ -77,7 +77,7 @@ var app = app || {};
             {
                 name: 'Aha aha test Slam (ohne Data)',
                 slammer: [
-                    { id: '1', name: 'Sepp' },
+                    
                 ],
                 rounds: []
             }

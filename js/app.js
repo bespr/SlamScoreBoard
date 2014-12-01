@@ -67,6 +67,7 @@ var ENTER_KEY = 13;
         var groups, gid;
         var tmpl = '<h1>Contest ' + app.data.contests[app.selected.contest].name + '</h1>';
         tmpl += '<span class="changeScreen bl" data-screen="configure">ConfigureScreen</span>';
+        tmpl += '<span class="changeScreen bl" data-screen="slammerConf">SlammerConfigScreen</span>';
         groups = app.getGroupNames();
         for (gid in groups) {
             tmpl += '<span class="changeScreen bl" data-screen="group" data-screen-id="' + gid + '">' + groups[gid] + '</span>';
@@ -89,6 +90,27 @@ var ENTER_KEY = 13;
         return tmpl;
     }
 
+    app.screens.slammerConf = function() {
+        var tmpl = '<h1>Slammer config</h1>';
+        
+        var nextSlammerId = 1;
+        for (var slId in app.slammerById) {
+            slId = parseInt(slId, 10);
+            if (slId >= nextSlammerId) {
+                nextSlammerId = slId + 1;
+            }
+        }
+
+        tmpl = '<ul class="slammerConfigList" data-next-slammer-id="' + nextSlammerId + '">';
+        for (var slId in app.slammerById) {
+            tmpl += '<li><input type="text" data-slammer-id="' + slId + '" value="' + app.slammerById[slId].name + '" /></li>';            
+        }
+        tmpl += '<li><input type="text" data-slammer-id="' + nextSlammerId + '" placeholder="Neuen Slammer hinzufügen" /></li>';            
+        tmpl += '</ul>';
+           
+        return tmpl;
+    }
+
 
 
     // Events
@@ -101,6 +123,29 @@ var ENTER_KEY = 13;
         app.currentScreen = { name: $(this).attr('data-screen'), id: $(this).attr('data-screen-id') };
         app.updateScreen();
     });
+    
+    $(document).on('keyup', '.slammerConfigList li input', function() {
+        var newSlammerArray = [];
+        var hasEmptySlot = false;
+        $(this).parents('.slammerConfigList').find('li input').each(function() {
+            var id = $(this).attr('data-slammer-id');
+            var name = $.trim($(this).val());
+            if (name !== '') {
+                newSlammerArray.push({ 'id': id, 'name': name });
+            } else {
+                hasEmptySlot = true;
+            }
+        });
+        if (!hasEmptySlot) {
+            var nextSlammerId = parseInt($('.slammerConfigList').attr('data-next-slammer-id'), 10) + 1;
+            $('.slammerConfigList').attr('data-next-slammer-id', nextSlammerId);
+            $('.slammerConfigList').append('<li><input type="text" data-slammer-id="' + nextSlammerId + '" placeholder="Neuen Slammer hinzufügen" /></li>');
+        }
+        
+        app.data.contests[app.selected.contest].slammer = newSlammerArray;
+        app.updateSlammerById();
+    });
+    
 
     $(document).on('keyup', '.grades input', function() {
         var row = $(this).parent();
