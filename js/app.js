@@ -86,6 +86,9 @@ var ENTER_KEY = 13;
             tmpl += '<li data-contest="' + i + '">' + contestNames[i] + '</li>';
         }
         tmpl += '</ul>';
+        
+        tmpl += '<div type="button" class="saveToFile bl">Save to file</div>';
+        tmpl += '<div type="button" class="readFromFile bl">Read from file</div>';
 
         return tmpl;
     }
@@ -123,6 +126,25 @@ var ENTER_KEY = 13;
         app.currentScreen = { name: $(this).attr('data-screen'), id: $(this).attr('data-screen-id') };
         app.updateScreen();
     });
+    
+    $(document).on('click', '.saveToFile', function() {       
+        var blob = new Blob([JSON.stringify(app.data, null, 4)], {type: "text/plain;charset=utf-8"});
+        var fileName = "slam-score-board-";
+        var d = new Date();
+        fileName += d.getFullYear() + '-' + d.getMonth() + '-' + d.getDay() + '-' + d.getHours() + '-' + d.getMinutes() + '-' + d.getSeconds() + '.ssb'; 
+        saveAs(blob, fileName); 
+    });    
+    
+    $(document).on('click', '.readFromFile', function() {
+        var o = '<input type="file" id="files" name="files[]" multiple style="opacity: 0.01" />';
+        $(this).after(o);
+        $('#files').on('change', function(ev) {
+            handleFileSelect(ev);
+            $('#files').remove();
+        }).trigger('click');
+        
+    });
+    
     
     $(document).on('keyup', '.slammerConfigList li input', function() {
         var newSlammerArray = [];
@@ -241,6 +263,20 @@ var ENTER_KEY = 13;
 
 
 
+
+    function handleFileSelect(evt) {
+        var files = evt.target.files; // FileList object
+
+        // Loop through the FileList and render image files as thumbnails.
+        for (var i = 0, f; f = files[i]; i++) {
+          var reader = new FileReader();
+          reader.onload = function(theFile) {
+                app.data = JSON.parse(theFile.target.result);
+              
+          };
+          reader.readAsText(f);
+        }
+    }
 
 
 
