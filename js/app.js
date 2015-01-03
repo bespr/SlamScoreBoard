@@ -12,11 +12,17 @@ var ENTER_KEY = 13;
     }
 
 
-    app.updateScreen = function() {
+    app.updateScreen = function(forceUpdate) {
+        forceUpdate = forceUpdate ? true : false;
+        var suffix = '';
+        if (forceUpdate) {
+            suffix = '~~t' + Math.floor(new Date().getTime() / 1000);
+        }
+
         if (app.currentScreen.id === undefined || !app.currentScreen.id) {
-            location.hash = app.currentScreen.name;
+            location.hash = app.currentScreen.name + suffix;
         } else {
-            location.hash = app.currentScreen.name + '/' + app.currentScreen.id;
+            location.hash = app.currentScreen.name + '/' + app.currentScreen.id + suffix;
         }
     }
 
@@ -81,12 +87,15 @@ var ENTER_KEY = 13;
 
         var tmpl = '<h1>Config</h1>';
         tmpl += '<span>Select contest</span>';
-        tmpl += '<ul class="contestSelect">';
-        for (var i = 0, len = contestNames.length; i < len; i++) {
-            tmpl += '<li data-contest="' + i + '">' + contestNames[i] + '</li>';
+        if (contestNames.length > 0) {
+            tmpl += '<ul class="contestSelect">';
+            for (var i = 0, len = contestNames.length; i < len; i++) {
+                tmpl += '<li data-contest="' + i + '">' + contestNames[i] + '</li>';
+            }
+            tmpl += '</ul>';
+        } else {
+            tmpl += '<p>No contest available. Load a file. Or create a new one</p>';
         }
-        tmpl += '</ul>';
-        
         tmpl += '<div type="button" class="saveToFile bl">Save to file</div>';
         tmpl += '<div type="button" class="readFromFile bl">Read from file</div>';
 
@@ -95,7 +104,7 @@ var ENTER_KEY = 13;
 
     app.screens.slammerConf = function() {
         var tmpl = '<h1>Slammer config</h1>';
-        
+
         var nextSlammerId = 1;
         for (var slId in app.slammerById) {
             slId = parseInt(slId, 10);
@@ -106,11 +115,11 @@ var ENTER_KEY = 13;
 
         tmpl = '<ul class="slammerConfigList" data-next-slammer-id="' + nextSlammerId + '">';
         for (var slId in app.slammerById) {
-            tmpl += '<li><input type="text" data-slammer-id="' + slId + '" value="' + app.slammerById[slId].name + '" /></li>';            
+            tmpl += '<li><input type="text" data-slammer-id="' + slId + '" value="' + app.slammerById[slId].name + '" /></li>';
         }
-        tmpl += '<li><input type="text" data-slammer-id="' + nextSlammerId + '" placeholder="Neuen Slammer hinzufügen" /></li>';            
+        tmpl += '<li><input type="text" data-slammer-id="' + nextSlammerId + '" placeholder="Neuen Slammer hinzufügen" /></li>';
         tmpl += '</ul>';
-           
+
         return tmpl;
     }
 
@@ -126,26 +135,35 @@ var ENTER_KEY = 13;
         app.currentScreen = { name: $(this).attr('data-screen'), id: $(this).attr('data-screen-id') };
         app.updateScreen();
     });
-    
-    $(document).on('click', '.saveToFile', function() {       
+
+    $(document).on('click', '.saveToFile', function() {
         var blob = new Blob([JSON.stringify(app.data, null, 4)], {type: "text/plain;charset=utf-8"});
         var fileName = "slam-score-board-";
-        var d = new Date();
-        fileName += d.getFullYear() + '-' + d.getMonth() + '-' + d.getDay() + '-' + d.getHours() + '-' + d.getMinutes() + '-' + d.getSeconds() + '.ssb'; 
-        saveAs(blob, fileName); 
-    });    
-    
+        fileName += app.utils.getTechTime(new Date());
+        saveAs(blob, fileName);
+    });
+
     $(document).on('click', '.readFromFile', function() {
-        var o = '<input type="file" id="files" name="files[]" multiple style="opacity: 0.01" />';
+        var o = '<input type="file" id="files" name="files" style="opacity: 0.01" />';
         $(this).after(o);
         $('#files').on('change', function(ev) {
-            handleFileSelect(ev);
+            var files = ev.target.files; // FileList object
+
+            var reader = new FileReader();
+            reader.onload = function(theFile) {
+                app.data = JSON.parse(theFile.target.result);
+                app.utils.persistData();
+                app.updateScreen(true);
+            };
+
+            reader.readAsText(files[0]);
+
             $('#files').remove();
         }).trigger('click');
-        
+
     });
-    
-    
+
+
     $(document).on('keyup', '.slammerConfigList li input', function() {
         var newSlammerArray = [];
         var hasEmptySlot = false;
@@ -163,11 +181,11 @@ var ENTER_KEY = 13;
             $('.slammerConfigList').attr('data-next-slammer-id', nextSlammerId);
             $('.slammerConfigList').append('<li><input type="text" data-slammer-id="' + nextSlammerId + '" placeholder="Neuen Slammer hinzufügen" /></li>');
         }
-        
+
         app.data.contests[app.selected.contest].slammer = newSlammerArray;
         app.updateSlammerById();
     });
-    
+
 
     $(document).on('keyup', '.grades input', function() {
         var row = $(this).parent();
@@ -224,8 +242,16 @@ var ENTER_KEY = 13;
 
 
     app.doWhatHashSays = function() {
-        var n, id, parts;
+        var n, id, parts, posForcePart;
         var h = location.hash.substr(1);
+
+        posForcePart = h.indexOf('~~');
+        if (posForcePart !== -1) {
+            h = h.substr(0, posForcePart);
+            location.hash = '#' + h;
+            return;
+        }
+
         if (h.indexOf('/') === -1) {
             n = h;
             id = false;
@@ -253,6 +279,7 @@ var ENTER_KEY = 13;
 
 
     // Start
+    app.utils.loadData();
     if (location.hash === '') {
         app.currentScreen = { name: 'configure' }
         app.updateScreen();
@@ -264,19 +291,7 @@ var ENTER_KEY = 13;
 
 
 
-    function handleFileSelect(evt) {
-        var files = evt.target.files; // FileList object
 
-        // Loop through the FileList and render image files as thumbnails.
-        for (var i = 0, f; f = files[i]; i++) {
-          var reader = new FileReader();
-          reader.onload = function(theFile) {
-                app.data = JSON.parse(theFile.target.result);
-              
-          };
-          reader.readAsText(f);
-        }
-    }
 
 
 

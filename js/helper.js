@@ -12,6 +12,8 @@ var ENTER_KEY = 13;
     };
 
 
+
+
     app.updateSlammerById = function() {
         var s;
         app.slammerById = {};
@@ -75,6 +77,37 @@ var ENTER_KEY = 13;
             }
         }
         return groupNames;
+    }
+
+
+
+    /* == Utils == */
+    app.utils = {};
+
+    app.utils.persistData = function() {
+        localStorage.setItem('ssb-last-loaded-data', JSON.stringify(app.data));
+    }
+
+    app.utils.loadData = function() {
+        var d = localStorage.getItem('ssb-last-loaded-data');
+        if (d) {
+            app.data = JSON.parse(d);
+        } else {
+            app.data = {
+                "format": "ssb-1",
+                "contests": []
+            };
+        }
+    }
+
+    app.utils.getTechTime = function(d) {
+        var o = d.getFullYear() + '-';
+        o += ('0' + (d.getMonth() + 1)).slice(-2) + '-';
+        o += ('0' + d.getDay()).slice(-2) + '_';
+        o += ('0' + d.getHours()).slice(-2) + '-';
+        o += ('0' + d.getMinutes()).slice(-2) + '-';
+        o += ('0' + d.getSeconds()).slice(-2);
+        return o;
     }
 
 

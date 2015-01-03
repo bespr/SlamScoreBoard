@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>SlamScoreBoard</title>
+
+        <!-- Bootstrap -->
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <style>
+            .ok { color: green; }
+            .nok { color: red; }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Is my browser fit for SlamScoreBoard?</h1>
+
+            <div id="place">
+            </div>
+        </div>
+
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+        <script>
+
+            var t = ['localStorage', 'File', 'FileReader', 'FileList', 'Blob', 'JSON'];
+
+            $('#place').html('<ul id="testList"></ul>');
+            var jEl = $('#testList');
+
+
+            for (var i = 0, len = t.length; i < len; i++) {
+                var isOk = window['supports_' + t[i]]();
+                console.log(jEl);
+                jEl.append('<li><b>' + t[i] + '</b> ' + (isOk ? '<span class="ok">OK</span>' : '<span class="nok">Fail</span>'));
+            }
+
+
+
+            function supports_localStorage() {
+                return inWindow('localStorage');
+            }
+
+            function supports_File() {
+                return inWindow('File');
+            }
+
+
+            function supports_FileReader() {
+                return inWindow('FileReader');
+            }
+
+            function supports_FileList() {
+                return inWindow('FileList');
+            }
+
+            function supports_Blob() {
+                return inWindow('Blob');
+            }
+
+            function supports_JSON() {
+                if (typeof JSON !== 'undefined' && typeof JSON.parse === 'function' && typeof JSON.stringify === 'function') {
+                    return true;
+                }
+                return false;
+            }
+
+
+            function inWindow(str) {
+                try {
+                    return str in window && window[str] !== null;
+                } catch (e) {
+                    return false;
+                }
+            }
+
+
+
+
+
+        </script>
+    </body>
+</html>

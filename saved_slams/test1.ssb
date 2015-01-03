@@ -1,0 +1,122 @@
+{
+    "format": "ssb-1",
+    "contests": [
+        {
+            "name": "Super-Slam Basel 2013, Tag 1",
+            "config": {
+                "numOfGrades": 9,
+                "numOfMinDropGrades": 1,
+                "numOfMaxDropGrades": 1,
+                "numOfDecimalDigits": 1
+            },
+            "slammer": [
+                {
+                    "id": "1",
+                    "name": "Seppli"
+                },
+                {
+                    "id": "2",
+                    "name": "Fritz"
+                },
+                {
+                    "id": "3",
+                    "name": "Ivo"
+                },
+                {
+                    "id": "4",
+                    "name": "Maja"
+                },
+                {
+                    "id": "5",
+                    "name": "Hans"
+                },
+                {
+                    "id": "6",
+                    "name": "Beat"
+                },
+                {
+                    "id": "7",
+                    "name": "Kuno"
+                },
+                {
+                    "id": "8",
+                    "name": "Gabriel"
+                }
+            ],
+            "rounds": [
+                {
+                    "id": "1",
+                    "name": "1",
+                    "groups": [
+                        {
+                            "id": "1",
+                            "name": "Vorrunde A",
+                            "slammer": [
+                                {
+                                    "id": 1
+                                },
+                                {
+                                    "id": 2
+                                },
+                                {
+                                    "id": 3
+                                },
+                                {
+                                    "id": 4
+                                }
+                            ]
+                        },
+                        {
+                            "id": "2",
+                            "name": "Vorrunde B",
+                            "slammer": [
+                                {
+                                    "id": 5
+                                },
+                                {
+                                    "id": 6
+                                },
+                                {
+                                    "id": 7
+                                },
+                                {
+                                    "id": 8
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "2",
+                    "groups": [
+                        {
+                            "id": "3",
+                            "name": "Finalrunde",
+                            "slammer": [
+                                {},
+                                {},
+                                {},
+                                {}
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Super-Slam Basel 2013, Tag 2",
+            "slammer": [
+                {
+                    "id": "1",
+                    "name": "Sepp"
+                }
+            ],
+            "rounds": []
+        },
+        {
+            "name": "Super-Slam Basel 2013, Tag 3",
+            "slammer": [],
+            "rounds": []
+        }
+    ]
+}
