@@ -90,17 +90,70 @@ var ENTER_KEY = 13;
         if (contestNames.length > 0) {
             tmpl += '<ul class="contestSelect">';
             for (var i = 0, len = contestNames.length; i < len; i++) {
-                tmpl += '<li data-contest="' + i + '">' + contestNames[i] + '</li>';
+                tmpl += '<li>';
+                    tmpl += '<span class="changeScreen" data-screen="contest" data-screen-id="' + i + '">' + contestNames[i] + '</span>';
+                    tmpl += '<span class="changeScreen bl" data-screen="contestConf" data-screen-id="' + i + '">Config</span>';
+                    tmpl += '<span class="deleteContest bl" data-contest-id="' + i + '">Delete</span>';
+                tmpl += '</li>';
             }
             tmpl += '</ul>';
         } else {
             tmpl += '<p>No contest available. Load a file. Or create a new one</p>';
         }
+        tmpl += '<div>';
+            tmpl += '<label>New contest</label>';
+            tmpl += '<input type="text" class="insertContest" placeholder="insert new contest name" />';
+            tmpl += '<div class="bl insertContestSubmit">OK</div>';
+        tmpl += '</div>';
+
         tmpl += '<div type="button" class="saveToFile bl">Save to file</div>';
         tmpl += '<div type="button" class="readFromFile bl">Read from file</div>';
 
         return tmpl;
-    }
+    };
+
+    app.screens.contestConf = function(contestId) {
+        app.selected.contest = contestId;
+        app.updateSlammerById();
+
+        var contestData = app.data.contests[app.selected.contest];
+        if (contestData.config.numOfGrades === undefined) {
+            contestData.config.numOfGrades = 5;
+        }
+        if (contestData.config.numOfDecimalDigits === undefined) {
+            contestData.config.numOfDecimalDigits = 0;
+        }
+        if (contestData.config.numOfMaxDropGrades === undefined) {
+            contestData.config.numOfMaxDropGrades = 1;
+        }
+        if (contestData.config.numOfMinDropGrades === undefined) {
+            contestData.config.numOfMinDropGrades = 1;
+        }
+
+        var tmpl = '<h1>Config Contest «' + contestData.name + '»</h1>';
+        tmpl += '<ul>';
+            tmpl += '<li>';
+                tmpl += '<label>Jurymitglieder</label>';
+                tmpl += '<input class="contestConf" name="numOfGrades" type="text" value="' + contestData.config.numOfGrades + '" />';
+            tmpl += '</li>';
+            tmpl += '<li>';
+                tmpl += '<label>Mögliche Stellen nach dem Komma</label>';
+                tmpl += '<input class="contestConf" name="numOfDecimalDigits" type="text" value="' + contestData.config.numOfDecimalDigits + '"  />';
+            tmpl += '</li>';
+            tmpl += '<li>';
+                tmpl += '<label>Anzahl Streichnoten gegen oben</label>';
+                tmpl += '<input class="contestConf" name="numOfMaxDropGrades" type="text" value="' + contestData.config.numOfMaxDropGrades + '"  />';
+            tmpl += '</li>';
+            tmpl += '<li>';
+                tmpl += '<label>Anzahl Streichnoten gegen unten</label>';
+                tmpl += '<input class="contestConf" name="numOfMinDropGrades" type="text" value="' + contestData.config.numOfMinDropGrades + '"  />';
+            tmpl += '</li>';
+        tmpl += '</ul>';
+
+        tmpl += '<span class="changeScreen bl" data-screen="configure">ConfigScreen</span>';
+        tmpl += '<span class="changeScreen bl" data-screen="contest" data-screen-id="0">ContestScreen</span>';
+        return tmpl;
+    };
 
     app.screens.slammerConf = function() {
         var tmpl = '<h1>Slammer config</h1>';
@@ -126,11 +179,6 @@ var ENTER_KEY = 13;
 
 
     // Events
-    $(document).on('click', '.contestSelect li', function() {
-        app.currentScreen = { name: 'contest', id: $(this).attr('data-contest') };
-        app.updateScreen();
-    });
-
     $(document).on('click', '.changeScreen', function() {
         app.currentScreen = { name: $(this).attr('data-screen'), id: $(this).attr('data-screen-id') };
         app.updateScreen();
@@ -141,6 +189,28 @@ var ENTER_KEY = 13;
         var fileName = "slam-score-board-";
         fileName += app.utils.getTechTime(new Date());
         saveAs(blob, fileName);
+    });
+
+    $(document).on('keyup', '.insertContest', function(ev) {
+        if (ev.which === ENTER_KEY) {
+            app.manip.addContest($(this).val());
+        }
+    });
+
+    $(document).on('click', '.insertContestSubmit', function() {
+        app.manip.addContest($('.insertContest').val());
+    });
+
+    $(document).on('keyup', '.contestConf', function(ev) {
+        app.manip.changeContestConf($(this).attr('name'), $(this).val());
+    });
+
+    $(document).on('click', '.deleteContest', function() {
+        var index = $(this).attr('data-contest-id');
+        var confirm = window.confirm('Are you sure to delete «' + app.data.contests[index].name + '»?');
+        if (confirm) {
+            app.manip.removeContest(index);
+        }
     });
 
     $(document).on('click', '.readFromFile', function() {
@@ -160,7 +230,6 @@ var ENTER_KEY = 13;
 
             $('#files').remove();
         }).trigger('click');
-
     });
 
 
