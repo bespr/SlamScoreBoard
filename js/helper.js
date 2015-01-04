@@ -16,9 +16,11 @@ var app = app || {};
     app.updateSlammerById = function() {
         var s;
         app.slammerById = {};
-        for (var i = 0, len = app.data.contests[app.selected.contest].slammer.length; i < len; i++) {
-            s = app.data.contests[app.selected.contest].slammer[i];
-            app.slammerById[s.id] = s;
+        if (app.selected.contest !== undefined) {
+            for (var i = 0, len = app.data.contests[app.selected.contest].slammer.length; i < len; i++) {
+                s = app.data.contests[app.selected.contest].slammer[i];
+                app.slammerById[s.id] = s;
+            }
         }
     }
 
@@ -85,6 +87,7 @@ var app = app || {};
 
     app.utils.persistData = function() {
         localStorage.setItem('ssb-last-loaded-data', JSON.stringify(app.data));
+        localStorage.setItem('ssb-last-loaded-selected', JSON.stringify(app.selected));
     }
 
     app.utils.loadData = function() {
@@ -97,6 +100,15 @@ var app = app || {};
                 "contests": []
             };
         }
+
+        d = localStorage.getItem('ssb-last-loaded-selected');
+        if (d) {
+            app.selected = JSON.parse(d);
+        } else {
+            app.selected = {};
+        }
+
+        app.updateSlammerById();
     }
 
     app.utils.getTechTime = function(d) {

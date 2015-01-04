@@ -173,6 +173,8 @@ var ENTER_KEY = 13;
         tmpl += '<li><input type="text" data-slammer-id="' + nextSlammerId + '" placeholder="Neuen Slammer hinzufügen" /></li>';
         tmpl += '</ul>';
 
+        tmpl += '<span class="changeScreen bl" data-screen="contest" data-screen-id="' + app.selected.contest + '">ContestScreen</span>';
+
         return tmpl;
     }
 
@@ -253,6 +255,7 @@ var ENTER_KEY = 13;
 
         app.data.contests[app.selected.contest].slammer = newSlammerArray;
         app.updateSlammerById();
+        app.utils.persistData();
     });
 
 
