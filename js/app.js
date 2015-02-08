@@ -1,15 +1,12 @@
 var app = app || {};
-var ENTER_KEY = 13;
 
 (function () {
 	'use strict';
 
-
-    app.screens = {};
     app.currentScreen = {
         name: false,
         id: false
-    }
+    };
 
 
     app.updateScreen = function(forceUpdate) {
@@ -24,289 +21,13 @@ var ENTER_KEY = 13;
         } else {
             location.hash = app.currentScreen.name + '/' + app.currentScreen.id + suffix;
         }
-    }
-
-
-    app.screens.group = function() {
-        var group = app.getGroup(app.currentScreen.id);
-        var tmpl = '<h1>Runde ' + group.round.name + ', Gruppe ' + group.name + '</h1>';
-
-        tmpl += '<ul>';
-        var slammer = app.getSlammer(group.slammer);
-        for (var i = 0, len = slammer.length; i < len; i++) {
-            tmpl += '<li>';
-                tmpl += '<span class="name">' + slammer[i].name + '</span>';
-                tmpl += '<ul class="grades">';
-                for (var j = 0; j < app.data.contests[0].config.numOfGrades; j++) {
-                    tmpl += '<input type="text" />';
-                }
-                tmpl += '<input type="text" class="total" readonly="readonly" />';
-                tmpl += '</ul>';
-            tmpl += '</li>';
-            tmpl += '<span class="changeScreen bl" data-screen="slammer" data-screen-id="' + slammer[i].id + '">SlammerScreen</span>';
-        }
-        tmpl += '</ul>';
-        tmpl += '<span class="changeScreen bl" data-screen="contest" data-screen-id="0">ContestScreen</span>';
-        tmpl += '<span class="changeScreen bl" data-screen="pause" data-screen-id="">PauseScreen</span>';
-        tmpl += '<span class="bl" onclick="window.open(\'' + location.href + '\', \'popUpWin\', \'height=400,width=500\')">Test Popup</span>';
-        return tmpl;
-    }
-
-    app.screens.slammer = function() {
-        var slammer = app.slammerById[app.currentScreen.id];
-        var tmpl = '<h1>' + slammer.name + '</h1>';
-        tmpl += '<span class="changeScreen bl" data-screen="group" data-screen-id="1">GroupScreen</span>';
-        return tmpl;
-    }
-
-    app.screens.pause = function() {
-        var tmpl = '<h1>Pause</h1>';
-        tmpl += '<span class="changeScreen bl" data-screen="contest" data-screen-id="0">ContestScreen</span>';
-        tmpl += '<span class="changeScreen bl" data-screen="group" data-screen-id="1">GroupScreen</span>';
-        return tmpl;
-    }
-
-    app.screens.contest = function(contestId) {
-        app.selected.contest = contestId;
-        app.updateSlammerById();
-
-        var groups, gid;
-        var tmpl = '<h1>Contest ' + app.data.contests[app.selected.contest].name + '</h1>';
-        tmpl += '<span class="changeScreen bl" data-screen="configure">ConfigureScreen</span>';
-        tmpl += '<span class="changeScreen bl" data-screen="slammerConf">SlammerConfigScreen</span>';
-        groups = app.getGroupNames();
-        for (gid in groups) {
-            tmpl += '<span class="changeScreen bl" data-screen="group" data-screen-id="' + gid + '">' + groups[gid] + '</span>';
-        }
-        tmpl += '<span class="changeScreen bl" data-screen="pause" data-screen-id="">PauseScreen</span>';
-        return tmpl;
-    }
-
-    app.screens.configure = function() {
-        var contestNames = app.getContestNames();
-
-        var tmpl = '<h1>Config</h1>';
-        tmpl += '<span>Select contest</span>';
-        if (contestNames.length > 0) {
-            tmpl += '<ul class="contestSelect">';
-            for (var i = 0, len = contestNames.length; i < len; i++) {
-                tmpl += '<li>';
-                    tmpl += '<span class="changeScreen" data-screen="contest" data-screen-id="' + i + '">' + contestNames[i] + '</span>';
-                    tmpl += '<span class="changeScreen bl" data-screen="contestConf" data-screen-id="' + i + '">Config</span>';
-                    tmpl += '<span class="deleteContest bl" data-contest-id="' + i + '">Delete</span>';
-                tmpl += '</li>';
-            }
-            tmpl += '</ul>';
-        } else {
-            tmpl += '<p>No contest available. Load a file. Or create a new one</p>';
-        }
-        tmpl += '<div>';
-            tmpl += '<label>New contest</label>';
-            tmpl += '<input type="text" class="insertContest" placeholder="insert new contest name" />';
-            tmpl += '<div class="bl insertContestSubmit">OK</div>';
-        tmpl += '</div>';
-
-        tmpl += '<div type="button" class="saveToFile bl">Save to file</div>';
-        tmpl += '<div type="button" class="readFromFile bl">Read from file</div>';
-
-        return tmpl;
     };
 
-    app.screens.contestConf = function(contestId) {
-        app.selected.contest = contestId;
-        app.updateSlammerById();
-
-        var contestData = app.data.contests[app.selected.contest];
-        if (contestData.config.numOfGrades === undefined) {
-            contestData.config.numOfGrades = 5;
-        }
-        if (contestData.config.numOfDecimalDigits === undefined) {
-            contestData.config.numOfDecimalDigits = 0;
-        }
-        if (contestData.config.numOfMaxDropGrades === undefined) {
-            contestData.config.numOfMaxDropGrades = 1;
-        }
-        if (contestData.config.numOfMinDropGrades === undefined) {
-            contestData.config.numOfMinDropGrades = 1;
-        }
-
-        var tmpl = '<h1>Config Contest «' + contestData.name + '»</h1>';
-        tmpl += '<ul>';
-            tmpl += '<li>';
-                tmpl += '<label>Jurymitglieder</label>';
-                tmpl += '<input class="contestConf" name="numOfGrades" type="text" value="' + contestData.config.numOfGrades + '" />';
-            tmpl += '</li>';
-            tmpl += '<li>';
-                tmpl += '<label>Mögliche Stellen nach dem Komma</label>';
-                tmpl += '<input class="contestConf" name="numOfDecimalDigits" type="text" value="' + contestData.config.numOfDecimalDigits + '"  />';
-            tmpl += '</li>';
-            tmpl += '<li>';
-                tmpl += '<label>Anzahl Streichnoten gegen oben</label>';
-                tmpl += '<input class="contestConf" name="numOfMaxDropGrades" type="text" value="' + contestData.config.numOfMaxDropGrades + '"  />';
-            tmpl += '</li>';
-            tmpl += '<li>';
-                tmpl += '<label>Anzahl Streichnoten gegen unten</label>';
-                tmpl += '<input class="contestConf" name="numOfMinDropGrades" type="text" value="' + contestData.config.numOfMinDropGrades + '"  />';
-            tmpl += '</li>';
-        tmpl += '</ul>';
-
-        tmpl += '<span class="changeScreen bl" data-screen="configure">ConfigScreen</span>';
-        tmpl += '<span class="changeScreen bl" data-screen="contest" data-screen-id="0">ContestScreen</span>';
-        return tmpl;
-    };
-
-    app.screens.slammerConf = function() {
-        var tmpl = '<h1>Slammer config</h1>';
-
-        var nextSlammerId = 1;
-        for (var slId in app.slammerById) {
-            slId = parseInt(slId, 10);
-            if (slId >= nextSlammerId) {
-                nextSlammerId = slId + 1;
-            }
-        }
-
-        tmpl = '<ul class="slammerConfigList" data-next-slammer-id="' + nextSlammerId + '">';
-        for (var slId in app.slammerById) {
-            tmpl += '<li><input type="text" data-slammer-id="' + slId + '" value="' + app.slammerById[slId].name + '" /></li>';
-        }
-        tmpl += '<li><input type="text" data-slammer-id="' + nextSlammerId + '" placeholder="Neuen Slammer hinzufügen" /></li>';
-        tmpl += '</ul>';
-
-        tmpl += '<span class="changeScreen bl" data-screen="contest" data-screen-id="' + app.selected.contest + '">ContestScreen</span>';
-
-        return tmpl;
-    }
 
 
 
-    // Events
-    $(document).on('click', '.changeScreen', function() {
-        app.currentScreen = { name: $(this).attr('data-screen'), id: $(this).attr('data-screen-id') };
-        app.updateScreen();
-    });
 
-    $(document).on('click', '.saveToFile', function() {
-        var blob = new Blob([JSON.stringify(app.data, null, 4)], {type: "text/plain;charset=utf-8"});
-        var fileName = "slam-score-board-";
-        fileName += app.utils.getTechTime(new Date());
-        saveAs(blob, fileName);
-    });
-
-    $(document).on('keyup', '.insertContest', function(ev) {
-        if (ev.which === ENTER_KEY) {
-            app.manip.addContest($(this).val());
-        }
-    });
-
-    $(document).on('click', '.insertContestSubmit', function() {
-        app.manip.addContest($('.insertContest').val());
-    });
-
-    $(document).on('keyup', '.contestConf', function(ev) {
-        app.manip.changeContestConf($(this).attr('name'), $(this).val());
-    });
-
-    $(document).on('click', '.deleteContest', function() {
-        var index = $(this).attr('data-contest-id');
-        var confirm = window.confirm('Are you sure to delete «' + app.data.contests[index].name + '»?');
-        if (confirm) {
-            app.manip.removeContest(index);
-        }
-    });
-
-    $(document).on('click', '.readFromFile', function() {
-        var o = '<input type="file" id="files" name="files" style="opacity: 0.01" />';
-        $(this).after(o);
-        $('#files').on('change', function(ev) {
-            var files = ev.target.files; // FileList object
-
-            var reader = new FileReader();
-            reader.onload = function(theFile) {
-                app.data = JSON.parse(theFile.target.result);
-                app.utils.persistData();
-                app.updateScreen(true);
-            };
-
-            reader.readAsText(files[0]);
-
-            $('#files').remove();
-        }).trigger('click');
-    });
-
-
-    $(document).on('keyup', '.slammerConfigList li input', function() {
-        var newSlammerArray = [];
-        var hasEmptySlot = false;
-        $(this).parents('.slammerConfigList').find('li input').each(function() {
-            var id = $(this).attr('data-slammer-id');
-            var name = $.trim($(this).val());
-            if (name !== '') {
-                newSlammerArray.push({ 'id': id, 'name': name });
-            } else {
-                hasEmptySlot = true;
-            }
-        });
-        if (!hasEmptySlot) {
-            var nextSlammerId = parseInt($('.slammerConfigList').attr('data-next-slammer-id'), 10) + 1;
-            $('.slammerConfigList').attr('data-next-slammer-id', nextSlammerId);
-            $('.slammerConfigList').append('<li><input type="text" data-slammer-id="' + nextSlammerId + '" placeholder="Neuen Slammer hinzufügen" /></li>');
-        }
-
-        app.data.contests[app.selected.contest].slammer = newSlammerArray;
-        app.updateSlammerById();
-        app.utils.persistData();
-    });
-
-
-    $(document).on('keyup', '.grades input', function() {
-        var row = $(this).parent();
-        // Calculate
-        var allFilled = true;
-        var minGrade = 999999999;
-        var minGradeIndex = false;
-        var maxGrade = -9999999;
-        var maxGradeIndex = false;
-        var sum = 0;
-        var allValidGrades = [];
-        var v;
-
-        row.find('input:not(.total)').each(function(index) {
-            v = parseInt($(this).val(), 10);
-            $(this).removeClass('minDropGrade maxDropGrade');
-            if (isNaN(v)) {
-                $(this).val('');
-                allFilled = false;
-            } else {
-                $(this).val(v);
-                allValidGrades.push(v);
-                if (v < minGrade) {
-                    minGrade = v;
-                    minGradeIndex = index;
-                } else if (v > maxGrade) {
-                    maxGrade = v;
-                    maxGradeIndex = index;
-                }
-            }
-        });
-
-
-
-        if (allFilled) {
-            for (var i = 0, len = allValidGrades.length; i < len; i++) {
-                if (i != maxGradeIndex && i != minGradeIndex) {
-                    sum += allValidGrades[i];
-                }
-            }
-            row.find('input.total').val(sum);
-            row.find('input:nth-child(' + (minGradeIndex + 1) + ')').addClass('minDropGrade');
-            row.find('input:nth-child(' + (maxGradeIndex + 1) + ')').addClass('maxDropGrade');
-        } else {
-            row.find('input.total').val('');
-        }
-
-
-    });
+    /* ======================== */
 
     $(window).on('hashchange', function(a, b, c) {
         app.doWhatHashSays();
@@ -316,6 +37,7 @@ var ENTER_KEY = 13;
     app.doWhatHashSays = function() {
         var n, id, parts, posForcePart;
         var h = location.hash.substr(1);
+
 
         posForcePart = h.indexOf('~~');
         if (posForcePart !== -1) {
@@ -343,7 +65,11 @@ var ENTER_KEY = 13;
             } else {
                 tmpl = app.screens[app.currentScreen.name]();
             }
-            $('#appplace').html(tmpl);
+            $('#appplace').html('');
+            setTimeout(function() {
+                $('#appplace').html(tmpl);
+
+            }, 300);
         } else {
             console.warn('Function for screen ' + app.currentScreen.name + ' does not exists');
         }
@@ -358,15 +84,6 @@ var ENTER_KEY = 13;
     } else {
         app.doWhatHashSays();
     }
-
-
-
-
-
-
-
-
-
 
 
 }());

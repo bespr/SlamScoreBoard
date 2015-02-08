@@ -46,7 +46,7 @@
             "rounds": [
                 {
                     "id": "1",
-                    "name": "1",
+                    "name": "Vorrunde",
                     "groups": [
                         {
                             "id": "1",
@@ -87,7 +87,8 @@
                     ]
                 },
                 {
-                    "name": "2",
+                    "id": 2,
+                    "name": "Finale",
                     "groups": [
                         {
                             "id": "3",

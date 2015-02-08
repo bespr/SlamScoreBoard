@@ -11,8 +11,6 @@ var app = app || {};
     };
 
 
-
-
     app.updateSlammerById = function() {
         var s;
         app.slammerById = {};
@@ -88,7 +86,7 @@ var app = app || {};
     app.utils.persistData = function() {
         localStorage.setItem('ssb-last-loaded-data', JSON.stringify(app.data));
         localStorage.setItem('ssb-last-loaded-selected', JSON.stringify(app.selected));
-    }
+    };
 
     app.utils.loadData = function() {
         var d = localStorage.getItem('ssb-last-loaded-data');
@@ -109,7 +107,14 @@ var app = app || {};
         }
 
         app.updateSlammerById();
-    }
+    };
+
+    app.utils.clearAllData = function() {
+        localStorage.clear();
+        app.utils.loadData();
+    };
+
+
 
     app.utils.getTechTime = function(d) {
         var o = d.getFullYear() + '-';
@@ -119,6 +124,18 @@ var app = app || {};
         o += ('0' + d.getMinutes()).slice(-2) + '-';
         o += ('0' + d.getSeconds()).slice(-2);
         return o;
+    };
+
+
+    // Language Handler
+    window.l = function(str) {
+        if (lang.de[str] !== undefined) {
+            return lang.de[str];
+        } else if (lang.en[str] !== undefined) {
+            return lang.en[str];
+        } else {
+            return str + '°';
+        }
     }
 
 
