@@ -1,0 +1,41 @@
+/*
+Background-Color
+*/
+body,
+input,
+textarea {
+    background-color: #444;
+}
+
+
+/*
+Text color
+*/
+body,
+input,
+textarea {
+    color: #f84;
+}
+
+
+/*
+Font Family
+*/
+body,
+input,
+textarea {
+    font-family: Arial, sans-serif;
+}
+
+
+/* Placeholder color (explanantion text in input fields) */
+::-webkit-input-placeholder { color: #864; }
+::-moz-placeholder { color: #864; }
+:-ms-input-placeholder { color: #864; }
+
+
+
+
+
+
+

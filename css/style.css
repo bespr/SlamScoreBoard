@@ -1,6 +1,16 @@
-body { font-family: Arial, sans-serif; }
+/* Button */
+.bl {
+    border: 1px solid black; padding: 6px; cursor: pointer; display: inline-block;
+    margin: 4px 10px; background-color: rgba(0, 0, 0, 0.2);
+}
 
-.bl { border: 1px solid #ddd; padding: 6px; cursor: pointer; display: inline-block; }
+/* Input */
+input {
+    border: 1px solid black; padding: 6px; cursor: pointer; display: inline-block;
+    margin: 4px 10px; background-color: rgba(0, 0, 0, 0.2);
+    font-size: 1em;
+}
+
 
 .modeNormal { display: block; }
 .modeEdit { display: none; }
@@ -11,3 +21,57 @@ input.minDropGrade { background: red; }
 input.maxDropGrade { background: red; }
 
 .contestSelect li { cursor: pointer; }
+
+
+/* Icons */
+@font-face {
+	font-family: 'icomoon';
+	src:url('../fonts/icomoon.eot?jxw5fo');
+	src:url('../fonts/icomoon.eot?#iefixjxw5fo') format('embedded-opentype'),
+		url('../fonts/icomoon.woff?jxw5fo') format('woff'),
+		url('../fonts/icomoon.ttf?jxw5fo') format('truetype'),
+		url('../fonts/icomoon.svg?jxw5fo#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+.icon {
+	font-family: 'icomoon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+icon-home:before {
+	content: "\68";
+}
+
+.icon-megaphone:before {
+	content: "\6d";
+}
+
+.icon-arrow-right:before {
+	content: "\72";
+}
+
+.bl.changeScreen:before {
+    font-family: 'icomoon';
+	content: "\72";
+    margin-right: 10px;
+}
+
+.saveToFile:before,
+.readFromFile:before {
+    font-family: 'icomoon';
+	content: "d";
+    margin-right: 10px;
+}
+
+
