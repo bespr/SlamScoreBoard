@@ -3,7 +3,6 @@ var app = app || {};
 (function () {
 	'use strict';
 
-    app.slammerById = {};
     app.selected = {
         contest: false,
         rnd: false,
@@ -11,7 +10,12 @@ var app = app || {};
     };
 
 
-    app.updateSlammerById = function() {
+    app.slammerById = {};
+    app.rndById = {};
+
+
+
+    app.updateByIdValues = function() {
         var s;
         app.slammerById = {};
         if (app.selected.contest !== undefined) {
@@ -20,6 +24,15 @@ var app = app || {};
                 app.slammerById[s.id] = s;
             }
         }
+
+        app.rndById = {};
+        if (app.selected.contest !== undefined) {
+            for (var i = 0, len = app.data.contests[app.selected.contest].rounds.length; i < len; i++) {
+                s = app.data.contests[app.selected.contest].rounds[i];
+                app.rndById[s.id] = s;
+            }
+        }
+
     }
 
 
@@ -106,7 +119,7 @@ var app = app || {};
             app.selected = {};
         }
 
-        app.updateSlammerById();
+        app.updateByIdValues();
     };
 
     app.utils.clearAllData = function() {
@@ -128,14 +141,21 @@ var app = app || {};
 
 
     // Language Handler
-    window.l = function(str) {
+    window.l = function(str, values) {
+        var re = str + '°';
+
         if (lang.de[str] !== undefined) {
-            return lang.de[str];
+            re = lang.de[str];
         } else if (lang.en[str] !== undefined) {
-            return lang.en[str];
-        } else {
-            return str + '°';
+            re = lang.en[str];
         }
+
+        if (values !== undefined) {
+            for (var i = 0, len = values.length; i < len; i++) {
+                re = re.replace('%%', values[i]);
+            }
+        }
+        return re;
     }
 
 

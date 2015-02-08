@@ -62,7 +62,7 @@ var app = app || {};
     app.screens.contest = function(contestId) {
         app.selected.contest = contestId;
         app.utils.persistData();
-        app.updateSlammerById();
+        app.updateByIdValues();
 
         var groups, gid;
         var tmpl = '<h1>Contest ' + app.data.contests[app.selected.contest].name + '</h1>';
@@ -118,7 +118,7 @@ var app = app || {};
      */
     app.screens.contestConf = function(contestId) {
         app.selected.contest = contestId;
-        app.updateSlammerById();
+        app.updateByIdValues();
 
         var contestData = app.data.contests[app.selected.contest];
         if (contestData.config.numOfGrades === undefined) {
@@ -132,6 +132,14 @@ var app = app || {};
         }
         if (contestData.config.numOfMinDropGrades === undefined) {
             contestData.config.numOfMinDropGrades = 1;
+        }
+
+        var nextRndId = 1;
+        for (var rndId in app.rndById) {
+            rndId = parseInt(rndId, 10);
+            if (rndId >= nextRndId) {
+                nextRndId = rndId + 1;
+            }
         }
 
         var tmpl = '<h1>Config Contest «' + contestData.name + '»</h1>';
@@ -154,6 +162,14 @@ var app = app || {};
             tmpl += '</li>';
             tmpl += '<li>';
                 tmpl += '<label>' + l('rounds') + '</label>';
+
+                tmpl += '<ul class="rndConfigList" data-next-rnd-id="' + nextRndId + '">';
+                for (var rndId in app.rndById) {
+                    tmpl += app.screens.parts.rndInput(rndId, app.rndById[rndId].name, '');
+                }
+                tmpl += app.screens.parts.rndInput(nextRndId, '', l('add_new_round'));
+                tmpl += '</ul>';
+
             tmpl += '</li>';
         tmpl += '</ul>';
 
@@ -185,15 +201,9 @@ var app = app || {};
         var tmpl = '<h1>Slammer config</h1>';
         tmpl += '<ul class="slammerConfigList" data-next-slammer-id="' + nextSlammerId + '">';
         for (var slId in app.slammerById) {
-            tmpl += app.screens.parts.slammerInput(slId);
-            /*
-            tmpl += '<li data-slammer-id="' + slId + '">';
-                tmpl += '<input type="text" value="' + app.slammerById[slId].name + '" />';
-                tmpl += '<span class="deleteSlammer bl">Delete</span>';
-            tmpl += '</li>';
-            */
+            tmpl += app.screens.parts.slammerInput(slId, app.slammerById[slId].name, '');
         }
-        tmpl += '<li data-slammer-id="' + nextSlammerId + '"><input type="text" placeholder="Neuen Slammer hinzufügen" /></li>';
+        tmpl += app.screens.parts.slammerInput(nextSlammerId, '', l('add_new_slammer'));
         tmpl += '</ul>';
 
         tmpl += '<span class="changeScreen bl" data-screen="contest" data-screen-id="' + app.selected.contest + '">ContestScreen</span>';
@@ -215,11 +225,28 @@ var app = app || {};
     /*
      * SlammerInput
      */
-    app.screens.parts.slammerInput = function(slammerId) {
+    app.screens.parts.slammerInput = function(slammerId, name, placeholder) {
         var tmpl = '';
         tmpl += '<li data-slammer-id="' + slammerId + '">';
-            tmpl += '<input type="text" value="' + app.slammerById[slammerId].name + '" />';
-            tmpl += '<span class="deleteSlammer bl">Delete</span>';
+            tmpl += '<input type="text" value="' + name + '" placeholder="' + placeholder + '" />';
+            if (name !== '') {
+                tmpl += '<span class="deleteSlammer bl">Delete</span>';
+            }
+        tmpl += '</li>';
+        return tmpl;
+    };
+
+
+    /*
+     * RoundInput
+     */
+    app.screens.parts.rndInput = function(rndId, name, placeholder) {
+        var tmpl = '';
+        tmpl += '<li data-rnd-id="' + rndId + '">';
+            tmpl += '<input type="text" value="' + name + '" placeholder="' + placeholder + '" />';
+            if (name !== '') {
+                tmpl += '<span class="deleteRound bl">Delete</span>';
+            }
         tmpl += '</li>';
         return tmpl;
     };

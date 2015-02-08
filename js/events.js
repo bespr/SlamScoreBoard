@@ -44,11 +44,60 @@ var ENTER_KEY = 13;
 
 
     /*
-     * On Key Up: contestConf
+     * On Key Up: contestConf / Configuration Inputs
      */
     $(document).on('keyup', '.contestConf', function(ev) {
         app.manip.changeContestConf($(this).attr('name'), $(this).val());
     });
+
+
+    /*
+     * On Key Up: Rounds Config
+     */
+    $(document).on('keyup', '.rndConfigList li input', function() {
+        var newRndArray = [];
+        var hasEmptySlot = false;
+        $(this).parents('.rndConfigList').find('li').each(function() {
+            var id = parseInt($(this).attr('data-rnd-id'), 10);
+            var name = $.trim($(this).find('input').val());
+            $(this).find('input').val(name);
+            if (name !== '') {
+                if (app.rndById[id] === undefined) {
+                    app.rndById[id] = { 'id': id, 'name': name };
+                }
+                if (app.rndById[id].groups === undefined) {
+                    app.rndById[id].groups = [];
+                }
+                var groups = app.rndById[id].groups;
+                newRndArray.push({ 'id': id, 'name': name, 'groups': groups });
+            } else {
+                hasEmptySlot = true;
+            }
+        });
+        if (!hasEmptySlot) {
+            var nextRndId = parseInt($('.rndConfigList').attr('data-next-rnd-id'), 10) + 1;
+            $('.rndConfigList').attr('data-next-rnd-id', nextRndId);
+            $('.rndConfigList').append(app.screens.parts.rndInput(nextRndId, '', l('add_new_round')));
+        }
+
+
+        app.data.contests[app.selected.contest].rounds = newRndArray;
+        app.updateByIdValues();
+        app.utils.persistData();
+    });
+
+
+    /*
+     * Delete Round
+     */
+    $(document).on('click', '.deleteRound', function() {
+        var rndId = $(this).parent().attr('data-rnd-id');
+        var confirm = window.confirm(l('confirm_delete_round', [app.rndById[rndId].name]));
+        if (confirm) {
+            app.manip.removeRound(rndId);
+        }
+    });
+
 
 
     /*
@@ -116,12 +165,21 @@ var ENTER_KEY = 13;
         if (!hasEmptySlot) {
             var nextSlammerId = parseInt($('.slammerConfigList').attr('data-next-slammer-id'), 10) + 1;
             $('.slammerConfigList').attr('data-next-slammer-id', nextSlammerId);
-            $('.slammerConfigList').append('<li data-slammer-id="' + nextSlammerId + '"><input type="text" placeholder="Neuen Slammer hinzufügen" /></li>');
+            $('.slammerConfigList').append(app.screens.parts.slammerInput(nextSlammerId, '', l('add_new_slammer')));
         }
 
         app.data.contests[app.selected.contest].slammer = newSlammerArray;
-        app.updateSlammerById();
+        app.updateByIdValues();
         app.utils.persistData();
+    });
+
+
+    /*
+     * Delete Slammer
+     */
+    $(document).on('click', '.deleteSlammer', function() {
+        var slId = $(this).parent().attr('data-slammer-id');
+        app.manip.removeSlammer(slId);
     });
 
     /*
