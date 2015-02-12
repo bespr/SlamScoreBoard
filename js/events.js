@@ -4,8 +4,28 @@ var app = app || {};
 var ENTER_KEY = 13;
 
 
+
+
 (function () {
 	'use strict';
+
+    /**
+     * Handle "Hidden" Buttons
+     */
+    app.showButtons = false;
+    app.showButtonsTimeoutId = false;
+    $(document).on('mousemove', function() {
+        if (app.showButtons === false) {
+            app.showButtons = true;
+            $('.bh').addClass('visible');
+        }
+        window.clearTimeout(app.showButtonsTimeoutId);
+        app.showButtonsTimeoutId = window.setTimeout(app.hideButtons, 1000);
+    });
+    app.hideButtons = function() {
+        app.showButtons = false;
+        $('.bh').removeClass('visible');
+    }
 
 
     /*
@@ -241,6 +261,16 @@ var ENTER_KEY = 13;
     $(document).on('click', '.removeGroup', function(ev) {
         app.manip.removeGroup($(this).attr('data-group'));
         ev.stopPropagation();
+    });
+
+
+    $(document).on('click', '.showSlammerDropdown', function() {
+        $('.placeForSlammerDropdown').html(app.screens.parts.slammerDropdown());
+    });
+
+    $(document).on('change', '.slammerDropdown', function() {
+        console.log($(this).val());
+        $('.slammerDropdown').hide();
     });
 
 

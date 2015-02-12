@@ -8,6 +8,8 @@ lang.de = {
     'confirm_delete_round': 'Willst du wirklich die Runde «%%» mitsamt allen Gruppen und Resultaten löschen?',
     'add_group': 'Gruppe hinzufügen',
     'remove_group': 'Gruppe entfernen',
-    'slammer_list_undefined': 'Slammerliste noch nicht definiert'
+    'slammer_list_undefined': 'Slammerliste noch nicht definiert',
+    'assign_slammer': 'Slammer hinzufügen',
+    'dont_assign_slammer': ' == Ach nöö, doch nicht =='
 
 }

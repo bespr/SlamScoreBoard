@@ -9,29 +9,39 @@ var app = app || {};
     /*
      * group
      */
-    app.screens.group = function() {
-        var group = app.getGroup(app.currentScreen.id);
+    app.screens.group = function(groupId) {
+        var group = app.getGroup(groupId);
+        app.selected.group = groupId;
+        app.selected.rnd = group.round.id;
 
         var tmpl = '<h1>' + group.round.name + '</h1>';
 
-        tmpl += '<ul>';
+        tmpl += '<ul class="groupList">';
         var slammer = app.getSlammer(group.slammer);
         for (var i = 0, len = slammer.length; i < len; i++) {
             tmpl += '<li>';
-                tmpl += '<span class="name">' + slammer[i].name + '</span>';
+                tmpl += '<span class="name">';
+                    tmpl += slammer[i].name;
+                    tmpl += '<span class="changeScreen bs bh" data-screen="slammer" data-screen-id="' + slammer[i].id + '">&gt;</span>';
+                tmpl += '</span>';
                 tmpl += '<ul class="grades">';
-                for (var j = 0; j < app.data.contests[0].config.numOfGrades; j++) {
-                    tmpl += '<input type="text" />';
-                }
-                tmpl += '<input type="text" class="total" readonly="readonly" />';
+                    for (var j = 0; j < app.data.contests[0].config.numOfGrades; j++) {
+                        tmpl += '<input type="text" />';
+                    }
+                    tmpl += '<input type="text" class="total" readonly="readonly" />';
                 tmpl += '</ul>';
+
             tmpl += '</li>';
-            tmpl += '<span class="changeScreen bl" data-screen="slammer" data-screen-id="' + slammer[i].id + '">SlammerScreen</span>';
         }
         tmpl += '</ul>';
-        tmpl += '<span class="changeScreen bl" data-screen="contest" data-screen-id="0">ContestScreen</span>';
-        tmpl += '<span class="changeScreen bl" data-screen="pause" data-screen-id="">PauseScreen</span>';
-        tmpl += '<span class="bl" onclick="window.open(\'' + location.href + '\', \'popUpWin\', \'height=400,width=500\')">Test Popup</span>';
+
+        tmpl += '<div class="placeForSlammerDropdown"></div>';
+        tmpl += '<span class="bl bh showSlammerDropdown">' + l('assign_slammer') + '</span>';
+
+        tmpl += '<span class="changeScreen bl bh" data-screen="contest" data-screen-id="' + app.selected.contest + '">ContestScreen</span>';
+        tmpl += '<span class="changeScreen bl bh" data-screen="pause" data-screen-id="">PauseScreen</span>';
+
+//        tmpl += '<span class="bl" onclick="window.open(\'' + location.href + '\', \'popUpWin\', \'height=400,width=500\')">Test Popup</span>';
         return tmpl;
     };
 
@@ -42,7 +52,7 @@ var app = app || {};
     app.screens.slammer = function() {
         var slammer = app.slammerById[app.currentScreen.id];
         var tmpl = '<h1>' + slammer.name + '</h1>';
-        tmpl += '<span class="changeScreen bl" data-screen="group" data-screen-id="1">GroupScreen</span>';
+        tmpl += '<span class="changeScreen bl bh" data-screen="group" data-screen-id="1">GroupScreen</span>';
         return tmpl;
     };
 
@@ -290,6 +300,29 @@ var app = app || {};
         tmpl += '</li>';
         return tmpl;
     };
+
+
+    /**
+     * SlammerDropdown
+     */
+    app.screens.parts.slammerDropdown = function() {
+        var slammersAlreadyTaken = [];
+
+        var group = app.getGroup(app.selected.group);
+        for (var i = 0, len = group.slammer.length; i < len; i++) {
+            slammersAlreadyTaken.push(parseInt(group.slammer[i].id, 10));
+        }
+
+        var tmpl = '<select class="slammerDropdown">';
+            for (var slId in app.slammerById) {
+                if (slammersAlreadyTaken.indexOf(parseInt(slId, 10)) === -1) {
+                    tmpl += '<option value="' + slId + '">' + app.slammerById[slId].name + '</option>';
+                }
+            }
+            tmpl += '<option value="0">' + l('dont_assign_slammer') + '</option>';
+        tmpl += '</select>';
+        return tmpl;
+    }
 
 
 

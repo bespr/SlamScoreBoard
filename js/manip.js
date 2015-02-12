@@ -107,7 +107,7 @@ var app = app || {};
         app.utils.persistData();
         app.updateScreen(true);
 
-        return false;
+
     };
 
 }());

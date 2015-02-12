@@ -16,6 +16,7 @@ var app = app || {};
             suffix = '~~t' + Math.floor(new Date().getTime() / 1000);
         }
 
+        app.showButtons = false;
         if (app.currentScreen.id === undefined || !app.currentScreen.id) {
             location.hash = app.currentScreen.name + suffix;
         } else {
@@ -65,11 +66,14 @@ var app = app || {};
             } else {
                 tmpl = app.screens[app.currentScreen.name]();
             }
+            $('#appplace').html(tmpl);
+            /*
             $('#appplace').html('');
             setTimeout(function() {
                 $('#appplace').html(tmpl);
 
             }, 300);
+            */
         } else {
             console.warn('Function for screen ' + app.currentScreen.name + ' does not exists');
         }

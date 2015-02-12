@@ -8,6 +8,24 @@ ul { list-style-type: none; margin: 0; padding: 0; }
     border: 1px solid black; padding: 6px; cursor: pointer; display: inline-block;
     margin: 4px 10px; background-color: rgba(0, 0, 0, 0.2);
 }
+.bs {
+    border: 1px solid black; padding: 6px; cursor: pointer; display: inline-block; font-size: 10px;
+    margin: 4px 10px; background-color: rgba(0, 0, 0, 0.4);
+}
+.bh {
+    opacity: 0;
+    -webkit-transition: opacity 0.5s ease-in-out;
+    -moz-transition: opacity 0.5s ease-in-out;
+    transition: opacity 0.5s ease-in-out;
+
+}
+.bh.visible {
+    opacity: 0.2;
+    -webkit-transition: opacity 0.2s ease-in-out;
+    -moz-transition: opacity 0.2s ease-in-out;
+    transition: opacity 0.2s ease-in-out;
+}
+
 
 /* Input */
 input {
@@ -19,11 +37,6 @@ input {
 
 .modeNormal { display: block; }
 .modeEdit { display: none; }
-
-.grades input { width: 30px; height: 30px; line-height: 30px; }
-
-input.minDropGrade { background: red; }
-input.maxDropGrade { background: red; }
 
 .contestSelect li { cursor: pointer; }
 
@@ -96,3 +109,20 @@ icon-home:before {
 .contestContainer.numOfRnds-9 .rnd { width: 11.111%; }
 
 .contestContainer .rnd .group { border: 1px solid #f84; margin-bottom: 10px; padding: 10px; cursor: pointer; }
+
+
+ul.groupList { margin: 0 10px; border-top: 1px solid #f84; font-size: 24px; }
+ul.groupList li { overflow: hidden; border-bottom: 1px solid #f84; padding: 8px 0; }
+ul.groupList li .name { float: left; width: 16%; margin-top: 12px; }
+ul.groupList li .grades { float: left; width: 84%; }
+
+ul.groupList li .grades input {
+    font-size: 125%; line-height: 1em;
+    background-color: rgba(0, 0, 0, 0.1); border: none; text-align: center; padding: 6px 8px;
+    width: 60px;
+}
+ul.groupList li .grades input.total { border: 1px solid #f84; width: 80px; }
+
+
+input.minDropGrade { background: red; }
+input.maxDropGrade { background: red; }
