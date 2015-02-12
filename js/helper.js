@@ -37,16 +37,14 @@ var app = app || {};
 
 
     app.getGroup = function(id) {
-
         var r = app.data.contests[app.selected.contest].rounds;
         var groupFound = false;
 
         outOfLoop:
         for (var i = 0, len = r.length; i < len; i++) {
             var g = r[i].groups;
-
             for (var j = 0, lenj = g.length; j < lenj; j++) {
-                if (g[j].id === id) {
+                if (g[j].id == id) {
                     groupFound = $.extend({}, g[j]);
                     groupFound.round = $.extend({}, r[i]);
                     groupFound.contest = $.extend({}, app.data.contests[app.selected.contest]);
@@ -78,6 +76,7 @@ var app = app || {};
         return contestNames;
     }
 
+/*
     app.getGroupNames = function() {
         var rnd, gr;
         var groupNames = {};
@@ -90,7 +89,7 @@ var app = app || {};
         }
         return groupNames;
     }
-
+*/
 
 
     /* == Utils == */
@@ -156,6 +155,12 @@ var app = app || {};
             }
         }
         return re;
+    };
+
+    // Console helper: Show data of current contest
+    window.d = function() {
+        console.log('==== Data of current contest (' + app.selected.contest + ') ====');
+        console.log(app.data.contests[app.selected.contest]);
     }
 
 

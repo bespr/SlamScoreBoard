@@ -11,7 +11,8 @@ var app = app || {};
      */
     app.screens.group = function() {
         var group = app.getGroup(app.currentScreen.id);
-        var tmpl = '<h1>Runde ' + group.round.name + ', Gruppe ' + group.name + '</h1>';
+
+        var tmpl = '<h1>' + group.round.name + '</h1>';
 
         tmpl += '<ul>';
         var slammer = app.getSlammer(group.slammer);
@@ -64,15 +65,54 @@ var app = app || {};
         app.utils.persistData();
         app.updateByIdValues();
 
+        var dataContest = app.data.contests[app.selected.contest];
+
         var groups, gid;
-        var tmpl = '<h1>Contest ' + app.data.contests[app.selected.contest].name + '</h1>';
-        tmpl += '<span class="changeScreen bl" data-screen="configure">ConfigureScreen</span>';
+        var tmpl = '<h1>Contest ' + dataContest.name + '</h1>';
+        tmpl += '<span class="changeScreen bl" data-screen="contestConf" data-screen-id="' + app.selected.contest + '">ContestConfigureScreen</span>';
+        tmpl += '<span class="changeScreen bl" data-screen="configure">MainConfigureScreen</span>';
         tmpl += '<span class="changeScreen bl" data-screen="slammerConf">SlammerConfigScreen</span>';
+        /*
         groups = app.getGroupNames();
         for (gid in groups) {
             tmpl += '<span class="changeScreen bl" data-screen="group" data-screen-id="' + gid + '">' + groups[gid] + '</span>';
         }
         tmpl += '<span class="changeScreen bl" data-screen="pause" data-screen-id="">PauseScreen</span>';
+        */
+
+        var numOfRnds = dataContest.rounds.length;
+        tmpl += '<div class="contestContainer numOfRnds-' + numOfRnds + '">';
+        for (var i = 0; i < numOfRnds; i++) {
+            var rnd = dataContest.rounds[i];
+            tmpl += '<div class="rnd"><div class="inner">';
+                tmpl += '<h3>' + rnd.name + '</h3>';
+                for (var j = 0, lenj = rnd.groups.length; j < lenj; j++) {
+                    var g = rnd.groups[j];
+                    tmpl += '<div class="group changeScreen" data-screen="group" data-screen-id="' + g.id + '">';
+                        if (g.slammer.length === 0) {
+                            tmpl += '<i>' + l('slammer_list_undefined') + '</i>';
+                            tmpl += '<span class="bl removeGroup" data-group="' + g.id + '">' + l('remove_group') + '</span>';
+                        } else {
+                            tmpl += '<ul>';
+                            for (var k = 0, lenk = g.slammer.length; k < lenk; k++) {
+                                if (app.slammerById[g.slammer[k].id] !== undefined) {
+                                    tmpl += '<li>' + app.slammerById[g.slammer[k].id].name + '</li>';
+                                } else {
+                                    tmpl += '<li><i>Unknown (id  = ' + g.slammer[k].id + ')</i></li>';
+                                }
+                            }
+                            tmpl += '</ul>';
+                        }
+
+                    tmpl += '</div>';
+                }
+
+                tmpl += '<span class="bl addGroup" style="margin-left: 0" data-rnd="' + rnd.id + '">' + l('add_group') + '</span>';
+
+            tmpl += '</div></div>';
+        }
+        tmpl += '</div>';
+
         return tmpl;
     };
 

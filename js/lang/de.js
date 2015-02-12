@@ -5,6 +5,9 @@ lang.de = {
     'rounds': 'Runden',
     'add_new_round': 'Neue Runde hinzufügen',
     'add_new_slammer': 'Neuen Slammer hinzufügen',
-    'confirm_delete_round': 'Willst du wirklich die Runde «%%» mitsamt allen Gruppen und Resultaten löschen?'
+    'confirm_delete_round': 'Willst du wirklich die Runde «%%» mitsamt allen Gruppen und Resultaten löschen?',
+    'add_group': 'Gruppe hinzufügen',
+    'remove_group': 'Gruppe entfernen',
+    'slammer_list_undefined': 'Slammerliste noch nicht definiert'
 
 }

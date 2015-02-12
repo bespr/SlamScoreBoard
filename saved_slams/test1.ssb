@@ -50,7 +50,6 @@
                     "groups": [
                         {
                             "id": "1",
-                            "name": "Vorrunde A",
                             "slammer": [
                                 {
                                     "id": 1
@@ -63,16 +62,15 @@
                                 },
                                 {
                                     "id": 4
+                                },
+                                {
+                                    "id": 5
                                 }
                             ]
                         },
                         {
                             "id": "2",
-                            "name": "Vorrunde B",
                             "slammer": [
-                                {
-                                    "id": 5
-                                },
                                 {
                                     "id": 6
                                 },
@@ -92,12 +90,8 @@
                     "groups": [
                         {
                             "id": "3",
-                            "name": "Finalrunde",
                             "slammer": [
-                                {},
-                                {},
-                                {},
-                                {}
+                                { "id": 2 }
                             ]
                         }
                     ]

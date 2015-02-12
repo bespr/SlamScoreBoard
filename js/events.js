@@ -231,7 +231,16 @@ var ENTER_KEY = 13;
             row.find('input.total').val('');
         }
 
+    });
 
+
+    $(document).on('click', '.addGroup', function() {
+        app.manip.addGroup($(this).attr('data-rnd'));
+    });
+
+    $(document).on('click', '.removeGroup', function(ev) {
+        app.manip.removeGroup($(this).attr('data-group'));
+        ev.stopPropagation();
     });
 
 

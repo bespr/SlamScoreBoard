@@ -57,6 +57,57 @@ var app = app || {};
         app.updateByIdValues();
         app.utils.persistData();
         app.updateScreen(true);
-    }
+    };
+
+    app.manip.addGroup = function(rndId) {
+        var rnds = app.data.contests[app.selected.contest].rounds;
+
+        var rndIndex = false;
+        var newGroupId = 1;
+        for (var i = 0, len = rnds.length; i < len; i++) {
+            if (rnds[i].id == rndId) {
+                rndIndex = i;
+            }
+
+            for (var j = 0, lenj = rnds[i].groups.length; j < lenj; j++) {
+                var currentGroupId = parseInt(rnds[i].groups[j].id, 10);
+                if (currentGroupId >= newGroupId) {
+                    newGroupId = currentGroupId + 1;
+                }
+            }
+        }
+
+        if (rndIndex !== false) {
+            app.data.contests[app.selected.contest].rounds[rndIndex].groups.push({
+                'id': newGroupId,
+                'slammer': []
+            });
+        }
+
+        app.updateByIdValues();
+        app.utils.persistData();
+        app.updateScreen(true);
+    };
+
+
+    app.manip.removeGroup = function(groupId) {
+        var rnds = app.data.contests[app.selected.contest].rounds;
+
+        outOfLoop:
+        for (var i = 0, len = rnds.length; i < len; i++) {
+            for (var j = 0, lenj = rnds[i].groups.length; j < lenj; j++) {
+                if (rnds[i].groups[j].id == groupId) {
+                    app.data.contests[app.selected.contest].rounds[i].groups.splice(j, 1);
+                    break outOfLoop;
+                }
+            }
+        }
+
+        app.updateByIdValues();
+        app.utils.persistData();
+        app.updateScreen(true);
+
+        return false;
+    };
 
 }());

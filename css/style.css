@@ -1,3 +1,8 @@
+* { box-sizing: border-box; }
+
+/* Reset some things */
+ul { list-style-type: none; margin: 0; padding: 0; }
+
 /* Button */
 .bl {
     border: 1px solid black; padding: 6px; cursor: pointer; display: inline-block;
@@ -75,3 +80,19 @@ icon-home:before {
 }
 
 
+
+.contestContainer { margin: 10px; overflow: hidden; }
+.contestContainer .rnd { float: left; width: 10%; }
+.contestContainer .rnd .inner { margin-left: 10px; border: 1px solid #f84; padding: 10px; }
+.contestContainer .rnd:first-child .inner { margin-left: 0; }
+.contestContainer.numOfRnds-1 .rnd { width: 100%; }
+.contestContainer.numOfRnds-2 .rnd { width: 50%; }
+.contestContainer.numOfRnds-3 .rnd { width: 33.333%; }
+.contestContainer.numOfRnds-4 .rnd { width: 25%; }
+.contestContainer.numOfRnds-5 .rnd { width: 20%; }
+.contestContainer.numOfRnds-6 .rnd { width: 16.666%; }
+.contestContainer.numOfRnds-7 .rnd { width: 14.285%; }
+.contestContainer.numOfRnds-8 .rnd { width: 12.5%; }
+.contestContainer.numOfRnds-9 .rnd { width: 11.111%; }
+
+.contestContainer .rnd .group { border: 1px solid #f84; margin-bottom: 10px; padding: 10px; cursor: pointer; }
