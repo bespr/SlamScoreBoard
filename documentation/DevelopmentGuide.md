@@ -1,7 +1,7 @@
 #Datenstruktur
 
 ##Wettbewerbsumsetzung
-* Contest: Ein Kontest enthält eine oder meherer Runden.
+* Contest: Ein Contest enthält eine oder meherer Runden.
 * Round: Eine Runde besteht aus einer oder mehreren Gruppen. Die Bewertungsart wird auf Rundenebene definiert.
 * Group: Eine Gruppe besteht aus zwei oder mehr Slammern.
 * Slammer: Der Slammer ist Teil einer oder mehrerer Gruppen und Runden.
