@@ -33,6 +33,10 @@ input {
     margin: 4px 10px; background-color: rgba(0, 0, 0, 0.2);
     font-size: 1em;
 }
+select {
+    border: 1px solid black; padding: 6px; cursor: pointer; display: inline-block;
+    margin: 4px 10px; font-size: 1em;
+}
 
 
 .modeNormal { display: block; }
@@ -122,7 +126,6 @@ ul.groupList li .grades input {
     width: 60px;
 }
 ul.groupList li .grades input.total { border: 1px solid #f84; width: 80px; }
-
-
-input.minDropGrade { background: red; }
-input.maxDropGrade { background: red; }
+ul.groupList li .grades input.minDropGrade { background-color: rgba(128, 0, 0, 0.3); opacity: 0.4; }
+ul.groupList li .grades input.maxDropGrade { background-color: rgba(0, 128, 0, 0.3); opacity: 0.4; }
+ul.groupList li .unassignSlammerButton { display: none; }

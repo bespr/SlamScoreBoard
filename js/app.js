@@ -67,13 +67,11 @@ var app = app || {};
                 tmpl = app.screens[app.currentScreen.name]();
             }
             $('#appplace').html(tmpl);
-            /*
-            $('#appplace').html('');
-            setTimeout(function() {
-                $('#appplace').html(tmpl);
-
-            }, 300);
-            */
+            if (typeof app.templateLoadedEvent[app.currentScreen.name] === 'function') {
+                setTimeout(function() {
+                    app.templateLoadedEvent[app.currentScreen.name]();
+                }, 20); // 20 millisecons should be ok for the browser to render the new template
+            }
         } else {
             console.warn('Function for screen ' + app.currentScreen.name + ' does not exists');
         }

@@ -5,6 +5,9 @@ var app = app || {};
 
 	app.manip = {};
 
+    /**
+     *
+     */
 	app.manip.addContest = function(contestName) {
 	    app.data.contests.push({
 	        'name': contestName,
@@ -16,11 +19,17 @@ var app = app || {};
         app.updateScreen(true);
 	};
 
+    /**
+     *
+     */
 	app.manip.changeContestConf = function(name, value) {
 	    app.data.contests[app.selected.contest].config[name] = value;
         app.utils.persistData();
 	};
 
+    /**
+     *
+     */
 	app.manip.removeContest = function(index) {
         if (index == app.selected.contest) {
             app.selected.contest = false;
@@ -30,6 +39,9 @@ var app = app || {};
         app.updateScreen(true);
 	}
 
+    /**
+     *
+     */
     app.manip.removeSlammer = function(slId) {
         var newSlammerArray = [];
         for (var i = 0, len = app.data.contests[app.selected.contest].slammer.length; i < len; i++) {
@@ -44,7 +56,9 @@ var app = app || {};
         app.updateScreen(true);
     }
 
-
+    /**
+     *
+     */
     app.manip.removeRound = function(rndId) {
         var newRndArray = [];
         for (var i = 0, len = app.data.contests[app.selected.contest].rounds.length; i < len; i++) {
@@ -59,6 +73,9 @@ var app = app || {};
         app.updateScreen(true);
     };
 
+    /**
+     *
+     */
     app.manip.addGroup = function(rndId) {
         var rnds = app.data.contests[app.selected.contest].rounds;
 
@@ -89,10 +106,13 @@ var app = app || {};
         app.updateScreen(true);
     };
 
-
+    /**
+     *
+     */
     app.manip.removeGroup = function(groupId) {
         var rnds = app.data.contests[app.selected.contest].rounds;
 
+        // TODO: Use app.getRndAndGroupIndex();
         outOfLoop:
         for (var i = 0, len = rnds.length; i < len; i++) {
             for (var j = 0, lenj = rnds[i].groups.length; j < lenj; j++) {
@@ -106,8 +126,121 @@ var app = app || {};
         app.updateByIdValues();
         app.utils.persistData();
         app.updateScreen(true);
-
-
     };
+
+
+    /**
+     *
+     */
+    app.manip.assignSlammer = function(slId) {
+        var rnds = app.data.contests[app.selected.contest].rounds;
+
+        // TODO: Use app.getRndAndGroupIndex();
+        outOfLoop:
+        for (var i = 0, len = rnds.length; i < len; i++) {
+            for (var j = 0, lenj = rnds[i].groups.length; j < lenj; j++) {
+                if (rnds[i].groups[j].id == app.selected.group) {
+                    app.data.contests[app.selected.contest].rounds[i].groups[j].slammer.push({ 'id': slId });
+                    break outOfLoop;
+                }
+            }
+        }
+
+        app.updateByIdValues();
+        app.utils.persistData();
+        app.updateScreen(true);
+    };
+
+    /**
+     *
+     */
+    app.manip.unassignSlammer = function(slId) {
+        var rnds = app.data.contests[app.selected.contest].rounds;
+
+        // TODO: Use app.getRndAndGroupIndex();
+        outOfLoop:
+        for (var i = 0, len = rnds.length; i < len; i++) {
+            for (var j = 0, lenj = rnds[i].groups.length; j < lenj; j++) {
+                if (rnds[i].groups[j].id == app.selected.group) {
+                    for (var k = 0, lenk = rnds[i].groups[j].slammer.length; k < lenk; k++) {
+                        if (rnds[i].groups[j].slammer[k].id == slId) {
+                            app.data.contests[app.selected.contest].rounds[i].groups[j].slammer.splice(k, 1);
+                            break outOfLoop;
+                        }
+                    }
+                }
+            }
+        }
+
+        app.updateByIdValues();
+        app.utils.persistData();
+        app.updateScreen(true);
+    };
+
+
+    /**
+     *
+     */
+    app.manip.saveGrades = function(slammerIndex, grades, total, dropGrades) {
+        // TODO: Use app.getRndAndGroupIndex();
+        var rnds = app.data.contests[app.selected.contest].rounds;
+
+        outOfLoop:
+        for (var i = 0, len = rnds.length; i < len; i++) {
+            for (var j = 0, lenj = rnds[i].groups.length; j < lenj; j++) {
+                if (rnds[i].groups[j].id == app.selected.group) {
+                    app.data.contests[app.selected.contest].rounds[i].groups[j].slammer[slammerIndex].grades = grades;
+                    app.data.contests[app.selected.contest].rounds[i].groups[j].slammer[slammerIndex].total = total;
+                    app.data.contests[app.selected.contest].rounds[i].groups[j].slammer[slammerIndex].dropGrades = dropGrades;
+                    break outOfLoop;
+                }
+            }
+        }
+
+        app.utils.persistData();
+    };
+
+
+    /**
+     *
+     */
+    app.manip.sortSlammer = function() {
+        var index = app.getRndAndGroupIndex();
+
+        var rows = app.data.contests[app.selected.contest].rounds[index.rnd].groups[index.group].slammer;
+
+        for (var i = 0, len = rows.length; i < len; i++) {
+            rows[i].originalIndex = i;
+            if (rows[i].total === undefined) {
+                rows[i].total = 0;
+                rows[i].totalWasOriginallyUndefined = true;
+            }
+        }
+
+        rows.sort(function(a, b) {
+            if (a.total === b.total) {
+                if (a.originalIndex === b.originalIndex) {
+                    return 0;
+                }
+                return a.originalIndex > b.originalIndex ? 1 : -1;
+            }
+            return a.total > b.total ? -1 : 1;
+        });
+
+        for (var i = 0, len = rows.length; i < len; i++) {
+            delete rows[i].originalIndex;
+            if (rows[i].totalWasOriginallyUndefined !== undefined) {
+                delete rows[i].total;
+                delete rows[i].totalWasOriginallyUndefined;
+            }
+        }
+
+        app.data.contests[app.selected.contest].rounds[index.rnd].groups[index.group].slammer = rows;
+
+        app.utils.persistData();
+        app.updateScreen(true);
+    };
+
+
 
 }());

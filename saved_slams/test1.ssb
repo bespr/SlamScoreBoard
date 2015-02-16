@@ -4,10 +4,10 @@
         {
             "name": "Super-Slam Basel 2013, Tag 1",
             "config": {
-                "numOfGrades": 9,
+                "numOfGrades": 7,
                 "numOfMinDropGrades": 1,
                 "numOfMaxDropGrades": 1,
-                "numOfDecimalDigits": 1
+                "numOfDecimalDigits": 0
             },
             "slammer": [
                 {
@@ -52,10 +52,22 @@
                             "id": "1",
                             "slammer": [
                                 {
-                                    "id": 1
+                                    "id": 1,
+                                    "grades": [4, 7, 2, 3, 8, 9, 5],
+                                    "total": 27,
+                                    "dropGrades": {
+                                        "min": [2],
+                                        "max": [9]
+                                    }
                                 },
                                 {
-                                    "id": 2
+                                    "id": 2,
+                                    "grades": [8, 7, 9, 8, 7, 9, 6],
+                                    "total": 39,
+                                    "dropGrades": {
+                                        "min": [6],
+                                        "max": [9]
+                                    }
                                 },
                                 {
                                     "id": 3

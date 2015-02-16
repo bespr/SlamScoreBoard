@@ -25,7 +25,7 @@ var ENTER_KEY = 13;
     app.hideButtons = function() {
         app.showButtons = false;
         $('.bh').removeClass('visible');
-    }
+    };
 
 
     /*
@@ -205,9 +205,10 @@ var ENTER_KEY = 13;
     /*
      * On Key Up: Grades input
      */
-    $(document).on('keyup', '.grades input', function() {
+    $(document).on('blur', '.grades input', function() {
         var row = $(this).parent();
-        // Calculate
+        var slammerIndex = parseInt(row.attr('data-slammerIndex'), 10);
+
         var allFilled = true;
         var minGrade = 999999999;
         var minGradeIndex = false;
@@ -216,10 +217,18 @@ var ENTER_KEY = 13;
         var sum = 0;
         var allValidGrades = [];
         var v;
+        var numOfDecimalDigits = parseInt(app.data.contests[app.selected.contest].config.numOfDecimalDigits, 10);
 
         row.find('input:not(.total)').each(function(index) {
-            v = parseInt($(this).val(), 10);
+            if (numOfDecimalDigits === 0) {
+                v = parseInt($(this).val(), 10);
+            } else {
+                v = parseFloat($(this).val());
+                Math.pow(10, numOfDecimalDigits);
+                v = Math.round(v * Math.pow(10, numOfDecimalDigits)) / Math.pow(10, numOfDecimalDigits);
+            }
             $(this).removeClass('minDropGrade maxDropGrade');
+
             if (isNaN(v)) {
                 $(this).val('');
                 allFilled = false;
@@ -236,23 +245,29 @@ var ENTER_KEY = 13;
             }
         });
 
-
-
         if (allFilled) {
             for (var i = 0, len = allValidGrades.length; i < len; i++) {
                 if (i != maxGradeIndex && i != minGradeIndex) {
                     sum += allValidGrades[i];
                 }
             }
+            sum = Math.round(sum * Math.pow(10, numOfDecimalDigits)) / Math.pow(10, numOfDecimalDigits);
             row.find('input.total').val(sum);
             row.find('input:nth-child(' + (minGradeIndex + 1) + ')').addClass('minDropGrade');
             row.find('input:nth-child(' + (maxGradeIndex + 1) + ')').addClass('maxDropGrade');
+
+            app.manip.saveGrades(slammerIndex, allValidGrades, sum, { 'min': minGrade, 'max': maxGrade });
         } else {
             row.find('input.total').val('');
         }
-
     });
 
+    /**
+     *
+     */
+    $(document).on('click', '.sortSlammer', function() {
+        app.manip.sortSlammer();
+    });
 
     $(document).on('click', '.addGroup', function() {
         app.manip.addGroup($(this).attr('data-rnd'));
@@ -266,11 +281,22 @@ var ENTER_KEY = 13;
 
     $(document).on('click', '.showSlammerDropdown', function() {
         $('.placeForSlammerDropdown').html(app.screens.parts.slammerDropdown());
+        $('.unassignSlammerButton').show();
     });
 
     $(document).on('change', '.slammerDropdown', function() {
-        console.log($(this).val());
-        $('.slammerDropdown').hide();
+        var slId = parseInt($(this).val(), 10);
+        if (slId > 0) {
+            app.manip.assignSlammer(slId);
+        } else {
+            $('.slammerDropdown').hide();
+            $('.unassignSlammerButton').hide();
+        }
+    });
+
+    $(document).on('click', '.unassignSlammerButton', function() {
+        var slId = parseInt($(this).attr('data-slammer'), 10);
+        app.manip.unassignSlammer(slId);
     });
 
 

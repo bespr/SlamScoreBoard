@@ -54,18 +54,19 @@ var app = app || {};
         }
 
         return groupFound;
-    }
+    };
 
 
 
     app.getSlammer = function(list) {
         var slammer = [];
         for (var i = 0, len = list.length; i < len; i++) {
-            var id = list[i].id;
-            slammer.push(app.slammerById[id]);
+            var s = $.extend({}, list[i]);
+            s.name = app.slammerById[list[i].id].name;
+            slammer.push(s);
         }
         return slammer;
-    }
+    };
 
 
     app.getContestNames = function() {
@@ -74,7 +75,23 @@ var app = app || {};
             contestNames.push(app.data.contests[i].name);
         }
         return contestNames;
-    }
+    };
+
+    app.getRndAndGroupIndex = function() {
+        var rnds = app.data.contests[app.selected.contest].rounds;
+        var rndIndex = false;;
+        var groupIndex = false;
+
+        for (var i = 0, len = rnds.length; i < len; i++) {
+            for (var j = 0, lenj = rnds[i].groups.length; j < lenj; j++) {
+                if (rnds[i].groups[j].id == app.selected.group) {
+                    return { 'rnd': i, 'group': j };
+                }
+            }
+        }
+        console.warn('strange: getRndAndGroupIndex() could not return a rndIndex or a groupIndex');
+        return false;
+    };
 
 /*
     app.getGroupNames = function() {

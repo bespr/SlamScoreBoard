@@ -23,10 +23,15 @@ var app = app || {};
                 tmpl += '<span class="name">';
                     tmpl += slammer[i].name;
                     tmpl += '<span class="changeScreen bs bh" data-screen="slammer" data-screen-id="' + slammer[i].id + '">&gt;</span>';
+                    tmpl += '<span class="unassignSlammerButton bs" data-slammer="' + slammer[i].id + '">' + l('unassign_slammer') + '</span>';
                 tmpl += '</span>';
-                tmpl += '<ul class="grades">';
+                tmpl += '<ul class="grades" data-slammerIndex="' + i + '">';
                     for (var j = 0; j < app.data.contests[0].config.numOfGrades; j++) {
-                        tmpl += '<input type="text" />';
+                        if (slammer[i].grades !== undefined && slammer[i].grades[j] !== undefined) {
+                            tmpl += '<input type="text" value="' + slammer[i].grades[j] + '" />';
+                        } else {
+                            tmpl += '<input type="text" />';
+                        }
                     }
                     tmpl += '<input type="text" class="total" readonly="readonly" />';
                 tmpl += '</ul>';
@@ -36,6 +41,8 @@ var app = app || {};
         tmpl += '</ul>';
 
         tmpl += '<div class="placeForSlammerDropdown"></div>';
+
+        tmpl += '<span class="bl bh sortSlammer">' + l('sort_slammer') + '</span>';
         tmpl += '<span class="bl bh showSlammerDropdown">' + l('assign_slammer') + '</span>';
 
         tmpl += '<span class="changeScreen bl bh" data-screen="contest" data-screen-id="' + app.selected.contest + '">ContestScreen</span>';
@@ -314,12 +321,13 @@ var app = app || {};
         }
 
         var tmpl = '<select class="slammerDropdown">';
+            tmpl += '<option value="0"> == ' + l('choose_slammer') + ' == </option>';
             for (var slId in app.slammerById) {
                 if (slammersAlreadyTaken.indexOf(parseInt(slId, 10)) === -1) {
                     tmpl += '<option value="' + slId + '">' + app.slammerById[slId].name + '</option>';
                 }
             }
-            tmpl += '<option value="0">' + l('dont_assign_slammer') + '</option>';
+            tmpl += '<option value="0"> [' + l('dont_assign_slammer') + ']</option>';
         tmpl += '</select>';
         return tmpl;
     }
