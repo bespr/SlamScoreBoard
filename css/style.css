@@ -129,3 +129,11 @@ ul.groupList li .grades input.total { border: 1px solid #f84; width: 80px; }
 ul.groupList li .grades input.minDropGrade { background-color: rgba(128, 0, 0, 0.3); opacity: 0.4; }
 ul.groupList li .grades input.maxDropGrade { background-color: rgba(0, 128, 0, 0.3); opacity: 0.4; }
 ul.groupList li .unassignSlammerButton { display: none; }
+
+
+.pause {}
+.pause h1 { font-size: 400%; text-align: center; }
+.pause .sponsor-container { overflow: hidden; width: 100%; }
+.pause .sponsors { position: relative; }
+.pause .sponsors li { float: left; text-align: center; }
+.pause .sponsors li img { max-width: 75%; max-height: 50%;  }

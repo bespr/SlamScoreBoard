@@ -68,9 +68,28 @@ var app = app || {};
      * pause
      */
     app.screens.pause = function() {
-        var tmpl = '<h1>Pause</h1>';
-        tmpl += '<span class="changeScreen bl" data-screen="contest" data-screen-id="0">ContestScreen</span>';
-        tmpl += '<span class="changeScreen bl" data-screen="group" data-screen-id="1">GroupScreen</span>';
+        var indexShuffled = [];
+        for (var i = 0, len = SPONSORS.length; i < len; i++) {
+            indexShuffled.push(i);
+        }
+        indexShuffled = app.utils.shuffle(indexShuffled);
+
+        var tmpl = '<div class="pause">';
+            tmpl += '<h1>' + app.data.contests[app.selected.contest].name + '</h1>';
+
+
+            tmpl += '<div class="sponsor-container">';
+                tmpl += '<ul class="sponsors">';
+                for (var i = 0, len = indexShuffled.length; i < len; i++) {
+                    tmpl += '<li><img src="sponsors/' + SPONSORS[indexShuffled[i]]   + '.png" /></li>';
+                }
+                tmpl += '</ul>';
+            tmpl += '</div>';
+
+            tmpl += '<span class="changeScreen bl bh" data-screen="contest" data-screen-id="0">ContestScreen</span>';
+            tmpl += '<span class="changeScreen bl bh" data-screen="group" data-screen-id="1">GroupScreen</span>';
+        tmpl += '</div>';
+
         return tmpl;
     };
 
@@ -85,17 +104,7 @@ var app = app || {};
         var dataContest = app.data.contests[app.selected.contest];
 
         var groups, gid;
-        var tmpl = '<h1>Contest ' + dataContest.name + '</h1>';
-        tmpl += '<span class="changeScreen bl" data-screen="contestConf" data-screen-id="' + app.selected.contest + '">ContestConfigureScreen</span>';
-        tmpl += '<span class="changeScreen bl" data-screen="configure">MainConfigureScreen</span>';
-        tmpl += '<span class="changeScreen bl" data-screen="slammerConf">SlammerConfigScreen</span>';
-        /*
-        groups = app.getGroupNames();
-        for (gid in groups) {
-            tmpl += '<span class="changeScreen bl" data-screen="group" data-screen-id="' + gid + '">' + groups[gid] + '</span>';
-        }
-        tmpl += '<span class="changeScreen bl" data-screen="pause" data-screen-id="">PauseScreen</span>';
-        */
+        var tmpl = '<h1>' + dataContest.name + '</h1>';
 
         var numOfRnds = dataContest.rounds.length;
         tmpl += '<div class="contestContainer numOfRnds-' + numOfRnds + '">';
@@ -108,7 +117,7 @@ var app = app || {};
                     tmpl += '<div class="group changeScreen" data-screen="group" data-screen-id="' + g.id + '">';
                         if (g.slammer.length === 0) {
                             tmpl += '<i>' + l('slammer_list_undefined') + '</i>';
-                            tmpl += '<span class="bl removeGroup" data-group="' + g.id + '">' + l('remove_group') + '</span>';
+                            tmpl += '<span class="bl bh removeGroup" data-group="' + g.id + '">' + l('remove_group') + '</span>';
                         } else {
                             tmpl += '<ul>';
                             for (var k = 0, lenk = g.slammer.length; k < lenk; k++) {
@@ -124,11 +133,16 @@ var app = app || {};
                     tmpl += '</div>';
                 }
 
-                tmpl += '<span class="bl addGroup" style="margin-left: 0" data-rnd="' + rnd.id + '">' + l('add_group') + '</span>';
+                tmpl += '<span class="bl bh addGroup" style="margin-left: 0" data-rnd="' + rnd.id + '">' + l('add_group') + '</span>';
 
             tmpl += '</div></div>';
         }
         tmpl += '</div>';
+
+        tmpl += '<span class="changeScreen bl bh" data-screen="contestConf" data-screen-id="' + app.selected.contest + '">ContestConfigureScreen</span>';
+        tmpl += '<span class="changeScreen bl bh" data-screen="configure">MainConfigureScreen</span>';
+        tmpl += '<span class="changeScreen bl bh" data-screen="slammerConf">SlammerConfigScreen</span>';
+        tmpl += '<span class="changeScreen bl bh" data-screen="pause">PauseScreen</span>';
 
         return tmpl;
     };
@@ -164,7 +178,6 @@ var app = app || {};
         tmpl += '<div type="button" class="saveToFile bl">Save to file</div>';
         tmpl += '<div type="button" class="readFromFile bl">Read from file</div>';
         tmpl += '<div type="button" class="clearAllData bl">Clear all data</div>';
-
 
         return tmpl;
     };

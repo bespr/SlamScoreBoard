@@ -67,6 +67,8 @@ var app = app || {};
                 tmpl = app.screens[app.currentScreen.name]();
             }
             $('#appplace').html(tmpl);
+
+            app.templateLoadedEvent.clearAllTimeouts();
             if (typeof app.templateLoadedEvent[app.currentScreen.name] === 'function') {
                 setTimeout(function() {
                     app.templateLoadedEvent[app.currentScreen.name]();

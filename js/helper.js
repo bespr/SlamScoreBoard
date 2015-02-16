@@ -156,6 +156,22 @@ var app = app || {};
     };
 
 
+    /**
+    * from http://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array/2450976#2450976
+    */
+    app.utils.shuffle = function(array) {
+        var currentIndex = array.length, temporaryValue, randomIndex;
+        while (0 !== currentIndex) {
+          randomIndex = Math.floor(Math.random() * currentIndex);
+          currentIndex -= 1;
+          temporaryValue = array[currentIndex];
+          array[currentIndex] = array[randomIndex];
+          array[randomIndex] = temporaryValue;
+        }
+        return array;
+    };
+
+
     // Language Handler
     window.l = function(str, values) {
         var re = str + '°';
