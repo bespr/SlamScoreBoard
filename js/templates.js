@@ -87,7 +87,7 @@ var app = app || {};
             tmpl += '</div>';
 
             tmpl += '<span class="changeScreen bl bh" data-screen="contest" data-screen-id="' + app.selected.contest + '">ContestScreen</span>';
-            tmpl += '<span class="changeScreen bl bh" data-screen="group" data-screen-id="1">GroupScreen</span>';
+            tmpl += '<span class="changeScreen bl bh" data-screen="group" data-screen-id="' + app.selected.group + '">GroupScreen</span>';
         tmpl += '</div>';
 
         return tmpl;

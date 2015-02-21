@@ -39,13 +39,18 @@ var app = app || {};
         var n, id, parts, posForcePart;
         var h = location.hash.substr(1);
 
-
         posForcePart = h.indexOf('~~');
         if (posForcePart !== -1) {
             h = h.substr(0, posForcePart);
             location.hash = '#' + h;
             return;
         }
+
+        if (h === '') {
+            location.hash = '#configure';
+            return;
+        }
+
 
         if (h.indexOf('/') === -1) {
             n = h;
@@ -83,8 +88,7 @@ var app = app || {};
     // Start
     app.utils.loadData();
     if (location.hash === '') {
-        app.currentScreen = { name: 'configure' }
-        app.updateScreen();
+        location.hash = '#configure';
     } else {
         app.doWhatHashSays();
     }
