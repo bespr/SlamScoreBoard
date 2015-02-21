@@ -251,7 +251,9 @@ var app = app || {};
         tmpl += '</ul>';
 
         tmpl += '<span class="changeScreen bl" data-screen="configure">ConfigScreen</span>';
+        tmpl += '<span class="changeScreen bl" data-screen="slammerConf">SlammerConfScreen</span>';
         tmpl += '<span class="changeScreen bl" data-screen="contest" data-screen-id="' + app.selected.contest + '">ContestScreen</span>';
+
         return tmpl;
     };
 
@@ -283,6 +285,7 @@ var app = app || {};
         tmpl += app.screens.parts.slammerInput(nextSlammerId, '', l('add_new_slammer'));
         tmpl += '</ul>';
 
+        tmpl += '<span class="changeScreen bl" data-screen="contestConf" data-screen-id="' + app.selected.contest + '">ContestConfScreen</span>';
         tmpl += '<span class="changeScreen bl" data-screen="contest" data-screen-id="' + app.selected.contest + '">ContestScreen</span>';
 
         return tmpl;
