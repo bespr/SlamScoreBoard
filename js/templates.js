@@ -121,11 +121,18 @@ var app = app || {};
                         } else {
                             tmpl += '<ul>';
                             for (var k = 0, lenk = g.slammer.length; k < lenk; k++) {
+                                tmpl += '<li>';
                                 if (app.slammerById[g.slammer[k].id] !== undefined) {
-                                    tmpl += '<li>' + app.slammerById[g.slammer[k].id].name + '</li>';
+                                    tmpl += '<span>' + app.slammerById[g.slammer[k].id].name + '</span>';
+                                    tmpl += '<span>';
+                                    if (g.slammer[k].total !== undefined) {
+                                        tmpl += g.slammer[k].total;
+                                    }
+                                    tmpl += '</span>';
                                 } else {
-                                    tmpl += '<li><i>Unknown (id  = ' + g.slammer[k].id + ')</i></li>';
+                                    tmpl += '<i>Unknown (id  = ' + g.slammer[k].id + ')</i>';
                                 }
+                                tmpl += '</li>';
                             }
                             tmpl += '</ul>';
                         }

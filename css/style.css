@@ -113,6 +113,10 @@ icon-home:before {
 .contestContainer.numOfRnds-9 .rnd { width: 11.111%; }
 
 .contestContainer .rnd .group { border: 1px solid #f84; margin-bottom: 10px; padding: 10px; cursor: pointer; }
+.contestContainer .rnd .group ul { display: table; }
+.contestContainer .rnd .group ul li { display: table-row; }
+.contestContainer .rnd .group ul li span { display: table-cell; line-height: 1.5em; }
+.contestContainer .rnd .group ul li span:first-child { padding-right: 8px; }
 
 
 ul.groupList { margin: 0 10px; border-top: 1px solid #f84; font-size: 24px; }
