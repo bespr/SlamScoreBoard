@@ -86,7 +86,7 @@ var app = app || {};
                 tmpl += '</ul>';
             tmpl += '</div>';
 
-            tmpl += '<span class="changeScreen bl bh" data-screen="contest" data-screen-id="0">ContestScreen</span>';
+            tmpl += '<span class="changeScreen bl bh" data-screen="contest" data-screen-id="' + app.selected.contest + '">ContestScreen</span>';
             tmpl += '<span class="changeScreen bl bh" data-screen="group" data-screen-id="1">GroupScreen</span>';
         tmpl += '</div>';
 
@@ -244,7 +244,7 @@ var app = app || {};
         tmpl += '</ul>';
 
         tmpl += '<span class="changeScreen bl" data-screen="configure">ConfigScreen</span>';
-        tmpl += '<span class="changeScreen bl" data-screen="contest" data-screen-id="0">ContestScreen</span>';
+        tmpl += '<span class="changeScreen bl" data-screen="contest" data-screen-id="' + app.selected.contest + '">ContestScreen</span>';
         return tmpl;
     };
 
