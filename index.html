@@ -23,6 +23,17 @@
 
         <style>
             body { margin-bottom: 60px; }
+
+            .videoOuterWrapper { max-width: 720px; }
+            .videoWrapper {
+	            position: relative; padding-bottom: 56.25%; /* 16:9 */
+	            padding-top: 25px; height: 0;
+            }
+            .videoWrapper iframe {
+	            position: absolute;
+	            top: 0; left: 0; width: 100%; height: 100%;
+            }
+
         </style>
 
         <script>
@@ -71,6 +82,16 @@
                 <li>Exportieren der Resultate in einer html- oder csv-Tabelle ist möglich.</li>
                 <li>SSB läuft auf den gängisten Browsern (Firefox, Chrome, Internet Explorer).</li>
             </ul>
+
+
+            <h2>Im Video erklärt</h2>
+            <p>Das folgende Video führt tonlos durch die Applikation (Stand: Februar 2015). Momentan wird das Tool stark umgestaltet. Also bitte den Fokus besser auf die Funktionen richten und weniger aufs Aussehen:</p>
+            <div class="videoOuterWrapper">
+                <div class="videoWrapper">
+                    <iframe src="http://player.vimeo.com/video/121011160?byline=0" width="500" height="299" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                </div>
+            </div>
+
 
             <h2>Inbetriebnahme</h2>
 
