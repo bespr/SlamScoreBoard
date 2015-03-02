@@ -169,7 +169,7 @@ var ENTER_KEY = 13;
     /*
      * On Key Up: Slammer Config
      */
-    $(document).on('keyup', '.slammerConfigList li input', function() {
+    $(document).on('blur', '.slammerConfigList li input', function() {
         var newSlammerArray = [];
         var hasEmptySlot = false;
         $(this).parents('.slammerConfigList').find('li').each(function() {
@@ -186,6 +186,7 @@ var ENTER_KEY = 13;
             var nextSlammerId = parseInt($('.slammerConfigList').attr('data-next-slammer-id'), 10) + 1;
             $('.slammerConfigList').attr('data-next-slammer-id', nextSlammerId);
             $('.slammerConfigList').append(app.screens.parts.slammerInput(nextSlammerId, '', l('add_new_slammer')));
+            $('.slammerConfigList li:last-child input').focus();
         }
 
         app.data.contests[app.selected.contest].slammer = newSlammerArray;

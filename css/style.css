@@ -2,15 +2,19 @@
 
 /* Reset some things */
 ul { list-style-type: none; margin: 0; padding: 0; }
+button { font-size: inherit; }
+
+/* Background */
+body { background: #000000; }
 
 /* Button */
 .bl {
-    border: 1px solid black; padding: 6px; cursor: pointer; display: inline-block;
-    margin: 4px 10px; background-color: rgba(0, 0, 0, 0.2);
+    border: 1px solid #444; border-radius: 4px; padding: 6px; cursor: pointer; display: inline-block;
+    margin: 4px 10px; background-color: rgba(255, 255, 255, 0.15);
 }
 .bs {
     border: 1px solid black; padding: 6px; cursor: pointer; display: inline-block; font-size: 10px;
-    margin: 4px 10px; background-color: rgba(0, 0, 0, 0.4);
+    margin: 4px 10px; background-color: rgba(255, 255, 255, 0.15);
 }
 .bh {
     opacity: 0;
@@ -30,7 +34,7 @@ ul { list-style-type: none; margin: 0; padding: 0; }
 /* Input */
 input {
     border: 1px solid black; padding: 6px; cursor: pointer; display: inline-block;
-    margin: 4px 10px; background-color: rgba(0, 0, 0, 0.2);
+    margin: 4px 10px; background-color: rgba(192, 192, 128, 0.25);
     font-size: 1em;
 }
 select {

@@ -1,18 +1,9 @@
 /*
-Background-Color
-*/
-body,
-input,
-textarea {
-    background-color: #444;
-}
-
-
-/*
 Text color
 */
 body,
 input,
+button,
 textarea {
     color: #f84;
 }

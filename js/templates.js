@@ -286,7 +286,7 @@ var app = app || {};
         tmpl += '</ul>';
 
         tmpl += '<span class="changeScreen bl" data-screen="contestConf" data-screen-id="' + app.selected.contest + '">ContestConfScreen</span>';
-        tmpl += '<span class="changeScreen bl" data-screen="contest" data-screen-id="' + app.selected.contest + '">ContestScreen</span>';
+        tmpl += '<button class="changeScreen bl" data-screen="contest" data-screen-id="' + app.selected.contest + '">ContestScreen</button>';
 
         return tmpl;
     };
