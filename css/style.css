@@ -5,7 +5,38 @@ ul { list-style-type: none; margin: 0; padding: 0; }
 button { font-size: inherit; }
 
 /* Background */
-body { background: #000000; }
+body { background: #000000; font-family: sans-serif; }
+
+@font-face { font-family: 'Droid Sans'; src: url('../_YOUR_FILES_/font/Droid_Sans/DroidSans.ttf'); }
+@font-face { font-family: 'Oswald'; src: url('../_YOUR_FILES_/font/Droid_Sans/DroidSans-Bold.ttf'); font-weight: bold; }
+body.droid-sans { font-family: 'Droid Sans', sans-serif; }
+
+@font-face { font-family: 'Droid Serif'; src: url('../_YOUR_FILES_/font/Droid_Serif/DroidSerif.ttf'); }
+@font-face { font-family: 'Droid Serif'; src: url('../_YOUR_FILES_/font/Droid_Serif/DroidSerif-Bold.ttf'); font-weight: bold; }
+@font-face { font-family: 'Droid Serif'; src: url('../_YOUR_FILES_/font/Droid_Serif/DroidSerif-Italic.ttf'); font-style: italic; }
+@font-face { font-family: 'Droid Serif'; src: url('../_YOUR_FILES_/font/Droid_Serif/DroidSerif-BoldItalic.ttf'); font-weight: bold; font-style: italic; }
+body.droid-serif { font-family: 'Droid Serif', serif; }
+
+@font-face { font-family: 'Open Sans'; src: url('../_YOUR_FILES_/font/Open_Sans/OpenSans-Regular.ttf'); }
+@font-face { font-family: 'Open Sans'; src: url('../_YOUR_FILES_/font/Open_Sans/OpenSans-Bold.ttf'); font-weight: bold; }
+@font-face { font-family: 'Open Sans'; src: url('../_YOUR_FILES_/font/Open_Sans/OpenSans-Italic.ttf'); font-style: italic; }
+@font-face { font-family: 'Open Sans'; src: url('../_YOUR_FILES_/font/Open_Sans/OpenSans-BoldItalic.ttf'); font-weight: bold; font-style: italic; }
+body.open-sans { font-family: 'Open Sans', sans-serif; }
+
+@font-face { font-family: 'Oswald'; src: url('../_YOUR_FILES_/font/Oswald/Oswald-Regular.ttf'); }
+@font-face { font-family: 'Oswald'; src: url('../_YOUR_FILES_/font/Oswald/Oswald-Bold.ttf'); font-weight: bold; }
+body.oswald { font-family: 'Oswald', sans-serif; }
+
+@font-face { font-family: 'Raleway'; src: url('../_YOUR_FILES_/font/Raleway/Raleway-Regular.ttf'); }
+@font-face { font-family: 'Raleway'; src: url('../_YOUR_FILES_/font/Raleway/Raleway-Bold.ttf'); font-weight: bold; }
+body.raleway { font-family: 'Raleway', sans-serif; }
+
+@font-face { font-family: 'Montserrat'; src: url('../_YOUR_FILES_/font/Montserrat/Montserrat-Regular.ttf'); }
+@font-face { font-family: 'Montserrat'; src: url('../_YOUR_FILES_/font/Montserrat/Montserrat-Bold.ttf'); font-weight: bold; }
+body.montserrat { font-family: 'Montserrat', sans-serif; }
+
+
+
 
 /* Button */
 .bl {

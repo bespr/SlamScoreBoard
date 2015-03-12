@@ -314,6 +314,12 @@ var ENTER_KEY = 13;
         app.utils.adaptDesign(true);
     });
 
+    /* FontFamily */
+    $(document).on('change', '.fontFamily', function() {
+        app.data.designConf.fontFamily = $(this).val();
+        app.utils.persistData();
+        app.utils.adaptDesign(true);
+    });
 
 
 

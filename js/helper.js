@@ -125,11 +125,8 @@ var app = app || {};
             app.data = {
                 "format": "ssb-1",
                 "contests": [],
-                "designConf": {
-                    "fontColor": "#ff8844",
-                    "backgroundColor": "#000000"
-                }
             };
+            app.utils.dataExtendDefaults();
         }
 
         d = localStorage.getItem('ssb-last-loaded-selected');
@@ -150,8 +147,12 @@ var app = app || {};
 
     app.utils.dataExtendDefaults = function() {
         app.data.designConf = app.data.designConf || {};
+        app.data.designConf.fontFamily = app.data.designConf.fontFamily || 'open-sans';
         app.data.designConf.fontColor = app.data.designConf.fontColor || '#ff8844';
         app.data.designConf.backgroundColor = app.data.designConf.backgroundColor || '#000000';
+        app.data.designConf.backgroundImage = app.data.designConf.backgroundImage || '';
+        app.data.designConf.logo = app.data.designConf.logo || '';
+        app.data.designConf.sponsors = app.data.designConf.sponsors || "acme\nkodak\nmicrosoft\nnewpoint\nnokia\nvivikola";
     }
 
 
@@ -160,6 +161,8 @@ var app = app || {};
 
         app.sheet.insertRule('body, input, button, textarea { color: ' + app.data.designConf.fontColor + '; }', 0);
         app.sheet.insertRule('body { background-color: ' + app.data.designConf.backgroundColor + '; }', 0);
+        $('body').removeClass().addClass(app.data.designConf.fontFamily);
+
         if (doReload) {
             location.reload();
         }

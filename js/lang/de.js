@@ -28,6 +28,16 @@ lang.de = {
     'font_color': 'Schriftfarbe',
     'background_color': 'Hintergrundfarbe',
     'beamer_size': 'Beamer-Auflösung',
-    'start_screen': 'Zum Start-Bildschirm'
+    'start_screen': 'Zum Start-Bildschirm',
+    'font_family': 'Schriftart',
+    'background_image': 'Hintergrund-Bild',
+    'placeholder_background_image': 'Dateiname eingeben',
+    'desc_background_image': 'Kopiere das Bild ins Verzeichnis «_YOUR_FILES_/background». Gebe danach den exakten Dateinamen ins obige Feld ein.',
+    'logo': 'Logo',
+    'placeholder_logo': 'Dateinamen eingeben',
+    'desc_logo': 'Kopiere das Bild ins Verzeichnis «_YOUR_FILES_/logo». Gebe danach den exakten Dateinamen ins obige Feld ein.',
+    'sponsors': 'Sponsoren',
+    'desc_sponsors': 'Kopiere die Sponsorenlogos ins Verzeichnis «_YOUR_FILES_/sponsor». Gebe danach alle exakten Dateinamen ins obige Feld ein. Trenne verschiedene Sponsoren durch einen Zeilenumbruch',
+
 
 }
