@@ -25,7 +25,12 @@ var app = app || {};
     };
 
 
-
+    app.sheet = (function() {
+        var style = document.createElement('style');
+        style.appendChild(document.createTextNode(""));  // WebKit hack :(
+        document.head.appendChild(style);
+        return style.sheet;
+    })();
 
 
     /* ======================== */
@@ -47,7 +52,7 @@ var app = app || {};
         }
 
         if (h === '') {
-            location.hash = '#configure';
+            location.hash = '#start';
             return;
         }
 
@@ -88,10 +93,11 @@ var app = app || {};
     // Start
     app.utils.loadData();
     if (location.hash === '') {
-        location.hash = '#configure';
+        location.hash = '#start';
     } else {
         app.doWhatHashSays();
     }
 
-
 }());
+
+

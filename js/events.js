@@ -143,6 +143,7 @@ var ENTER_KEY = 13;
             var reader = new FileReader();
             reader.onload = function(theFile) {
                 app.data = JSON.parse(theFile.target.result);
+                app.utils.dataExtendDefaults();
                 app.utils.persistData();
                 app.updateScreen(true);
             };
@@ -299,6 +300,20 @@ var ENTER_KEY = 13;
         var slId = parseInt($(this).attr('data-slammer'), 10);
         app.manip.unassignSlammer(slId);
     });
+
+    /* ColorChooser */
+    $(document).on('change', '.fontColorChooser', function() {
+        app.data.designConf.fontColor = $(this).val();
+        app.utils.persistData();
+        app.utils.adaptDesign(true);
+    });
+
+    $(document).on('change', '.backgroundColorChooser', function() {
+        app.data.designConf.backgroundColor = $(this).val();
+        app.utils.persistData();
+        app.utils.adaptDesign(true);
+    });
+
 
 
 

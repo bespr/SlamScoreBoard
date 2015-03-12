@@ -147,7 +147,7 @@ var app = app || {};
         tmpl += '</div>';
 
         tmpl += '<span class="changeScreen bl bh" data-screen="contestConf" data-screen-id="' + app.selected.contest + '">ContestConfigureScreen</span>';
-        tmpl += '<span class="changeScreen bl bh" data-screen="configure">MainConfigureScreen</span>';
+        tmpl += '<span class="changeScreen bl bh" data-screen="start">StartScreen</span>';
         tmpl += '<span class="changeScreen bl bh" data-screen="slammerConf">SlammerConfigScreen</span>';
         tmpl += '<span class="changeScreen bl bh" data-screen="pause">PauseScreen</span>';
 
@@ -156,13 +156,15 @@ var app = app || {};
 
 
     /*
-     * configure
+     * start
      */
-    app.screens.configure = function() {
+    app.screens.start = function() {
+        console.log('startScreen', app.data);
         var contestNames = app.getContestNames();
 
-        var tmpl = '<h1>' + l('config_title') + '</h1>';
-        tmpl += '<span>Select contest</span>';
+        var tmpl = '<h1>' + l('start_title') + '</h1>';
+        tmpl += '<p>' + l('start_text') + '</p>';
+        tmpl += '<p>' + l('select_contest') + '</p>';
         if (contestNames.length > 0) {
             tmpl += '<ul class="contestSelect">';
             for (var i = 0, len = contestNames.length; i < len; i++) {
@@ -174,20 +176,52 @@ var app = app || {};
             }
             tmpl += '</ul>';
         } else {
-            tmpl += '<p>No contest available. Load a file. Or create a new one</p>';
+            tmpl += '<p>' + l('no_contest_available') + '</p>';
         }
         tmpl += '<div>';
-            tmpl += '<label>New contest</label>';
-            tmpl += '<input type="text" class="insertContest" placeholder="insert new contest name" />';
+            tmpl += '<label>' + l('new_contest') + '</label>';
+            tmpl += '<input type="text" class="insertContest" placeholder="' + l('placeholder_contest_name') + '" />';
             tmpl += '<div class="bl insertContestSubmit">OK</div>';
         tmpl += '</div>';
 
-        tmpl += '<div type="button" class="saveToFile bl">Save to file</div>';
-        tmpl += '<div type="button" class="readFromFile bl">Read from file</div>';
-        tmpl += '<div type="button" class="clearAllData bl">Clear all data</div>';
+        tmpl += '<div type="button" class="saveToFile bl">' + l('save_to_file') + '</div>';
+        tmpl += '<div type="button" class="readFromFile bl">' + l('read_from_file') + '</div>';
+        tmpl += '<div type="button" class="changeScreen bl" data-screen="designConf">' + l('design_configuration') + '</div>';
+        tmpl += '<div type="button" class="clearAllData bl">' + l('clear_all_data') + '</div>';
 
         return tmpl;
     };
+
+
+    /*
+     * designConf
+     */
+    app.screens.designConf = function() {
+        var tmpl = '<h1>' + l('design_conf_title') + '</h1>';
+
+        tmpl += '<ul class="inputlist">';
+            tmpl += '<li>';
+                tmpl += '<label>' + l('font_color') + '</label>';
+                tmpl += '<input type="text" class="colorChooser fontColorChooser" value="' + app.data.designConf.fontColor + '" />';
+            tmpl += '</li>';
+            tmpl += '<li>';
+                tmpl += '<label>' + l('background_color') + '</label>';
+                tmpl += '<input type="text" class="colorChooser backgroundColorChooser" value="' + app.data.designConf.backgroundColor + '" />';
+            tmpl += '</li>';
+            tmpl += '<li>';
+                tmpl += '<label>' + l('beamer_size') + '</label>';
+                tmpl += '<select class="beamerSize">';
+                    tmpl += '<option value="fullhd">FullHD (1920 x 1080)</option>';
+                    tmpl += '<option value="wxga">WXGA (1280 x 800)</option>';
+                    tmpl += '<option value="xga">FullHD (1024 x 768)</option>';
+                tmpl += '</select>';
+            tmpl += '</li>';
+        tmpl += '</ul>';
+
+        tmpl += '<div type="button" class="changeScreen bl" data-screen="start">' + l('start_screen') + '</div>';
+        return tmpl;
+    };
+
 
 
     /*
@@ -250,7 +284,7 @@ var app = app || {};
             tmpl += '</li>';
         tmpl += '</ul>';
 
-        tmpl += '<span class="changeScreen bl" data-screen="configure">ConfigScreen</span>';
+        tmpl += '<span class="changeScreen bl" data-screen="start">StartScreen</span>';
         tmpl += '<span class="changeScreen bl" data-screen="slammerConf">SlammerConfScreen</span>';
         tmpl += '<span class="changeScreen bl" data-screen="contest" data-screen-id="' + app.selected.contest + '">ContestScreen</span>';
 
@@ -264,8 +298,8 @@ var app = app || {};
     app.screens.slammerConf = function() {
         // Check, if a contest is selected
         if (app.selected.contest === undefined) {
-            alert('selectedContest is undefined. Redirect to #configure');
-            location.hash = 'configure';
+            alert('selectedContest is undefined. Redirect to #start');
+            location.hash = 'start';
             return;
         }
 

@@ -124,7 +124,11 @@ var app = app || {};
         } else {
             app.data = {
                 "format": "ssb-1",
-                "contests": []
+                "contests": [],
+                "designConf": {
+                    "fontColor": "#ff8844",
+                    "backgroundColor": "#000000"
+                }
             };
         }
 
@@ -136,6 +140,7 @@ var app = app || {};
         }
 
         app.updateByIdValues();
+        app.utils.adaptDesign();
     };
 
     app.utils.clearAllData = function() {
@@ -143,6 +148,22 @@ var app = app || {};
         app.utils.loadData();
     };
 
+    app.utils.dataExtendDefaults = function() {
+        app.data.designConf = app.data.designConf || {};
+        app.data.designConf.fontColor = app.data.designConf.fontColor || '#ff8844';
+        app.data.designConf.backgroundColor = app.data.designConf.backgroundColor || '#000000';
+    }
+
+
+    app.utils.adaptDesign = function(doReload) {
+        doReload = doReload || false;
+
+        app.sheet.insertRule('body, input, button, textarea { color: ' + app.data.designConf.fontColor + '; }', 0);
+        app.sheet.insertRule('body { background-color: ' + app.data.designConf.backgroundColor + '; }', 0);
+        if (doReload) {
+            location.reload();
+        }
+    };
 
 
     app.utils.getTechTime = function(d) {

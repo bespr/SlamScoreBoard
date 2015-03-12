@@ -35,6 +35,16 @@ var app = app || {};
         }, 8000);
     };
 
+    app.templateLoadedEvent.designConf = function() {
+        $('.colorChooser').spectrum({
+            /* color: "#f00" */
+            showInput: true,
+            preferredFormat: "hex",
+            cancelText: 'abbrechen',
+            chooseText: 'übernehmen'
+        });
+    };
+
     /**
      *
      */
