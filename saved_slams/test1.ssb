@@ -1,5 +1,17 @@
 {
     "format": "ssb-1",
+    "designConf": {
+        "backgroundColor": "#1a1010",
+        "backgroundImage": "",
+        "fontColor": "#c7bddb",
+        "fontFamily": "open-sans",
+        "logo": "",
+        "marginBottom": "6%",
+        "marginLeft": "6%",
+        "marginRight": "6%",
+        "marginTop": "6%",
+        "sponsors": "acme\nkodak\nmicrosoft\nnewpoint\nnokia\nvivikola"
+    },
     "contests": [
         {
             "name": "Super-Slam Basel 2013, Tag 1",

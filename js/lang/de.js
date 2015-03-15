@@ -38,6 +38,7 @@ lang.de = {
     'desc_logo': 'Kopiere das Bild ins Verzeichnis «_YOUR_FILES_/logo». Gebe danach den exakten Dateinamen ins obige Feld ein.',
     'sponsors': 'Sponsoren',
     'desc_sponsors': 'Kopiere die Sponsorenlogos ins Verzeichnis «_YOUR_FILES_/sponsor». Gebe danach alle exakten Dateinamen ins obige Feld ein. Trenne verschiedene Sponsoren durch einen Zeilenumbruch',
-
+    'margins': 'Ränder',
+    'desc_margins': 'Ränder (links, oben, rechts, unten) in Prozent (default) oder in Pixel, z.B. «8%» oder «60px»'
 
 }

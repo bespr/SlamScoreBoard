@@ -159,7 +159,6 @@ var app = app || {};
      * start
      */
     app.screens.start = function() {
-        console.log('startScreen', app.data);
         var contestNames = app.getContestNames();
 
         var tmpl = '<h1>' + l('start_title') + '</h1>';
@@ -224,6 +223,17 @@ var app = app || {};
                 tmpl += '<input type="text" class="backgroundImage" placeholder="' + l('placeholder_background_image') + '" value="' + app.data.designConf.backgroundImage + '" />';
                 tmpl += '<p class="desc">' + l('desc_background_image') + '</p>';
             tmpl += '</li>';
+            tmpl += '<li>';
+                tmpl += '<label>' + l('margins') + '</label>';
+                tmpl += '<div class="marginBox">';
+                    tmpl += '<input type="text" class="margin" data-margin-name="left" value="' + app.data.designConf.marginLeft + '" />';
+                    tmpl += '<input type="text" class="margin" data-margin-name="top" value="' + app.data.designConf.marginTop + '" />';
+                    tmpl += '<input type="text" class="margin" data-margin-name="right" value="' + app.data.designConf.marginRight + '" />';
+                    tmpl += '<input type="text" class="margin" data-margin-name="bottom" value="' + app.data.designConf.marginBottom + '" />';
+                tmpl += '</div>';
+                tmpl += '<p class="desc">' + l('desc_margins') + '</p>';
+            tmpl += '</li>';
+
             tmpl += '<li>';
                 tmpl += '<label>' + l('logo') + '</label>';
                 tmpl += '<input type="text" class="logo" placeholder="' + l('placeholder_logo') + '" value="' + app.data.designConf.logo + '" />';

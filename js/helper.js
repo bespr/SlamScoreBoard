@@ -153,15 +153,31 @@ var app = app || {};
         app.data.designConf.backgroundImage = app.data.designConf.backgroundImage || '';
         app.data.designConf.logo = app.data.designConf.logo || '';
         app.data.designConf.sponsors = app.data.designConf.sponsors || "acme\nkodak\nmicrosoft\nnewpoint\nnokia\nvivikola";
+        app.data.designConf.marginLeft = app.data.designConf.marginLeft || "4%";
+        app.data.designConf.marginTop = app.data.designConf.marginTop || "4%";
+        app.data.designConf.marginRight = app.data.designConf.marginRight || "4%";
+        app.data.designConf.marginBottom = app.data.designConf.marginBottom || "4%";
     }
+
 
 
     app.utils.adaptDesign = function(doReload) {
         doReload = doReload || false;
 
-        app.sheet.insertRule('body, input, button, textarea { color: ' + app.data.designConf.fontColor + '; }', 0);
+        app.sheet.insertRule('body, input, button, textarea, select { color: ' + app.data.designConf.fontColor + '; }', 0);
         app.sheet.insertRule('body { background-color: ' + app.data.designConf.backgroundColor + '; }', 0);
         $('body').removeClass().addClass(app.data.designConf.fontFamily);
+        if (app.data.designConf.backgroundImage != '') {
+            $('body').css('background-image', 'url(_YOUR_FILES_/background/' + app.data.designConf.backgroundImage + ')');
+        } else {
+            $('body').css('background-image', 'none');
+        }
+        $('#appplace').css({
+            'margin-left': app.data.designConf.marginLeft,
+            'margin-top': app.data.designConf.marginTop,
+            'margin-right': app.data.designConf.marginRight,
+            'margin-bottom': app.data.designConf.marginBottom
+        });
 
         if (doReload) {
             location.reload();

@@ -5,7 +5,10 @@ ul { list-style-type: none; margin: 0; padding: 0; }
 button { font-size: inherit; }
 
 /* Background */
-body { background: #000000; font-family: sans-serif; }
+body { background: #000000; font-family: sans-serif; margin: 0; padding: 0; background-size: 100%; background-repeat: no-repeat;  }
+#appplace { border: 1px transparent dashed; overflow: hidden; margin: 4%; transition: border-color 10s; }
+#appplace.visible { border-color: yellow; transition: none; }
+
 
 @font-face { font-family: 'Droid Sans'; src: url('../_YOUR_FILES_/font/Droid_Sans/DroidSans.ttf'); }
 @font-face { font-family: 'Oswald'; src: url('../_YOUR_FILES_/font/Droid_Sans/DroidSans-Bold.ttf'); font-weight: bold; }
@@ -63,14 +66,14 @@ body.montserrat { font-family: 'Montserrat', sans-serif; }
 
 
 /* Input */
-input {
+input, textarea {
     border: 1px solid black; padding: 6px; cursor: pointer; display: inline-block;
     margin: 4px 10px; background-color: rgba(192, 192, 128, 0.25);
     font-size: 1em;
 }
 select {
     border: 1px solid black; padding: 6px; cursor: pointer; display: inline-block;
-    margin: 4px 10px; font-size: 1em;
+    margin: 4px 10px; font-size: 1em; background-color: rgba(192, 192, 128, 0.25);
 }
 
 

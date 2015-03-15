@@ -76,7 +76,9 @@ var app = app || {};
             } else {
                 tmpl = app.screens[app.currentScreen.name]();
             }
-            $('#appplace').html(tmpl);
+            $('#appplace').html(tmpl).removeClass(function (index, css) {
+                return (css.match (/(^|\s)template-\S+/g) || []).join(' ');
+            }).addClass('template-' + app.currentScreen.name);
 
             app.templateLoadedEvent.clearAllTimeouts();
             if (typeof app.templateLoadedEvent[app.currentScreen.name] === 'function') {

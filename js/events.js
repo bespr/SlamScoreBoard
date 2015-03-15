@@ -146,6 +146,7 @@ var ENTER_KEY = 13;
                 app.utils.dataExtendDefaults();
                 app.utils.persistData();
                 app.updateScreen(true);
+                app.utils.adaptDesign(true);
             };
 
             reader.readAsText(files[0]);
@@ -163,6 +164,7 @@ var ENTER_KEY = 13;
         if (confirm) {
             app.utils.clearAllData();
             app.updateScreen(true);
+            app.utils.adaptDesign(true);
         }
     });
 
@@ -321,6 +323,48 @@ var ENTER_KEY = 13;
         app.utils.adaptDesign(true);
     });
 
+    /* Background-Image */
+    $(document).on('blur', '.backgroundImage', function() {
+        app.data.designConf.backgroundImage = $(this).val();
+        app.utils.persistData();
+        app.utils.adaptDesign();
+    });
+
+    /* Margins */
+    $(document).on('blur', '.margin', function() {
+        var attr = $(this).attr('data-margin-name');
+        var keyName = 'margin' + attr.substr(0, 1).toUpperCase() + attr.substr(1);
+        var val = $.trim($(this).val());
+        var entity = '%';
+        if (val.substr(val.length - 2) === 'px') {
+            entity = 'px';
+        }
+        val = parseInt(val, 10);
+
+        if (val < 0) {
+            val = 0;
+        }
+        if (entity === '%' && val > 50) {
+            val = 50;
+        }
+        if (isNaN(val)) {
+            val = 0;
+        }
+
+        if ((val + entity) !== app.data.designConf[keyName]) {
+            app.data.designConf[keyName] = val + entity;
+            $('#appplace').addClass('visible');
+            setTimeout(function() {
+                $('#appplace').removeClass('visible');
+            }, 10);
+        }
+        $(this).val(val + entity);
+
+
+
+        app.utils.persistData();
+        app.utils.adaptDesign();
+    });
 
 
 }());
