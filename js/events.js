@@ -367,4 +367,12 @@ var ENTER_KEY = 13;
     });
 
 
+    /* Sponsors */
+    $(document).on('blur', '.sponsors', function() {
+        app.data.designConf.sponsors = $(this).val();
+        app.utils.persistData();
+        app.utils.adaptDesign();
+    });
+
+
 }());

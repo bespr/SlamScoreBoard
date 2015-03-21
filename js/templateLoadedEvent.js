@@ -22,16 +22,22 @@ var app = app || {};
      */
     app.templateLoadedEvent.pause = function() {
         var w = $(window).width();
-        $('.sponsors').width(w * SPONSORS.length);
+        var numOfSponsors = app.data.designConf.sponsors.length;
+        var marginLeft = parseInt($('#appplace').css('margin-left'), 10);
+        $('.sponsors').width(w * numOfSponsors);
         $('.sponsors li').width(w);
 
-        var left = 0;
+        var left = marginLeft;
+        $('.sponsors').css({ 'left': w });
+        $('.sponsors').animate({ 'left': -left });
+
         app.timeoutIds.sponsors = setInterval(function() {
             left += w;
-            if (left >= (w * SPONSORS.length)) {
-                left = 0;
+            if (left >= (w * numOfSponsors)) {
+                left = marginLeft;
             }
             $('.sponsors').animate({ 'left': -left });
+
         }, 8000);
     };
 

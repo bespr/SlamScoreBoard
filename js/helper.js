@@ -152,11 +152,11 @@ var app = app || {};
         app.data.designConf.backgroundColor = app.data.designConf.backgroundColor || '#000000';
         app.data.designConf.backgroundImage = app.data.designConf.backgroundImage || '';
         app.data.designConf.logo = app.data.designConf.logo || '';
-        app.data.designConf.sponsors = app.data.designConf.sponsors || "acme\nkodak\nmicrosoft\nnewpoint\nnokia\nvivikola";
-        app.data.designConf.marginLeft = app.data.designConf.marginLeft || "4%";
-        app.data.designConf.marginTop = app.data.designConf.marginTop || "4%";
-        app.data.designConf.marginRight = app.data.designConf.marginRight || "4%";
-        app.data.designConf.marginBottom = app.data.designConf.marginBottom || "4%";
+        app.data.designConf.sponsors = app.data.designConf.sponsors || "";
+        app.data.designConf.marginLeft = app.data.designConf.marginLeft || "1%";
+        app.data.designConf.marginTop = app.data.designConf.marginTop || "1%";
+        app.data.designConf.marginRight = app.data.designConf.marginRight || "1%";
+        app.data.designConf.marginBottom = app.data.designConf.marginBottom || "1%";
     }
 
 

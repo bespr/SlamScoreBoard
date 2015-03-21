@@ -68,11 +68,11 @@ var app = app || {};
      * pause
      */
     app.screens.pause = function() {
-        var indexShuffled = [];
-        for (var i = 0, len = SPONSORS.length; i < len; i++) {
-            indexShuffled.push(i);
+        var sponsors = [];
+        if ($.trim(app.data.designConf.sponsors) !== '') {
+            sponsors = app.data.designConf.sponsors.split("\n");
         }
-        indexShuffled = app.utils.shuffle(indexShuffled);
+        sponsors = app.utils.shuffle(sponsors);
 
         var tmpl = '<div class="pause">';
             tmpl += '<h1>' + app.data.contests[app.selected.contest].name + '</h1>';
@@ -80,8 +80,8 @@ var app = app || {};
 
             tmpl += '<div class="sponsor-container">';
                 tmpl += '<ul class="sponsors">';
-                for (var i = 0, len = indexShuffled.length; i < len; i++) {
-                    tmpl += '<li><img src="sponsors/' + SPONSORS[indexShuffled[i]]   + '.png" /></li>';
+                for (var i = 0, len = sponsors.length; i < len; i++) {
+                    tmpl += '<li><img src="_YOUR_FILES_/sponsor/' + sponsors[i]   + '" /></li>';
                 }
                 tmpl += '</ul>';
             tmpl += '</div>';

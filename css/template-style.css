@@ -5,6 +5,9 @@
 .template-designConf select,
 .template-designConf textarea { width: 400px; margin: 0; }
 
+.template-designConf textarea { height: 140px; }
+
 .template-designConf .marginBox input { width: 80px; margin-right: 8px; }
 
-.template-designConf .desc { font-style: italic; font-size: 0.875em; margin-left: 20%; }
+.template-designConf .desc { font-style: italic; font-size: 0.875em; margin-top: 0; margin-left: 20%; }
+
