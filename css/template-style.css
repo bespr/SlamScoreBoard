@@ -1,3 +1,15 @@
+/* start */
+.template-start input { margin: 0; }
+.template-start input.insertContest { width: 20em; }
+
+.template-start .contestSelect { overflow: hidden; }
+.template-start .contestSelect li { border: 1px solid #f84; padding: 0.5em; float: left; margin: 0 1em 1em 0; }
+
+
+
+
+
+/* designConf */
 .template-designConf .inputlist li { overflow: hidden; margin-bottom: 0.5em; }
 .template-designConf .inputlist li label { width: 20%; float: left; }
 
@@ -10,4 +22,6 @@
 .template-designConf .marginBox input { width: 80px; margin-right: 8px; }
 
 .template-designConf .desc { font-style: italic; font-size: 0.875em; margin-top: 0; margin-left: 20%; }
+
+
 

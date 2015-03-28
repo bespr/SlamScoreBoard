@@ -56,6 +56,7 @@ var app = app || {};
      */
     app.templateLoadedEvent.clearAllTimeouts = function() {
         window.clearInterval(app.timeoutIds.sponsors);
+        window.clearInterval(app.timeoutIds.overlay);
     };
 
 }());

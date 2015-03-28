@@ -374,5 +374,20 @@ var ENTER_KEY = 13;
         app.utils.adaptDesign();
     });
 
+    /* Window Resize */
+    $(window).on('resize', function() {
+        $('#overlay').remove();
+        var a = '<div id="overlay">';
+        a += '<h2>' + l('new_browser_size') + '</h2>';
+        a += '<p>' + $(window).width() + ' x ' + $(window).height() + '</p>';
+        a += '</div>';
+        $('body').append(a);
+
+        window.clearInterval(app.timeoutIds.overlay);
+        app.timeoutIds.overlay = window.setTimeout(function() {
+            $('#overlay').remove();
+        }, 1200);
+    });
+
 
 }());

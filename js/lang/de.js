@@ -19,7 +19,7 @@ lang.de = {
     'select_contest': 'Wähle eine Veranstaltung aus',
     'design_configuration': 'Design-Einstellungen',
     'no_contest_available': 'Keine Veranstaltung vorhanden. Lade Veranstaltung aus einer Datei. Oder erstelle gleich selber hier eine Veranstaltung!',
-    'new_contest': 'Neue Veranstaltung',
+    'insert_new_contest': 'Neue Veranstaltung eintragen',
     'placeholder_contest_name': 'Veranstaltungs-Name eintragen',
     'save_to_file': 'Daten in Datei abspeichern',
     'read_from_file': 'Daten aus einer Datei einlesen',
@@ -39,6 +39,9 @@ lang.de = {
     'sponsors': 'Sponsoren',
     'desc_sponsors': 'Kopiere die Sponsorenlogos ins Verzeichnis «_YOUR_FILES_/sponsor». Gebe danach alle exakten Dateinamen ins obige Feld ein. Trenne verschiedene Sponsoren durch einen Zeilenumbruch',
     'margins': 'Ränder',
-    'desc_margins': 'Ränder (links, oben, rechts, unten) in Prozent (default) oder in Pixel, z.B. «8%» oder «60px»'
-
-}
+    'desc_margins': 'Ränder (links, oben, rechts, unten) in Prozent (default) oder in Pixel, z.B. «8%» oder «60px»',
+    'new_browser_size': 'Neue Browser-Grösse',
+    'contest_select': 'Auswählen',
+    'contest_config': 'Konfigurieren',
+    'contest_delete': 'Entfernen',
+};

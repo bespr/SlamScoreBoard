@@ -147,6 +147,7 @@ var app = app || {};
 
     app.utils.dataExtendDefaults = function() {
         app.data.designConf = app.data.designConf || {};
+        app.data.designConf.language = app.data.designConf.language || "de";
         app.data.designConf.fontFamily = app.data.designConf.fontFamily || 'open-sans';
         app.data.designConf.fontColor = app.data.designConf.fontColor || '#ff8844';
         app.data.designConf.backgroundColor = app.data.designConf.backgroundColor || '#000000';
@@ -216,10 +217,10 @@ var app = app || {};
     window.l = function(str, values) {
         var re = str + '°';
 
-        if (lang.de[str] !== undefined) {
+        if (app.data.designConf.language !== undefined && lang[app.data.designConf.language][str] !== undefined) {
+            re = lang[app.data.designConf.language][str];
+        } else if (lang.de[str] !== undefined) {
             re = lang.de[str];
-        } else if (lang.en[str] !== undefined) {
-            re = lang.en[str];
         }
 
         if (values !== undefined) {

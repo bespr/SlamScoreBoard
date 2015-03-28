@@ -162,15 +162,15 @@ var app = app || {};
         var contestNames = app.getContestNames();
 
         var tmpl = '<h1>' + l('start_title') + '</h1>';
-        tmpl += '<p>' + l('start_text') + '</p>';
-        tmpl += '<p>' + l('select_contest') + '</p>';
+        tmpl += '<h2>' + l('select_contest') + '</h2>';
         if (contestNames.length > 0) {
             tmpl += '<ul class="contestSelect">';
             for (var i = 0, len = contestNames.length; i < len; i++) {
                 tmpl += '<li>';
-                    tmpl += '<span class="changeScreen" data-screen="contest" data-screen-id="' + i + '">' + contestNames[i] + '</span>';
-                    tmpl += '<span class="changeScreen bl" data-screen="contestConf" data-screen-id="' + i + '">Config</span>';
-                    tmpl += '<span class="deleteContest bl" data-contest-id="' + i + '">Delete</span>';
+                    tmpl += '<p>' + contestNames[i] + '</p>';
+                    tmpl += '<span class="changeScreen bl bi" data-screen="contest" data-screen-id="' + i + '">' + l('contest_select') + '</span>';
+                    tmpl += '<span class="changeScreen bl bi" data-screen="contestConf" data-screen-id="' + i + '">' + l('contest_config') + '</span>';
+                    tmpl += '<span class="deleteContest bl bi" data-contest-id="' + i + '">' + l('contest_delete') + '</span>';
                 tmpl += '</li>';
             }
             tmpl += '</ul>';
@@ -178,15 +178,17 @@ var app = app || {};
             tmpl += '<p>' + l('no_contest_available') + '</p>';
         }
         tmpl += '<div>';
-            tmpl += '<label>' + l('new_contest') + '</label>';
+            tmpl += '<h3>' + l('insert_new_contest') + '</h3>';
             tmpl += '<input type="text" class="insertContest" placeholder="' + l('placeholder_contest_name') + '" />';
             tmpl += '<div class="bl insertContestSubmit">OK</div>';
         tmpl += '</div>';
 
-        tmpl += '<div type="button" class="saveToFile bl">' + l('save_to_file') + '</div>';
-        tmpl += '<div type="button" class="readFromFile bl">' + l('read_from_file') + '</div>';
-        tmpl += '<div type="button" class="changeScreen bl" data-screen="designConf">' + l('design_configuration') + '</div>';
-        tmpl += '<div type="button" class="clearAllData bl">' + l('clear_all_data') + '</div>';
+        tmpl += '<div class="buttonBox">';
+            tmpl += '<div type="button" class="saveToFile bl bi">' + l('save_to_file') + '</div>';
+            tmpl += '<div type="button" class="readFromFile bl bi">' + l('read_from_file') + '</div>';
+            tmpl += '<div type="button" class="changeScreen bl bi" data-screen="designConf">' + l('design_configuration') + '</div>';
+            tmpl += '<div type="button" class="clearAllData bl bi">' + l('clear_all_data') + '</div>';
+        tmpl += '</div>';
 
         return tmpl;
     };

@@ -1,4 +1,5 @@
 * { box-sizing: border-box; }
+html { font-size: 24px; }
 
 /* Reset some things */
 ul { list-style-type: none; margin: 0; padding: 0; }
@@ -9,13 +10,19 @@ body { background: #000000; font-family: sans-serif; margin: 0; padding: 0; back
 #appplace { border: 1px transparent dashed; overflow: hidden; margin: 4%; transition: border-color 10s; }
 #appplace.visible { border-color: yellow; transition: none; }
 
+/* Typography */
+h1 { font-size: 2em; font-weight: bold; margin-top: 0.5em; margin-bottom: 0.25em; }
+h2 { font-size: 1.5em; font-weight: bold; margin-top: 0.5em; margin-bottom: 0.25em; }
+h3 { font-size: 1.17em; font-weight: bold; margin-top: 0.5em; margin-bottom: 0.25em; }
+p { margin-top: 0; margin-bottom: 1em; }
 
+/* System fonts */
 @font-face { font-family: 'Droid Sans'; src: url('../_YOUR_FILES_/font/Droid_Sans/DroidSans.ttf'); }
 @font-face { font-family: 'Oswald'; src: url('../_YOUR_FILES_/font/Droid_Sans/DroidSans-Bold.ttf'); font-weight: bold; }
 body.droid-sans { font-family: 'Droid Sans', sans-serif; }
 
 @font-face { font-family: 'Droid Serif'; src: url('../_YOUR_FILES_/font/Droid_Serif/DroidSerif.ttf'); }
-@font-face { font-family: 'Droid Serif'; src: url('../_YOUR_FILES_/font/Droid_Serif/DroidSerif-Bold.ttf'); font-weight: bold; }
+@font-face { font-family: 'Droid Serif'; src: url('../_YOUR_FILES_/font/Droid_Serif/DroidSerif-Bold.ttf'); fo {}nt-weight: bold; }
 @font-face { font-family: 'Droid Serif'; src: url('../_YOUR_FILES_/font/Droid_Serif/DroidSerif-Italic.ttf'); font-style: italic; }
 @font-face { font-family: 'Droid Serif'; src: url('../_YOUR_FILES_/font/Droid_Serif/DroidSerif-BoldItalic.ttf'); font-weight: bold; font-style: italic; }
 body.droid-serif { font-family: 'Droid Serif', serif; }
@@ -42,14 +49,15 @@ body.montserrat { font-family: 'Montserrat', sans-serif; }
 
 
 /* Button */
-.bl {
-    border: 1px solid #444; border-radius: 4px; padding: 6px; cursor: pointer; display: inline-block;
+.bl, .bs {
+    border: 1px solid #444; padding: 6px; cursor: pointer; display: inline-block;
     margin: 4px 10px; background-color: rgba(255, 255, 255, 0.15);
 }
-.bs {
-    border: 1px solid black; padding: 6px; cursor: pointer; display: inline-block; font-size: 10px;
-    margin: 4px 10px; background-color: rgba(255, 255, 255, 0.15);
-}
+.bl { border-radius: 4px; }
+.bs { font-size: 10px; }
+.bl:hover, .bs:hover { box-shadow: 0 0 1em rgba(255, 255, 255, 0.5); }
+
+
 .bh {
     opacity: 0;
     -webkit-transition: opacity 0.5s ease-in-out;
@@ -64,15 +72,18 @@ body.montserrat { font-family: 'Montserrat', sans-serif; }
     transition: opacity 0.2s ease-in-out;
 }
 
+.buttonBox { margin-top: 1em; }
+.buttonBox > div:first-child { margin-left: 0; }
+
 
 /* Input */
 input, textarea {
-    border: 1px solid black; padding: 6px; cursor: pointer; display: inline-block;
+    border: 1px solid black; padding: 0.5em; cursor: pointer; display: inline-block;
     margin: 4px 10px; background-color: rgba(192, 192, 128, 0.25);
     font-size: 1em;
 }
 select {
-    border: 1px solid black; padding: 6px; cursor: pointer; display: inline-block;
+    border: 1px solid black; padding: 0.5em; cursor: pointer; display: inline-block;
     margin: 4px 10px; font-size: 1em; background-color: rgba(192, 192, 128, 0.25);
 }
 
@@ -80,7 +91,6 @@ select {
 .modeNormal { display: block; }
 .modeEdit { display: none; }
 
-.contestSelect li { cursor: pointer; }
 
 
 /* Icons */
@@ -95,40 +105,34 @@ select {
 	font-style: normal;
 }
 
-.icon {
-	font-family: 'icomoon';
-	speak: none;
-	font-style: normal;
-	font-weight: normal;
-	font-variant: normal;
-	text-transform: none;
-	line-height: 1;
 
-	/* Better Font Rendering =========== */
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
+/* Button Icon */
+.bi { font-size: 0.75em; }
+.bi:before {
+    font-family: 'icomoon'; content: 'a';
+	font-size: 3em; display: block; text-align: center; margin-bottom: 0.2em;
+
+    speak: none; font-style: normal; font-weight: normal; font-variant: normal;	text-transform: none;
+    line-height: 1; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
 }
 
-.bl.changeScreen:before { font-family: 'icomoon'; content: 'a'; margin-right: 10px; }
-.bl.changeScreen[data-screen="start"]:before { content: 'h'; }
-.bl.changeScreen[data-screen="designConf"]:before { content: 'D'; }
-.bl.changeScreen[data-screen="contest"]:before { content: 'c'; }
-.bl.changeScreen[data-screen="contestConf"]:before { content: 'C'; }
-.bl.changeScreen[data-screen="slammerConf"]:before { content: 'S'; }
-.bl.changeScreen[data-screen="pause"]:before { content: 'b'; }
+.bi.changeScreen[data-screen="start"]:before { content: 'h'; }
+.bi.changeScreen[data-screen="designConf"]:before { content: 'D'; }
+.bi.changeScreen[data-screen="contest"]:before { content: 'c'; }
+.bi.changeScreen[data-screen="contestConf"]:before { content: 'C'; }
+.bi.changeScreen[data-screen="slammerConf"]:before { content: 'S'; }
+.bi.changeScreen[data-screen="pause"]:before { content: 'b'; }
 
-.deleteContest:before,
-.clearAllData:before { font-family: 'icomoon'; content: 'm'; margin-right: 10px;}
-.addGroup:before { font-family: 'icomoon'; content: 'p'; margin-right: 10px; }
-.sortSlammer:before { font-family: 'icomoon'; content: 'o'; margin-right: 10px;}
-.showSlammerDropdown:before { font-family: 'icomoon'; content: 'M'; margin-right: 10px;}
+.bi.deleteContest:before,
+.bi.clearAllData:before { content: 'm'; }
+.bi.addGroup:before { content: 'p'; }
+.bi.sortSlammer:before { content: 'o'; }
+.bi.showSlammerDropdown:before { content: 'M'; }
 
-.saveToFile:before,
-.readFromFile:before {
-    font-family: 'icomoon';
-	content: "d";
-    margin-right: 10px;
-}
+.bi.saveToFile:before,
+.bi.readFromFile:before { content: 'd'; }
+
+
 
 
 
@@ -175,3 +179,8 @@ ul.groupList li .unassignSlammerButton { display: none; }
 .pause .sponsors { position: relative; }
 .pause .sponsors li { float: left; text-align: center; }
 .pause .sponsors li img { max-width: 75%; max-height: 50%;  }
+
+
+
+/* Overlay */
+#overlay { border: 6px solid green; width: 80%; position: fixed; top: 10%; left: 10%; background: #111; padding: 10px; }
