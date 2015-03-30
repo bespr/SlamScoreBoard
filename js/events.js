@@ -72,9 +72,9 @@ var ENTER_KEY = 13;
 
 
     /*
-     * On Key Up: Rounds Config
+     * On Blur: Rounds Config
      */
-    $(document).on('keyup', '.rndConfigList li input', function() {
+    $(document).on('blur', '.rndConfigList li input', function() {
         var newRndArray = [];
         var hasEmptySlot = false;
         $(this).parents('.rndConfigList').find('li').each(function() {
@@ -170,7 +170,7 @@ var ENTER_KEY = 13;
 
 
     /*
-     * On Key Up: Slammer Config
+     * On Blur: Slammer Config
      */
     $(document).on('blur', '.slammerConfigList li input', function() {
         var newSlammerArray = [];
@@ -181,6 +181,7 @@ var ENTER_KEY = 13;
             $(this).find('input').val(name);
             if (name !== '') {
                 newSlammerArray.push({ 'id': id, 'name': name });
+                $(this).find('.deleteSlammer.invisible').removeClass('invisible');
             } else {
                 hasEmptySlot = true;
             }
@@ -298,9 +299,11 @@ var ENTER_KEY = 13;
         }
     });
 
-    $(document).on('click', '.unassignSlammerButton', function() {
+    $(document).on('click', '.unassignSlammerButton', function(ev) {
+        ev.stopPropagation();
         var slId = parseInt($(this).attr('data-slammer'), 10);
         app.manip.unassignSlammer(slId);
+
     });
 
     /* ColorChooser */

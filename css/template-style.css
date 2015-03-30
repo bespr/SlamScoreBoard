@@ -25,3 +25,47 @@
 
 
 
+/* contestConf */
+.template-contestConf ul.form > li input { width: 4em; text-align: center; margin-left: 0; }
+.template-contestConf ul.rndConfigList > li input { margin-left: 0; }
+
+
+/* slammerConf */
+.template-slammerConf input { margin-left: 0; width: 24em; }
+.template-slammerConf .buttonBox > div,
+.template-slammerConf .buttonBox > button { float: left; }
+.template-slammerConf .deleteSlammer.invisible { display: none; }
+
+
+
+/* group */
+.template-group ul.groupList { border-top: 1px solid #f84; font-size: 0.875em; }
+.template-group ul.groupList li { overflow: hidden; border-bottom: 1px solid #f84; padding: 0.25em 0; }
+.template-group ul.groupList li .name { float: left; width: 24%; margin-top: 0.5em; cursor: pointer; }
+.template-group ul.groupList li .grades { float: left; width: 76%; }
+
+.template-group ul.groupList li .grades input {
+    font-size: 1.25em; line-height: 1em; width: 3em;
+    background-color: rgba(255, 255, 255, 0.1); border: none; text-align: center; padding: 6px 0;
+
+}
+.template-group ul.groupList li .grades input.total { border: 1px solid #f84; width: 80px; }
+.template-group ul.groupList li .grades input.minDropGrade { background-color: rgba(255, 0, 0, 0.4); opacity: 0.6; text-decoration: line-through; }
+.template-group ul.groupList li .grades input.maxDropGrade { background-color: rgba(0, 255, 0, 0.4); opacity: 0.6; text-decoration: line-through; }
+.template-group ul.groupList li .unassignSlammerButton { display: none; }
+
+
+/* slammer */
+
+.template-slammer { text-align: center; }
+.template-slammer p { margin-top: 2em; }
+.template-slammer h1 { font-size: 4em; font-weight: normal; margin-top: 1em; line-height: 2em; }
+
+/* pause */
+
+.template-pause h1 { font-size: 3em; text-align: center; }
+.template-pause .sponsor-container { overflow: hidden; width: 100%; }
+.template-pause .sponsors { position: relative; }
+.template-pause .sponsors li { float: left; text-align: center; }
+.template-pause .sponsors li img { max-width: 75%; max-height: 50%;  }
+.template-pause .buttonBox { text-align: center; }

@@ -22,23 +22,28 @@ var app = app || {};
      */
     app.templateLoadedEvent.pause = function() {
         var w = $(window).width();
-        var numOfSponsors = app.data.designConf.sponsors.length;
-        var marginLeft = parseInt($('#appplace').css('margin-left'), 10);
-        $('.sponsors').width(w * numOfSponsors);
-        $('.sponsors li').width(w);
+        var sponsors = app.data.designConf.sponsors.split("\n");
+        var numOfSponsors = sponsors.length;
+        if (numOfSponsors > 0) {
+            var marginLeft = parseInt($('#appplace').css('margin-left'), 10);
+            $('.sponsors').width(w * numOfSponsors);
+            $('.sponsors li').width(w);
 
-        var left = marginLeft;
-        $('.sponsors').css({ 'left': w });
-        $('.sponsors').animate({ 'left': -left });
-
-        app.timeoutIds.sponsors = setInterval(function() {
-            left += w;
-            if (left >= (w * numOfSponsors)) {
-                left = marginLeft;
-            }
+            var left = marginLeft;
+            $('.sponsors').css({ 'left': w });
             $('.sponsors').animate({ 'left': -left });
 
-        }, 8000);
+            if (numOfSponsors > 1) {
+                app.timeoutIds.sponsors = setInterval(function() {
+                    left += w;
+                    if (left >= (w * numOfSponsors)) {
+                        left = marginLeft;
+                    }
+                    $('.sponsors').animate({ 'left': -left });
+
+                }, 8000);
+            }
+        }
     };
 
     app.templateLoadedEvent.designConf = function() {

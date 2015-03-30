@@ -66,7 +66,7 @@ body.montserrat { font-family: 'Montserrat', sans-serif; }
 
 }
 .bh.visible {
-    opacity: 0.2;
+    opacity: 0.3;
     -webkit-transition: opacity 0.2s ease-in-out;
     -moz-transition: opacity 0.2s ease-in-out;
     transition: opacity 0.2s ease-in-out;
@@ -122,6 +122,7 @@ select {
 .bi.changeScreen[data-screen="contestConf"]:before { content: 'C'; }
 .bi.changeScreen[data-screen="slammerConf"]:before { content: 'S'; }
 .bi.changeScreen[data-screen="pause"]:before { content: 'b'; }
+.bi.changeScreen[data-screen="group"]:before { content: 'r'; }
 
 .bi.deleteContest:before,
 .bi.clearAllData:before { content: 'm'; }
@@ -132,14 +133,19 @@ select {
 .bi.saveToFile:before,
 .bi.readFromFile:before { content: 'd'; }
 
+/* Title Icons */
+.icon { font-family: 'icomoon'; font-size: 1.5em; margin-right: 0.5em; font-weight: normal; }
+.icon-home:before { content: 'h'; }
+.icon-contestConf:before { content: 'C'; }
+.icon-slammerConf:before { content: 'S'; }
+.icon-designConf:before { content: 'D'; }
 
 
-
-
-.contestContainer { margin: 10px; overflow: hidden; }
+.contestContainer { overflow: hidden; }
 .contestContainer .rnd { float: left; width: 10%; }
-.contestContainer .rnd .inner { margin-left: 10px; border: 1px solid #f84; padding: 10px; }
+.contestContainer .rnd .inner { border-right: 1px solid rgba(255, 136, 68, 0.3); padding-right: 20px; margin-left: 20px; }
 .contestContainer .rnd:first-child .inner { margin-left: 0; }
+.contestContainer .rnd:last-child .inner { border-right: none; padding-right: 0; }
 .contestContainer.numOfRnds-1 .rnd { width: 100%; }
 .contestContainer.numOfRnds-2 .rnd { width: 50%; }
 .contestContainer.numOfRnds-3 .rnd { width: 33.333%; }
@@ -151,36 +157,20 @@ select {
 .contestContainer.numOfRnds-9 .rnd { width: 11.111%; }
 
 .contestContainer .rnd .group { border: 1px solid #f84; margin-bottom: 10px; padding: 10px; cursor: pointer; }
-.contestContainer .rnd .group ul { display: table; }
+.contestContainer .rnd .group ul { display: table; table-layout: fixed; width: 100%; }
 .contestContainer .rnd .group ul li { display: table-row; }
-.contestContainer .rnd .group ul li span { display: table-cell; line-height: 1.5em; }
-.contestContainer .rnd .group ul li span:first-child { padding-right: 8px; }
+.contestContainer .rnd .group ul li span { display: table-cell; font-size: 1.25em; line-height: 1.75em; }
+.contestContainer .rnd .group ul li span:first-child { padding-right: 8px; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width: 75%; }
+.contestContainer .rnd .group ul li span:last-child { width: 25%; }
 
 
-ul.groupList { margin: 0 10px; border-top: 1px solid #f84; font-size: 24px; }
-ul.groupList li { overflow: hidden; border-bottom: 1px solid #f84; padding: 8px 0; }
-ul.groupList li .name { float: left; width: 16%; margin-top: 12px; }
-ul.groupList li .grades { float: left; width: 84%; }
 
-ul.groupList li .grades input {
-    font-size: 125%; line-height: 1em;
-    background-color: rgba(0, 0, 0, 0.1); border: none; text-align: center; padding: 6px 8px;
-    width: 60px;
-}
-ul.groupList li .grades input.total { border: 1px solid #f84; width: 80px; }
-ul.groupList li .grades input.minDropGrade { background-color: rgba(128, 0, 0, 0.3); opacity: 0.4; }
-ul.groupList li .grades input.maxDropGrade { background-color: rgba(0, 128, 0, 0.3); opacity: 0.4; }
-ul.groupList li .unassignSlammerButton { display: none; }
-
-
-.pause {}
-.pause h1 { font-size: 400%; text-align: center; }
-.pause .sponsor-container { overflow: hidden; width: 100%; }
-.pause .sponsors { position: relative; }
-.pause .sponsors li { float: left; text-align: center; }
-.pause .sponsors li img { max-width: 75%; max-height: 50%;  }
 
 
 
 /* Overlay */
 #overlay { border: 6px solid green; width: 80%; position: fixed; top: 10%; left: 10%; background: #111; padding: 10px; }
+
+
+/* SSB Logo */
+#ssbLogo { position: absolute; top: 4px; right: 4px; width: 100px;  }
