@@ -165,8 +165,27 @@ var app = app || {};
     app.utils.adaptDesign = function(doReload) {
         doReload = doReload || false;
 
+        // Set Foreground Color
         app.sheet.insertRule('body, input, button, textarea, select { color: ' + app.data.designConf.fontColor + '; }', 0);
+        app.sheet.insertRule('.template-start .contestSelect li, .contestContainer .rnd .group, .template-group ul.groupList, .template-group ul.groupList li, .template-group ul.groupList li .grades input.total { border-color: ' + app.data.designConf.fontColor + '; }', 0);
+        var rgba = app.utils.getRgba(app.data.designConf.fontColor, 0.3);
+        app.sheet.insertRule('.contestContainer .rnd .inner { border-color: ' + rgba + '; }', 0);
+
+        // Make Input Placeholder Color half transparent
+        rgba = app.utils.getRgba(app.data.designConf.fontColor, 0.5);
+        try {
+            app.sheet.insertRule('::-webkit-input-placeholder { color: ' + rgba + '; }', 0);
+        } catch (e) { }
+        try {
+            app.sheet.insertRule('::-moz-placeholder { color: ' + rgba + '; }', 0);
+        } catch (e) { }
+        try {
+            app.sheet.insertRule(':-ms-input-placeholder { color:: ' + rgba + '; }', 0);
+        } catch (e) { }
+
+        // Set Background Color
         app.sheet.insertRule('body { background-color: ' + app.data.designConf.backgroundColor + '; }', 0);
+
         $('body').removeClass().addClass(app.data.designConf.fontFamily);
         if (app.data.designConf.backgroundImage != '') {
             $('body').css('background-image', 'url(_YOUR_FILES_/background/' + app.data.designConf.backgroundImage + ')');
@@ -195,6 +214,17 @@ var app = app || {};
         o += ('0' + d.getSeconds()).slice(-2);
         return o;
     };
+
+
+    app.utils.getRgba = function(rgb, alpha) {
+        if (rgb.substr(0, 1) === '#') {
+            rgb = rgb.substr(1);
+        }
+        var dr = parseInt(rgb.substr(0, 2), 16);
+        var dg = parseInt(rgb.substr(2, 2), 16);
+        var db = parseInt(rgb.substr(4, 2), 16);
+        return 'rgba(' + dr + ', ' + dg + ', ' + db + ', ' + alpha + ')';
+    }
 
 
     /**

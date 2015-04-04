@@ -45,6 +45,10 @@ body.raleway { font-family: 'Raleway', sans-serif; }
 @font-face { font-family: 'Montserrat'; src: url('../_YOUR_FILES_/font/Montserrat/Montserrat-Bold.ttf'); font-weight: bold; }
 body.montserrat { font-family: 'Montserrat', sans-serif; }
 
+/* Placeholder color (explanantion text in input fields) */
+::-webkit-input-placeholder { color: #864; }
+::-moz-placeholder { color: #864; }
+:-ms-input-placeholder { color: #864; }
 
 
 
@@ -79,13 +83,14 @@ body.montserrat { font-family: 'Montserrat', sans-serif; }
 /* Input */
 input, textarea {
     border: 1px solid black; padding: 0.5em; cursor: pointer; display: inline-block;
-    margin: 4px 10px; background-color: rgba(192, 192, 128, 0.25);
+    margin: 4px 10px; background-color: rgba(255, 255, 255, 0.25);
     font-size: 1em;
 }
 select {
     border: 1px solid black; padding: 0.5em; cursor: pointer; display: inline-block;
-    margin: 4px 10px; font-size: 1em; background-color: rgba(192, 192, 128, 0.25);
+    margin: 4px 10px; font-size: 1em; background-color: rgba(255, 255, 255, 0.25);
 }
+option { background: #444; color: #ccc; }
 
 
 .modeNormal { display: block; }

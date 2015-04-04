@@ -3,6 +3,15 @@ var app = app || {};
 (function () {
 	'use strict';
 
+    // Panic hash
+    if (location.hash === '#panic-hash') {
+        var confirm = window.confirm('Are you sure to delete all data?');
+        if (confirm) {
+            app.utils.clearAllData();
+        }
+        location.href = location.protocol + '//' + location.pathname;
+    }
+
     app.currentScreen = {
         name: false,
         id: false

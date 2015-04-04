@@ -42,7 +42,7 @@ var ENTER_KEY = 13;
     $(document).on('click', '.saveToFile', function() {
         var blob = new Blob([JSON.stringify(app.data, null, 4)], {type: "text/plain;charset=utf-8"});
         var fileName = "slam-score-board-";
-        fileName += app.utils.getTechTime(new Date());
+        fileName += app.utils.getTechTime(new Date()) + '.ssb';
         saveAs(blob, fileName);
     });
 
@@ -135,7 +135,7 @@ var ENTER_KEY = 13;
      * Read from File
      */
     $(document).on('click', '.readFromFile', function() {
-        var o = '<input type="file" id="files" name="files" style="opacity: 0.01" />';
+        var o = '<input type="file" id="files" name="files" accept=".ssb" style="position: absolute; bottom: 0; right: 0; opacity: 0.01" />';
         $(this).after(o);
         $('#files').on('change', function(ev) {
             var files = ev.target.files; // FileList object
