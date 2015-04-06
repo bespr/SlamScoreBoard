@@ -146,29 +146,6 @@ option { background: #444; color: #ccc; }
 .icon-designConf:before { content: 'D'; }
 
 
-.contestContainer { overflow: hidden; }
-.contestContainer .rnd { float: left; width: 10%; }
-.contestContainer .rnd .inner { border-right: 1px solid rgba(255, 136, 68, 0.3); padding-right: 20px; margin-left: 20px; }
-.contestContainer .rnd:first-child .inner { margin-left: 0; }
-.contestContainer .rnd:last-child .inner { border-right: none; padding-right: 0; }
-.contestContainer.numOfRnds-1 .rnd { width: 100%; }
-.contestContainer.numOfRnds-2 .rnd { width: 50%; }
-.contestContainer.numOfRnds-3 .rnd { width: 33.333%; }
-.contestContainer.numOfRnds-4 .rnd { width: 25%; }
-.contestContainer.numOfRnds-5 .rnd { width: 20%; }
-.contestContainer.numOfRnds-6 .rnd { width: 16.666%; }
-.contestContainer.numOfRnds-7 .rnd { width: 14.285%; }
-.contestContainer.numOfRnds-8 .rnd { width: 12.5%; }
-.contestContainer.numOfRnds-9 .rnd { width: 11.111%; }
-
-.contestContainer .rnd .group { border: 1px solid #f84; margin-bottom: 10px; padding: 10px; cursor: pointer; }
-.contestContainer .rnd .group ul { display: table; table-layout: fixed; width: 100%; }
-.contestContainer .rnd .group ul li { display: table-row; }
-.contestContainer .rnd .group ul li span { display: table-cell; font-size: 1.25em; line-height: 1.75em; }
-.contestContainer .rnd .group ul li span:first-child { padding-right: 8px; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width: 75%; }
-.contestContainer .rnd .group ul li span:last-child { width: 25%; }
-
-
 
 
 

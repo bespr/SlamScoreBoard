@@ -274,6 +274,47 @@ var ENTER_KEY = 13;
         app.manip.sortSlammer();
     });
 
+    /**
+     * Group: Click on Slammer Name
+     */
+    $(document).on('click', '.groupList li .name', function(ev) {
+        var slammerId = $(this).attr('data-slammer-id');
+        // Mark slammer with StyleA or StyleB
+        if (ev.ctrlKey) {
+            // StyleB
+            if (ev.shiftKey) {
+                app.manip.toggleSlammerMark(slammerId, 'b');
+            }
+            // StyleA
+            else {
+                app.manip.toggleSlammerMark(slammerId, 'a');
+            }
+        } else {
+            // Switch to screen #slammer
+            app.currentScreen = { name: 'slammer', id: slammerId };
+            app.updateScreen();
+        }
+    });
+
+    /**
+     * Contest: Click on Slammer Name
+     */
+    $(document).on('click', '.contestContainer .group li', function(ev) {
+        var slammerId = $(this).attr('data-slammer-id');
+        // Mark slammer with StyleA or StyleB
+        if (ev.ctrlKey) {
+            // StyleB
+            if (ev.shiftKey) {
+                app.manip.toggleSlammerMark(slammerId, 'b');
+            }
+            // StyleA
+            else {
+                app.manip.toggleSlammerMark(slammerId, 'a');
+            }
+            ev.stopPropagation();
+        }
+    });
+
     $(document).on('click', '.addGroup', function() {
         app.manip.addGroup($(this).attr('data-rnd'));
     });
@@ -306,15 +347,31 @@ var ENTER_KEY = 13;
 
     });
 
-    /* ColorChooser */
+
+    /* ColorChooser: Font */
     $(document).on('change', '.fontColorChooser', function() {
         app.data.designConf.fontColor = $(this).val();
         app.utils.persistData();
         app.utils.adaptDesign(true);
     });
 
+    /* ColorChooser: Background */
     $(document).on('change', '.backgroundColorChooser', function() {
         app.data.designConf.backgroundColor = $(this).val();
+        app.utils.persistData();
+        app.utils.adaptDesign(true);
+    });
+
+    /* ColorChooser: Mark A */
+    $(document).on('change', '.markAColorChooser', function() {
+        app.data.designConf.markAColor = $(this).val();
+        app.utils.persistData();
+        app.utils.adaptDesign(true);
+    });
+
+    /* ColorChooser: Mark B */
+    $(document).on('change', '.markBColorChooser', function() {
+        app.data.designConf.markBColor = $(this).val();
         app.utils.persistData();
         app.utils.adaptDesign(true);
     });

@@ -36,13 +36,41 @@
 .template-slammerConf .buttonBox > button { float: left; }
 .template-slammerConf .deleteSlammer.invisible { display: none; }
 
+/* contest */
+.template-contest .contestContainer { overflow: hidden; }
+.template-contest .contestContainer .rnd { float: left; width: 10%; }
+.template-contest .contestContainer .rnd .inner { border-right: 1px solid rgba(255, 136, 68, 0.3); padding-right: 20px; margin-left: 20px; }
+.template-contest .contestContainer .rnd:first-child .inner { margin-left: 0; }
+.template-contest .contestContainer .rnd:last-child .inner { border-right: none; padding-right: 0; }
+.template-contest .contestContainer.numOfRnds-1 .rnd { width: 100%; }
+.template-contest .contestContainer.numOfRnds-2 .rnd { width: 50%; }
+.template-contest .contestContainer.numOfRnds-3 .rnd { width: 33.333%; }
+.template-contest .contestContainer.numOfRnds-4 .rnd { width: 25%; }
+.template-contest .contestContainer.numOfRnds-5 .rnd { width: 20%; }
+.template-contest .contestContainer.numOfRnds-6 .rnd { width: 16.666%; }
+.template-contest .contestContainer.numOfRnds-7 .rnd { width: 14.285%; }
+.template-contest .contestContainer.numOfRnds-8 .rnd { width: 12.5%; }
+.template-contest .contestContainer.numOfRnds-9 .rnd { width: 11.111%; }
+
+.template-contest .contestContainer .rnd .group { border: 1px solid #f84; margin-bottom: 10px; padding: 10px; cursor: pointer; }
+.template-contest .contestContainer .rnd .group ul { display: table; table-layout: fixed; width: 100%; }
+.template-contest .contestContainer .rnd .group ul li { display: table-row; }
+.template-contest .contestContainer .rnd .group ul li > span { display: table-cell; font-size: 1.25em; line-height: 1.75em; }
+.template-contest .contestContainer .rnd .group ul li > span.name { padding-right: 8px; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width: 75%; }
+.template-contest .contestContainer .rnd .group ul li > span.total { width: 25%; }
+.template-contest .contestContainer .rnd .group ul li > span.marks { width: 12%; text-align: right; }
+.template-contest .contestContainer .rnd .group ul li > span.marks span { margin-left: 0.33em; }
+
+
+
+
 
 
 /* group */
 .template-group ul.groupList { border-top: 1px solid #f84; font-size: 0.875em; }
 .template-group ul.groupList li { overflow: hidden; border-bottom: 1px solid #f84; padding: 0.25em 0; }
 .template-group ul.groupList li .name { float: left; width: 24%; margin-top: 0.5em; cursor: pointer; }
-.template-group ul.groupList li .grades { float: left; width: 76%; }
+.template-group ul.groupList li .grades { float: left; width: 70%; }
 
 .template-group ul.groupList li .grades input {
     font-size: 1.25em; line-height: 1em; width: 3em;
@@ -52,6 +80,10 @@
 .template-group ul.groupList li .grades input.total { border: 1px solid #f84; width: 80px; }
 .template-group ul.groupList li .grades input.minDropGrade { background-color: rgba(255, 0, 0, 0.4); opacity: 0.6; text-decoration: line-through; }
 .template-group ul.groupList li .grades input.maxDropGrade { background-color: rgba(0, 255, 0, 0.4); opacity: 0.6; text-decoration: line-through; }
+
+.template-group ul.groupList li .marks { float: right; width: 6%; text-align: right; margin-top: 0.5em;  }
+.template-group ul.groupList li .marks span { margin-left: 0.33em; font-size: 1.5em; }
+
 .template-group ul.groupList li .unassignSlammerButton { display: none; }
 
 

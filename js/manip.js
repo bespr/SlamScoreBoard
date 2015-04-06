@@ -241,6 +241,35 @@ var app = app || {};
         app.updateScreen(true);
     };
 
+    /**
+     * Marks or unmarks the slammer with style "a" or style "b"
+     */
+    app.manip.toggleSlammerMark = function(slammerId, style) {
+        if (style !== 'b') {
+            style = 'a';
+        }
+
+        var index = app.getRndAndGroupIndex();
+        var slammer = app.data.contests[app.selected.contest].rounds[index.rnd].groups[index.group].slammer;
+        for (var i = 0, len = slammer.length; i < len; i++) {
+            if (slammer[i].id == slammerId) {
+                if (slammer[i].marks === undefined) {
+                    slammer[i].marks = [];
+                }
+                var pos = slammer[i].marks.indexOf(style);
+                if (pos === -1) {
+                    slammer[i].marks.push(style);
+                } else {
+                    slammer[i].marks.splice(pos, 1);
+                }
+                break;
+            }
+        }
+
+        app.utils.persistData();
+        app.updateScreen(true);
+    }
+
 
 
 }());

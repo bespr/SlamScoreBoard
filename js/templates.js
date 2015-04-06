@@ -18,9 +18,19 @@ var app = app || {};
 
         tmpl += '<ul class="groupList">';
         var slammer = app.getSlammer(group.slammer);
+        var extraClass;
         for (var i = 0, len = slammer.length; i < len; i++) {
-            tmpl += '<li>';
-                tmpl += '<span class="name changeScreen" data-screen="slammer" data-screen-id="' + slammer[i].id + '">';
+            extraClass = '';
+            if (slammer[i].marks !== undefined) {
+                if (slammer[i].marks.indexOf('a') !== -1) {
+                    extraClass = 'markA ';
+                }
+                if (slammer[i].marks.indexOf('b') !== -1) {
+                    extraClass += 'markB ';
+                }
+            }
+            tmpl += '<li class="' + extraClass + '">';
+                tmpl += '<span class="name" data-slammer-id="' + slammer[i].id + '">';
                     tmpl += slammer[i].name;
                     tmpl += '<span class="unassignSlammerButton bs" data-slammer="' + slammer[i].id + '">' + l('unassign_slammer') + '</span>';
                 tmpl += '</span>';
@@ -35,6 +45,17 @@ var app = app || {};
                     }
                     tmpl += '<input type="text" class="total" readonly="readonly" />';
                 tmpl += '</ul>';
+
+                if (slammer[i].marks !== undefined) {
+                    tmpl += '<span class="marks">';
+                    if (slammer[i].marks.indexOf('a') !== -1) {
+                        tmpl += '<span class="markA">*</span>';
+                    }
+                    if (slammer[i].marks.indexOf('b') !== -1) {
+                        tmpl += '<span class="markB">**</span>';
+                    }
+                    tmpl += '</span>';
+                }
 
             tmpl += '</li>';
         }
@@ -107,7 +128,7 @@ var app = app || {};
 
         var dataContest = app.data.contests[app.selected.contest];
 
-        var groups, gid;
+        var groups, gid, extraClass;
         var tmpl = '<h1>' + dataContest.name + '</h1>';
 
         var numOfRnds = dataContest.rounds.length;
@@ -125,13 +146,32 @@ var app = app || {};
                 } else {
                     tmpl += '<ul>';
                     for (var k = 0, lenk = g.slammer.length; k < lenk; k++) {
-                        tmpl += '<li>';
+                        extraClass = '';
+                        if (g.slammer[k].marks !== undefined) {
+                            if (g.slammer[k].marks.indexOf('a') !== -1) {
+                                extraClass += 'markA ';
+                            }
+                            if (g.slammer[k].marks.indexOf('b') !== -1) {
+                                extraClass += 'markB ';
+                            }
+                        }
+                        tmpl += '<li class="' + extraClass + '" data-slammer-id="' + g.slammer[k].id + '">';
                         if (app.slammerById[g.slammer[k].id] !== undefined) {
-                            tmpl += '<span>' + app.slammerById[g.slammer[k].id].name + '</span>';
-                            tmpl += '<span>';
+                            tmpl += '<span class="name">' + app.slammerById[g.slammer[k].id].name + '</span>';
+                            tmpl += '<span class="total">';
                             if (g.slammer[k].total !== undefined) {
                                 tmpl += g.slammer[k].total;
                             }
+                            tmpl += '</span>';
+                            tmpl += '<span class="marks">';
+                                if (g.slammer[k].marks !== undefined) {
+                                    if (g.slammer[k].marks.indexOf('a') !== -1) {
+                                        tmpl += '<span class="markA">*</span>';
+                                    }
+                                    if (g.slammer[k].marks.indexOf('b') !== -1) {
+                                        tmpl += '<span class="markB">**</span>';
+                                    }
+                                }
                             tmpl += '</span>';
                         } else {
                             tmpl += '<i>Unknown (id  = ' + g.slammer[k].id + ')</i>';
@@ -227,6 +267,14 @@ var app = app || {};
             tmpl += '<li>';
                 tmpl += '<label>' + l('background_color') + '</label>';
                 tmpl += '<input type="text" class="colorChooser backgroundColorChooser" value="' + app.data.designConf.backgroundColor + '" />';
+            tmpl += '</li>';
+            tmpl += '<li>';
+                tmpl += '<label>' + l('mark_style_a_color') + '</label>';
+                tmpl += '<input type="text" class="colorChooser markAColorChooser" value="' + app.data.designConf.markAColor + '" />';
+            tmpl += '</li>';
+            tmpl += '<li>';
+                tmpl += '<label>' + l('mark_style_b_color') + '</label>';
+                tmpl += '<input type="text" class="colorChooser markBColorChooser" value="' + app.data.designConf.markBColor + '" />';
             tmpl += '</li>';
             tmpl += '<li>';
                 tmpl += '<label>' + l('background_image') + '</label>';

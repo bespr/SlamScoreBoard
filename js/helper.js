@@ -151,6 +151,8 @@ var app = app || {};
         app.data.designConf.fontFamily = app.data.designConf.fontFamily || 'open-sans';
         app.data.designConf.fontColor = app.data.designConf.fontColor || '#ff8844';
         app.data.designConf.backgroundColor = app.data.designConf.backgroundColor || '#000000';
+        app.data.designConf.markAColor = app.data.designConf.markAColor || '#88ff88';
+        app.data.designConf.markBColor = app.data.designConf.markBColor || '#ff8888';
         app.data.designConf.backgroundImage = app.data.designConf.backgroundImage || '';
         app.data.designConf.logo = app.data.designConf.logo || '';
         app.data.designConf.sponsors = app.data.designConf.sponsors || "";
@@ -198,6 +200,15 @@ var app = app || {};
             'margin-right': app.data.designConf.marginRight,
             'margin-bottom': app.data.designConf.marginBottom
         });
+
+        // Set MarkA Color
+        app.sheet.insertRule('.template-group ul.groupList li.markA, .template-contest li.markA { color:  ' + app.data.designConf.markAColor + '; }', 0);
+        app.sheet.insertRule('.template-group ul.groupList li.markA .grades .total { border-color:  ' + app.data.designConf.markAColor + '; }', 0);
+
+        // Set MarkB Color
+        app.sheet.insertRule('.template-group ul.groupList li.markB, .template-contest li.markB { color:  ' + app.data.designConf.markBColor + '; }', 0);
+        app.sheet.insertRule('.template-group ul.groupList li.markB .grades .total { border-color:  ' + app.data.designConf.markBColor + '; }', 0);
+        app.sheet.insertRule('.template-group ul.groupList li.markA .markB, .template-contest li.markA .markB { color:  ' + app.data.designConf.markBColor + '; }', 0);
 
         if (doReload) {
             location.reload();
