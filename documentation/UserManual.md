@@ -27,7 +27,7 @@ Die Design-Einstellungen sind über den Start-Bildschirm erreichbar. Folgende Ei
 * Schriftart
 * Schriftfarbe
 * Hintergrundfarbe
-* Hintergrundbild (dieses erscheint bei allen Screens, welche für die Projektion gedacht sind).
+* Hintergrundbild
 
 ##Contest - Einstellung Wettbewerb
 Über den Config Contest Screen kann der Wettbewerbsmodus und die Art der Bewertung (z.B. 5er-Jury) angepasst werden. Hierzu kann folgendes bestimmt werden:
