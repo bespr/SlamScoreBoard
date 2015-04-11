@@ -51,5 +51,7 @@ lang.de = {
     'placeholder_sponsors': 'Dateinamen eingeben',
     'back_to_group': 'Zurück zur Gruppe',
     'back_to_contest': 'Zurück zur Veranstaltung',
-    'pause': 'Pause'
+    'pause': 'Pause',
+    'mark_style_a_color': 'Farbe der Markierung A',
+    'mark_style_b_color': 'Farbe der Markierung B',
 };
