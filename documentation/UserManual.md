@@ -23,9 +23,9 @@
 <a name="settings-general"></a>
 ## Allgemein
 ![start](img/48_icon-home.png)
-Wenn du SlamScoreBoard.html in einem Web-Browser öffnest, erscheint der **Start-Bildschirm**. Über den Start-Bildschirm des SBB können Veranstaltungen erfasst, geladen, gespeichert und ausgewählt werden. Es können also vor einer Veranstalung alle bereits bekannten Details erfasst und anschliessend in eine `.ssb`-Datei gespeichert werden (Gespeichert wird ins Standard-Download-Verzeichnis des Webbrowsers). Es ist zu beachten, dass der Veranstaltungsname zum Beispiel beim Pausen-Bildschirm angezeigt wird. Es soll also ein Name gewählt werden, den man dann auch projeziert sehen haben möchte.
+Wenn du SlamScoreBoard.html in einem Web-Browser öffnest, erscheint der **Start-Bildschirm**. Über den Start-Bildschirm des SBB können Veranstaltungen erfasst, geladen, gespeichert und ausgewählt werden. So können vor einer Veranstalung bereits alle bekannten Details erfasst und anschliessend in eine `.ssb`-Datei gespeichert werden (gespeichert wird ins Standard-Download-Verzeichnis des Webbrowsers). Bitte beachte, dass der Veranstaltungsname auch zur Projektion verwendet wird. Wähle also einen Namen, den du auch projeziert sehen möchtest.
 
-Zum besseren Verständnis der nachfolgenden Schritte seien hier die verschiedenen verfügbaren Bildschirme aufgelistet. Die ersten 4 Bildschirme sind nicht zur Projektion gedacht, sondern zur Erfassung von Einstellungen und Angaben zur Veranstaltung:
+Zum besseren Verständnis der nachfolgenden Schritte sind hier die verschiedenen verfügbaren Bildschirme/Screens aufgelistet. Die ersten 4 Bildschirme sind nicht zur Projektion gedacht, sondern zur Erfassung von Einstellungen und Angaben zur Veranstaltung:
 
 * Start-Bildschirm: Laden / Speichern
 * Design-Bildschirm: Darstellungseingeschaften bestimmen
@@ -45,13 +45,13 @@ Die nächsten Bildschirme sind zur Projektion gedacht:
 ![designConf](img/48_icon-designConf.png) Die **Design-Einstellungen** sind über den Start-Bildschirm erreichbar. Folgende Eigenschaften lassen sich hierbei einfach ändern:
 
 * Schriftart
-* Schriftfarbe
+* Schriftfarbe (inkl. Rahmenfarbe)
 * Hintergrundfarbe
 * Hintergrundbild
-* Farbe der Markierung A
-* Farbe der Markierung B
+* Farbe der Markierung A (Slammer-Markierung A)
+* Farbe der Markierung B (Slammer-Markierung B)
 * Ränder
-* Sponsoren
+* Sponsorenbilder
 
 <a name="design-background"></a>
 ### Hintergrundfarbe, Hintergrundbild, Ränder
@@ -75,10 +75,24 @@ todo
 ### Beispiele
 
 #### Wettbewerb mit 2 Vorrunden mit je 5 Slammer, 3er-Finale und einer 5er-Jury (mit 2 Streichnoten - höchste/tiefste)
-todo
+1. Erfasse eine Veranstaltung und gehe zur Veranstalungs-Konfiguration (Konfigurieren).
+2. Jurymitglieder auf 5 setzen und je Anzahl Streichnoten nach oben und nach unten auf je 1 setzen.
+3. Unter Runden einmal eine Vorrunde und ein Finale erfassen.
+4. Gehe zu Slammer-Erfassung und gebe alle Slammer-Namen ein.
+5. Gehe zur Veranstaltung und füge zwei Gruppen der Vorrunde hinzu und eine Gruppe der Finalrunde.
+6. Falls die Reihenfolge schon steht, erfasse in der Vorrund die Slammer nach deren Auftrittsreihenfolge. Die Finalrunde kannst du natürlich erst während der Veranstaltung mit Slammer komplementieren.
+7. Bereit für den Veranstaltungsbeginn.
+
 
 #### Cup-Modus (8 - 4 - 2) ausgetragen in 2er-Paarungen
-todo
+1. Erfasse eine Veranstaltung und gehe zur Veranstalungs-Konfiguration (Konfigurieren).
+2. Jurymitglieder auf 1 oder 0 setzen.
+3. Unter Runden einmal eine Viertelfinale, ein Halbfinale und ein Finale erfassen.
+4. Gehe zu Slammer-Erfassung und gebe alle Slammer-Namen ein.
+5. Gehe zur Veranstaltung und füge vier Grupppen dem Viertelfinale, zwei Gruppen dem Halbfinale und eine Gruppe dem Finale hinzu.
+6. Falls die Reihenfolge schon steht, erfasse im Viertelfinale die Slammer nach deren Auftrittsreihenfolge. Die weiteren Runden kannst du natürlich erst während der Veranstaltung mit Slammer komplementieren.
+7. Bereit für den Veranstaltungsbeginn.
+
 
 #### Wettbewerb mit 3 Vorrunden mit je 4 Slammer, kein Finale und 7er-Jury
 todo
