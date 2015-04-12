@@ -9,16 +9,28 @@ var app = app || {};
 
 
     /**
-     *
+     * Group
      */
     app.templateLoadedEvent.group = function() {
         $('ul.grades').each(function() {
             $(this).find('input').first().trigger('blur');
         });
+
+        $('.groupList').sortable({
+            'axis': 'y',
+            'update': function(ev) {
+                var slammerIds = [];
+                $('.groupList li').each(function() {
+                    slammerIds.push($(this).find('.name').attr('data-slammer-id'));
+                });
+                app.manip.saveRearrangedSlammer(slammerIds);
+            }
+        });
+
     };
 
     /**
-     *
+     * Pause
      */
     app.templateLoadedEvent.pause = function() {
         var w = $(window).width();
@@ -46,6 +58,9 @@ var app = app || {};
         }
     };
 
+    /*
+     * designConf
+     */
     app.templateLoadedEvent.designConf = function() {
         $('.colorChooser').spectrum({
             /* color: "#f00" */

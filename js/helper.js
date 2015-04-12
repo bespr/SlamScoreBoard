@@ -62,7 +62,11 @@ var app = app || {};
         var slammer = [];
         for (var i = 0, len = list.length; i < len; i++) {
             var s = $.extend({}, list[i]);
-            s.name = app.slammerById[list[i].id].name;
+            if (app.slammerById[list[i].id] !== undefined) {
+                s.name = app.slammerById[list[i].id].name;
+            } else {
+                s.name = '<i>Unknown (id = ' + list[i].id + ')</i>';
+            }
             slammer.push(s);
         }
         return slammer;
@@ -276,6 +280,30 @@ var app = app || {};
     window.d = function() {
         console.log('==== Data of current contest (' + app.selected.contest + ') ====');
         console.log(app.data.contests[app.selected.contest]);
+    };
+
+    // Delete all entered grades
+    window.removeAllGrades = function() {
+        for (var i = 0, len = app.data.contests.length; i < len; i++) {
+            for (var j = 0, lenj = app.data.contests[i].rounds.length; j < lenj; j++) {
+                for (var k = 0, lenk = app.data.contests[i].rounds[j].groups.length; k < lenk; k++) {
+                    for (var l = 0, lenl = app.data.contests[i].rounds[j].groups[k].slammer.length; l < lenl; l++) {
+                        if (app.data.contests[i].rounds[j].groups[k].slammer[l].grades !== undefined) {
+                            delete app.data.contests[i].rounds[j].groups[k].slammer[l].grades;
+                        }
+                        if (app.data.contests[i].rounds[j].groups[k].slammer[l].total !== undefined) {
+                            delete app.data.contests[i].rounds[j].groups[k].slammer[l].total;
+                        }
+                        if (app.data.contests[i].rounds[j].groups[k].slammer[l].dropGrades !== undefined) {
+                            delete app.data.contests[i].rounds[j].groups[k].slammer[l].dropGrades;
+                        }
+                    }
+                }
+            }
+        }
+
+        app.utils.persistData();
+        app.updateScreen(true);
     }
 
 

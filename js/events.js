@@ -208,9 +208,9 @@ var ENTER_KEY = 13;
     });
 
     /*
-     * On Key Up: Grades input
+     * On Blur: Grades input
      */
-    $(document).on('blur', '.grades input', function() {
+    $(document).on('blur', '.grades input:not(.total)', function() {
         var row = $(this).parent();
         var slammerIndex = parseInt(row.attr('data-slammerIndex'), 10);
 

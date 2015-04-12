@@ -202,7 +202,7 @@ var app = app || {};
 
 
     /**
-     *
+     * Sort Slammers by points (not manually)
      */
     app.manip.sortSlammer = function() {
         var index = app.getRndAndGroupIndex();
@@ -240,6 +240,33 @@ var app = app || {};
         app.utils.persistData();
         app.updateScreen(true);
     };
+
+
+    /**
+     * Saves the rearranged slammer order (by drag and drop)
+     * @param array slammerIds
+     */
+    app.manip.saveRearrangedSlammer = function(slammerIds) {
+        var index = app.getRndAndGroupIndex();
+        var rows = app.data.contests[app.selected.contest].rounds[index.rnd].groups[index.group].slammer;
+
+        var newRows = [];
+        for (var i = 0, len = slammerIds.length; i < len; i++) {
+            var nextSlammerId = slammerIds[i];
+            for (var j = 0, lenj = rows.length; j < lenj; j++) {
+                if (nextSlammerId == rows[j].id) {
+                    newRows.push(rows[j]);
+                    break;
+                }
+            }
+        }
+
+        app.data.contests[app.selected.contest].rounds[index.rnd].groups[index.group].slammer = newRows;
+
+        app.utils.persistData();
+        app.updateScreen(true);
+    }
+
 
     /**
      * Marks or unmarks the slammer with style "a" or style "b"
