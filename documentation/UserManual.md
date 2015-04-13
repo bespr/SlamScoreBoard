@@ -5,10 +5,15 @@
     * [Allgemein](#settings-general)
     * [Design](#design)
         * [Hintergrundfarbe, Hintergrundbild, Ränder](#design-background)
-* More Inhaltsverzeichnis TODO
-
-
-
+        * [Markierungen](#design-marks)
+    * [Contest - Einstellung Wettbewerb](#contest-conf)
+        * [Beispiele](#contest-examples)
+            * [Wettbewerb mit 2 Vorrunden mit je 5 Slammer, 3er-Finale und einer 5er-Jury (mit 2 Streichnoten - höchste/tiefste)](#contest-example1)
+        * [Cup-Modus (8 - 4 - 2) ausgetragen in 2er-Paarungen](#contest-example2)
+        * [Slammer eintragen](#slammer-conf)
+    * [Speichern der Resultate](#saving)
+* [Tipps](#tips)
+    * [Wie versetze ich den Browser in den Vollbildmodus?](#fullscreen)
 
 
 
@@ -57,12 +62,14 @@ Die nächsten Bildschirme sind zur Projektion gedacht:
 ### Hintergrundfarbe, Hintergrundbild, Ränder
 Sobald ein Hintergrundbild gewählt ist, spielt die Hintergrundfarbe keine Rolle mehr. Wenn man ein Hintergrundbild wählt, dass eine Art Rahmen um den Inhalt darstellt, dann ist es sinnvoll, die Rändereinstellungen so zu wählen, dass der Inhalt mit dem Hintergrundbild harmoniert.
 
+<a name="design-marks"></a>
 ### Markierungen
 Man kann Slammer markieren. SSB stellt zwei Markierungen zur Verfügung, schreibt aber nicht vor, was die beiden Markierungen bedeuten sollen. Das ist dann Sache des Moderatoren im Verlaufe der Veranstaltung. Meistens wird nur eine Markierung gebraucht, welche meistens die Bedeutung "eine Runde weiter" trägt.
 
 ### Sponsoren
 todo
 
+<a name="contest-conf"></a>
 ## Contest - Einstellung Wettbewerb
 
 ![contestConf](img/48_icon-contestConf.png) Über den Config Contest Screen kann der Wettbewerbsmodus und die Art der Bewertung (z.B. 5er-Jury) angepasst werden. Hierzu kann folgendes bestimmt werden:
@@ -72,8 +79,10 @@ todo
 * Mögliche Stellen nach dem Komma bei Bewertungen
 * Streichnoten
 
+<a name="contest-examples"></a>
 ### Beispiele
 
+<a name="contest-example1"></a>
 #### Wettbewerb mit 2 Vorrunden mit je 5 Slammer, 3er-Finale und einer 5er-Jury (mit 2 Streichnoten - höchste/tiefste)
 1. Erfasse eine Veranstaltung und gehe zur Veranstalungs-Konfiguration (Konfigurieren).
 2. Jurymitglieder auf 5 setzen und je Anzahl Streichnoten nach oben und nach unten auf je 1 setzen.
@@ -83,7 +92,7 @@ todo
 6. Falls die Reihenfolge schon steht, erfasse in der Vorrund die Slammer nach deren Auftrittsreihenfolge. Die Finalrunde kannst du natürlich erst während der Veranstaltung mit Slammer komplementieren.
 7. Bereit für den Veranstaltungsbeginn.
 
-
+<a name="contest-example2"></a>
 #### Cup-Modus (8 - 4 - 2) ausgetragen in 2er-Paarungen
 1. Erfasse eine Veranstaltung und gehe zur Veranstalungs-Konfiguration (Konfigurieren).
 2. Jurymitglieder auf 1 oder 0 setzen.
@@ -97,6 +106,7 @@ todo
 #### Wettbewerb mit 3 Vorrunden mit je 4 Slammer, kein Finale und 7er-Jury
 todo
 
+<a name="slammer-conf"></a>
 ## Slammer eintragen
 ![slammerConf](img/48_icon-slammerConf.png) todo
 
@@ -118,6 +128,18 @@ todo
 ![pause](img/48_icon-pause.png) todo
 
 
+<a name="saving"></a>
 ## Speichern der Resultate
 
 ![floppy](img/48_icon-floppy.png) Man kann die mit SSB erstellten `.ssb`-Dateien auf irgendwelche Speichermedien ablegen. Wir empfehlen **Floppy-Disketten**, weswegen wir eine solche auch als Icon für Speichern und Laden verwenden.
+
+<a name="tips"></a>
+# Tipps
+
+<a name="fullscreen"></a>
+## Wie versetze ich den Browser in den Vollbildmodus?
+
+Du hasts erlickt: Die Zuschauer sollten nicht deine Bookmarks und deine letzte Google-Suche sehen, sondern den Inhalt des SSB im Vollbildmodus. Wie du deinen Browser in den Vollbildmodus versetzen kannst, ist vom Browser und vom Betriebsystem abhängig. Die meisten gehorchen auf eine der beiden Befehle:
+
+* `F11`
+* `CTRL` + `⇧` (Umschalttaste) + `F` (bei Mac: `⌘` + `⇧` (Umschalttaste) + `F`)

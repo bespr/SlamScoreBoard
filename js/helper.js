@@ -257,6 +257,55 @@ var app = app || {};
         return array;
     };
 
+    /**
+     * Returns Drop Notes (max or min) from an array with numbers
+     * @param String type ['min'|'max']
+     * @param Integer howMany
+     * @param Array array - an array with numbers
+     * @param Array alreadyUsedIndizes - array with "blocked" indizes (e.g. already used for maxDropGrades when in minDropGrades)
+     * @returns Array with Drop notes (index and value)
+     */
+    app.utils.getDropNoteInfosFromArray = function(type, howMany, array, alreadyUsedIndizes) {
+        var sortedArray = array.slice(); // copy by value
+        if (type === 'max') {
+            sortedArray.sort(app.utils.sortNumberDesc);
+        } else {
+            sortedArray.sort(app.utils.sortNumberAsc);
+        }
+
+        var re = [];
+        for (var i = 0; i < howMany; i++) {
+            re.push({ 'index': false, 'value': sortedArray[i] });
+        }
+
+        var usedIndizes = alreadyUsedIndizes.slice();
+        for (var i = 0, len = re.length; i < len; i++) {
+            for (var j = 0, lenj = array.length; j < lenj; j++) {
+                if (re[i].value == array[j] && usedIndizes.indexOf(j) === -1) {
+                    re[i].index = j;
+                    usedIndizes.push(j);
+                    break;
+                }
+            }
+        }
+
+        return re;
+    }
+
+    /**
+     * Sort function ASC
+     */
+    app.utils.sortNumberAsc = function(a, b) {
+        return a - b;
+    }
+
+    /**
+     * Sort function ASC
+     */
+    app.utils.sortNumberDesc = function(a, b) {
+        return b - a;
+    }
+
 
     // Language Handler
     window.l = function(str, values) {

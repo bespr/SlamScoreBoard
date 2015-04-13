@@ -215,14 +215,12 @@ var ENTER_KEY = 13;
         var slammerIndex = parseInt(row.attr('data-slammerIndex'), 10);
 
         var allFilled = true;
-        var minGrade = 999999999;
-        var minGradeIndex = false;
-        var maxGrade = -9999999;
-        var maxGradeIndex = false;
         var sum = 0;
         var allValidGrades = [];
         var v;
         var numOfDecimalDigits = parseInt(app.data.contests[app.selected.contest].config.numOfDecimalDigits, 10);
+        var numOfMaxDropGrades = parseInt(app.data.contests[app.selected.contest].config.numOfMaxDropGrades, 10);
+        var numOfMinDropGrades = parseInt(app.data.contests[app.selected.contest].config.numOfMinDropGrades, 10);
 
         row.find('input:not(.total)').each(function(index) {
             if (numOfDecimalDigits === 0) {
@@ -240,28 +238,42 @@ var ENTER_KEY = 13;
             } else {
                 $(this).val(v);
                 allValidGrades.push(v);
-                if (v < minGrade) {
-                    minGrade = v;
-                    minGradeIndex = index;
-                } else if (v > maxGrade) {
-                    maxGrade = v;
-                    maxGradeIndex = index;
-                }
             }
         });
 
+
         if (allFilled) {
+
+
+            var dropGradeIndizes = { 'max': [], 'min': [] };
+            var dropGradeValues = { 'max': [], 'min': [] };
+
+            var maxDropGrades = app.utils.getDropNoteInfosFromArray('max', numOfMaxDropGrades, allValidGrades, []);
+            for (var i = 0, len = maxDropGrades.length; i < len; i++) {
+                dropGradeIndizes.max.push(maxDropGrades[i].index);
+            }
+
+            var minDropGrades = app.utils.getDropNoteInfosFromArray('min', numOfMinDropGrades, allValidGrades, dropGradeIndizes.max);
+            for (var i = 0, len = minDropGrades.length; i < len; i++) {
+                dropGradeIndizes.min.push(minDropGrades[i].index);
+            }
+
             for (var i = 0, len = allValidGrades.length; i < len; i++) {
-                if (i != maxGradeIndex && i != minGradeIndex) {
+                if (dropGradeIndizes.max.indexOf(i) === -1 && dropGradeIndizes.min.indexOf(i) === -1) {
                     sum += allValidGrades[i];
                 }
             }
             sum = Math.round(sum * Math.pow(10, numOfDecimalDigits)) / Math.pow(10, numOfDecimalDigits);
             row.find('input.total').val(sum);
-            row.find('input:nth-child(' + (minGradeIndex + 1) + ')').addClass('minDropGrade');
-            row.find('input:nth-child(' + (maxGradeIndex + 1) + ')').addClass('maxDropGrade');
 
-            app.manip.saveGrades(slammerIndex, allValidGrades, sum, { 'min': minGrade, 'max': maxGrade });
+            for (var i = 0, len = dropGradeIndizes.min.length; i < len; i++) {
+                row.find('input:nth-child(' + (dropGradeIndizes.min[i] + 1) + ')').addClass('minDropGrade');
+            }
+            for (var i = 0, len = dropGradeIndizes.max.length; i < len; i++) {
+                row.find('input:nth-child(' + (dropGradeIndizes.max[i] + 1) + ')').addClass('maxDropGrade');
+            }
+
+            app.manip.saveGrades(slammerIndex, allValidGrades, sum, { 'min': dropGradeValues.min, 'max': dropGradeValues.max });
         } else {
             row.find('input.total').val('');
         }
