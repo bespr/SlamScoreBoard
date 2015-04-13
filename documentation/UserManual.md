@@ -40,7 +40,7 @@ Zum besseren Verständnis der nachfolgenden Schritte sind hier die verschiedenen
 Die nächsten Bildschirme sind zur Projektion gedacht:
 
 * Veranstaltungsbildschirm: Runden, Gruppen, Slammer und total Jurywertung anzeigen, Gruppen erfassen, Slammer Gruppen zuordnen (funktioniert noch nicht), Slammer markieren
-* Runden-Bildschirm: Slammer und Jurywertung anzeigen, Slammer Gruppen zuordnen, Jurywertung eingeben, Slammer nach total Jurywertung sortieren, Slammer markieren
+* Gruppen-Bildschirm: Slammer und Jurywertung anzeigen, Slammer Gruppen zuordnen, Jurywertung eingeben, Slammer nach total Jurywertung sortieren, Slammer markieren
 * Slammer-Bildschirm: Slammername anzeigen
 * Pausen-Bildschirm: Veranstaltungsname und Sponsorenlogos anzeigen, Eingabe und Anzeige zusätzlicher Satz (funktioniert noch nicht).
 
@@ -83,12 +83,12 @@ todo
 ### Beispiele
 
 <a name="contest-example1"></a>
-#### Wettbewerb mit 2 Vorrunden mit je 5 Slammer, 3er-Finale und einer 5er-Jury (mit 2 Streichnoten - höchste/tiefste)
+#### Wettbewerb mit 2 Vorrunden mit je 5 Slammer, 3er-Finale und einer 5er-Jury (mit 2 Streichnoten - höchste/tiefste) inkl. Opferlamm-Text
 1. Erfasse eine Veranstaltung und gehe zur Veranstalungs-Konfiguration (Konfigurieren).
 2. Jurymitglieder auf 5 setzen und je Anzahl Streichnoten nach oben und nach unten auf je 1 setzen.
 3. Unter Runden einmal eine Vorrunde und ein Finale erfassen.
 4. Gehe zu Slammer-Erfassung und gebe alle Slammer-Namen ein.
-5. Gehe zur Veranstaltung und füge zwei Gruppen der Vorrunde hinzu und eine Gruppe der Finalrunde.
+5. Gehe zur Veranstaltung und füge drei Gruppen der Vorrunde hinzu und eine Gruppe der Finalrunde. Wobei die erste Gruppe der Vorrunde nur das Opferlamm enthält.
 6. Falls die Reihenfolge schon steht, erfasse in der Vorrund die Slammer nach deren Auftrittsreihenfolge. Die Finalrunde kannst du natürlich erst während der Veranstaltung mit Slammer komplementieren.
 7. Bereit für den Veranstaltungsbeginn.
 
@@ -108,19 +108,21 @@ todo
 
 <a name="slammer-conf"></a>
 ## Slammer eintragen
-![slammerConf](img/48_icon-slammerConf.png) todo
+![slammerConf](img/48_icon-slammerConf.png) Alle Namen der Slammer können vorab eingetragen werden über den Bildschirm Slammer-Erfassen. Hierzu trage einfach den Namen ins entsprechende Feld ein und drücke dann die Tab-Taste oder klicke mit der Maus irgendwo auf den Bildschirm.
 
 # Bedienung während des Contests
 ## Laden des Wettbewerbs
-![contest](img/48_icon-contest.png) todo
+![contest](img/48_icon-contest.png) Im Start-Bildschirm über den Button "Daten aus einer Datei lesen" die entsprechende ssb einlesen, falls nicht schon gemacht. Dann über Button "Auswählen" die gewünschte Veranstaltung laden.
 
 ## Bestimmen und ändern der Auftrittsreihenfolge
-![addAndRemove](img/48_icon-addAndRemove.png) todo
+![addAndRemove](img/48_icon-addAndRemove.png) Falls die Slammer bereits Gruppen zugewiesen sind, kannst du die Auftrittsreihenfolge anpassen in dem du im Veranstaltungsbildschrim auf eine Gruppe klickst und anschliessend im Gruppen-Bildschirm per drag und drop die Reihenfolge der gelisteten Namen anpasst. Falls noch keine Namen erfasst sind, klicke auf "Slammer hinzufügen", dann erscheint ein Drop-down-Menu, mit welchem du Slammer einer Gruppe zuteilen kannst. Ebenfalls kannst du so Slammer aus einer Gruppe entfernen ("hinfort" Button)
 
-## Projektion während des Auftritts
+## Beginn der Veranstalung
+Üblicherweise wird der Pausen-Bildschirm gezeigt vor Veranstaltungsbeginn, nach Veranstaltungsende und während der Pause. Vom Pausenbildschirm gelangst du zur Gruppe oder zur Veranstaltung. Bei Beginn der Veranstaltung wähle "Zurück zur Veranstalung". Dadurch wird der Veranstaltungsbildschirm angezeigt, welcher eine Übersicht über alle Runden und Gruppen gibt. Kurz vor Beginn des ersten Auftritts kann dann in den Gruppen-Bildschirm gewechselt werden und von da in den Slammer-Bildschirm, welcher während des Auftritts projeziert wird.
 
 ## Eingeben der Resultate
-![sort](img/48_icon-sort.png) todo
+![sort](img/48_icon-sort.png) Ausser im Cup-Modus ist es zu empfehlen, die Resultat im Gruppen-Bildschirm einzugeben. Nach einem Auftritt wechsle in den Gruppen-Bildschirm zurück ("zurück zur Gruppe"). Dort kannst du die Bewertung eingeben. Wichtig: Dezimalstellen mit Punkt abtrennen, weiter mit Tab-Taste oder Maus.
+Das Total wird berechnet sobald ins alle Wertungen eingegeben sind und z.B. ins Totalfeld geklickt wurde. Nun kannst du falls gewünscht die bereits bewerteten Slammer aufsteigend nach Punktetotal sortieren ("Slammer sortieren").
 
 ## Bestimmen der Slammer der 2. oder folgenden Runden
 
