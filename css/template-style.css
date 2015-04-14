@@ -69,7 +69,7 @@
 /* group */
 .template-group ul.groupList { border-top: 1px solid #f84; font-size: 0.875em; }
 .template-group ul.groupList li { overflow: hidden; border-bottom: 1px solid #f84; padding: 0.25em 0; }
-.template-group ul.groupList li .name { float: left; width: 24%; margin-top: 0.5em; cursor: pointer; }
+.template-group ul.groupList li .name { float: left; width: 24%; margin: 0.5em 0; cursor: pointer; }
 .template-group ul.groupList li .grades { float: left; width: 70%; }
 
 .template-group ul.groupList li .grades input {

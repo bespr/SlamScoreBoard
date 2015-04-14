@@ -36,14 +36,17 @@ var app = app || {};
                 tmpl += '</span>';
 
                 tmpl += '<ul class="grades" data-slammerIndex="' + i + '">';
-                    for (var j = 0; j < app.data.contests[0].config.numOfGrades; j++) {
+                    for (var j = 0; j < app.data.contests[app.selected.contest].config.numOfGrades; j++) {
                         if (slammer[i].grades !== undefined && slammer[i].grades[j] !== undefined) {
                             tmpl += '<input type="text" value="' + slammer[i].grades[j] + '" />';
                         } else {
                             tmpl += '<input type="text" />';
                         }
                     }
-                    tmpl += '<input type="text" class="total" readonly="readonly" />';
+
+                    if (app.data.contests[app.selected.contest].config.numOfGrades > 1) {
+                        tmpl += '<input type="text" class="total" readonly="readonly" />';
+                    }
                 tmpl += '</ul>';
 
                 if (slammer[i].marks !== undefined) {
