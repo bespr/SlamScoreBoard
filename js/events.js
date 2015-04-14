@@ -280,7 +280,7 @@ var ENTER_KEY = 13;
     });
 
     /**
-     *
+     * Click on Sort Slammer
      */
     $(document).on('click', '.sortSlammer', function() {
         app.manip.sortSlammer();
@@ -292,7 +292,7 @@ var ENTER_KEY = 13;
     $(document).on('click', '.groupList li .name', function(ev) {
         var slammerId = $(this).attr('data-slammer-id');
         // Mark slammer with StyleA or StyleB
-        if (ev.ctrlKey) {
+        if (ev.ctrlKey || ev.metaKey) {
             // StyleB
             if (ev.shiftKey) {
                 app.manip.toggleSlammerMark(slammerId, 'b');
@@ -314,7 +314,7 @@ var ENTER_KEY = 13;
     $(document).on('click', '.contestContainer .group li', function(ev) {
         var slammerId = $(this).attr('data-slammer-id');
         // Mark slammer with StyleA or StyleB
-        if (ev.ctrlKey) {
+        if (ev.ctrlKey || ev.metaKey) {
             // StyleB
             if (ev.shiftKey) {
                 app.manip.toggleSlammerMark(slammerId, 'b');
