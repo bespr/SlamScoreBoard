@@ -130,8 +130,8 @@ var app = app || {};
                 "format": "ssb-1",
                 "contests": [],
             };
-            app.utils.dataExtendDefaults();
         }
+        app.utils.dataExtendDefaults();
 
         d = localStorage.getItem('ssb-last-loaded-selected');
         if (d) {
@@ -175,7 +175,7 @@ var app = app || {};
         app.sheet.insertRule('body, input, button, textarea, select { color: ' + app.data.designConf.fontColor + '; }', 0);
         var borderStyleSelectors = [
             '.template-start .contestSelect li',
-            '.template-contest .contestContainer .rnd .group',  
+            '.template-contest .contestContainer .rnd .group',
             '.template-group ul.groupList',
             '.template-group ul.groupList li',
             '.template-group ul.groupList li .grades input.total'
