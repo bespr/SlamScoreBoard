@@ -173,7 +173,14 @@ var app = app || {};
 
         // Set Foreground Color
         app.sheet.insertRule('body, input, button, textarea, select { color: ' + app.data.designConf.fontColor + '; }', 0);
-        app.sheet.insertRule('.template-start .contestSelect li, .contestContainer .rnd .group, .template-group ul.groupList, .template-group ul.groupList li, .template-group ul.groupList li .grades input.total { border-color: ' + app.data.designConf.fontColor + '; }', 0);
+        var borderStyleSelectors = [
+            '.template-start .contestSelect li',
+            '.template-contest .contestContainer .rnd .group',  
+            '.template-group ul.groupList',
+            '.template-group ul.groupList li',
+            '.template-group ul.groupList li .grades input.total'
+        ];
+        app.sheet.insertRule(borderStyleSelectors.join(', ') + ' { border-color: ' + app.data.designConf.fontColor + '; }', 0);
         var rgba = app.utils.getRgba(app.data.designConf.fontColor, 0.3);
         app.sheet.insertRule('.contestContainer .rnd .inner { border-color: ' + rgba + '; }', 0);
 
