@@ -9,7 +9,7 @@
     * [Contest - Einstellung Wettbewerb](#contest-conf)
         * [Beispiele](#contest-examples)
             * [Wettbewerb mit 2 Vorrunden mit je 5 Slammer, 3er-Finale und einer 5er-Jury (mit 2 Streichnoten - höchste/tiefste)](#contest-example1)
-        * [Cup-Modus (8 - 4 - 2) ausgetragen in 2er-Paarungen](#contest-example2)
+            * [Cup-Modus (8 - 4 - 2) ausgetragen in 2er-Paarungen](#contest-example2)
         * [Slammer eintragen](#slammer-conf)
     * [Speichern der Resultate](#saving)
 * [Tipps](#tips)
@@ -139,7 +139,7 @@ todo
 <a name="fullscreen"></a>
 ## Wie versetze ich den Browser in den Vollbildmodus?
 
-Du hasts erlickt: Die Zuschauer sollten nicht deine Bookmarks und deine letzte Google-Suche sehen, sondern den Inhalt des SSB im Vollbildmodus. Wie du deinen Browser in den Vollbildmodus versetzen kannst, ist vom Browser und vom Betriebsystem abhängig. Die meisten gehorchen auf eine der beiden Befehle:
+Du hast’s erlickt: Die Zuschauer sollten nicht deine Bookmarks und deine letzte Google-Suche sehen, sondern den Inhalt des SSB im Vollbildmodus. Wie du deinen **Browser in den Vollbildmodus** versetzen kannst, ist vom Browser und vom Betriebsystem abhängig. Die meisten gehorchen auf eine der beiden Befehle:
 
 * `F11`
 * `CTRL` + `⇧` (Umschalttaste) + `F` (bei Mac: `⌘` + `⇧` (Umschalttaste) + `F`)
