@@ -147,6 +147,10 @@ option { background: #444; color: #ccc; }
 
 
 
+// Hide Scrollbar (but still allow scrolling, only available for webkit browsers)
+::-webkit-scrollbar {
+    display: none;
+}
 
 
 

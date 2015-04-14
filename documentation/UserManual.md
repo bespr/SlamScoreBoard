@@ -6,14 +6,24 @@
     * [Design](#design)
         * [Hintergrundfarbe, Hintergrundbild, Ränder](#design-background)
         * [Markierungen](#design-marks)
+        * [Sponsoren](#design-sponsoren)
     * [Contest - Einstellung Wettbewerb](#contest-conf)
         * [Beispiele](#contest-examples)
-            * [Wettbewerb mit 2 Vorrunden mit je 5 Slammer, 3er-Finale und einer 5er-Jury (mit 2 Streichnoten - höchste/tiefste)](#contest-example1)
+            * [Wettbewerb mit 2 Vorrunden mit je 5 Slammer, 3er-Finale und einer 5er-Jury (mit 2 Streichnoten - höchste/tiefste) inkl. Opferlamm-Text](#contest-example1)
             * [Cup-Modus (8 - 4 - 2) ausgetragen in 2er-Paarungen](#contest-example2)
         * [Slammer eintragen](#slammer-conf)
     * [Speichern der Resultate](#saving)
+* [Bedienung während des Contests](#operator-stuff)
+    * [Laden des Wettbewerbs](#loading-from-disk)
+    * [Bestimmen und ändern der Auftrittsreihenfolge](#slammer-assigning)
+    * [Beginn der Veranstalung](#start-of-show)
+    * [Eingeben der Resultate](#enter-results)
+    * [Bestimmen der Slammer der 2. oder folgenden Runden](#define-next-round)
+    * [Pause (bzw. vor und während der Veranstaltung)](#pause)
 * [Tipps](#tips)
     * [Wie versetze ich den Browser in den Vollbildmodus?](#fullscreen)
+    * [Wie kann ich die Schriftgrösse erhöhen? Ich habe nur 4 Slammer in einer Gruppe. Diese erscheinen viel zu klein.](#correctSize)
+
 
 
 
@@ -66,6 +76,7 @@ Sobald ein Hintergrundbild gewählt ist, spielt die Hintergrundfarbe keine Rolle
 ### Markierungen
 Man kann Slammer markieren. SSB stellt zwei Markierungen zur Verfügung, schreibt aber nicht vor, was die beiden Markierungen bedeuten sollen. Das ist dann Sache des Moderatoren im Verlaufe der Veranstaltung. Meistens wird nur eine Markierung gebraucht, welche meistens die Bedeutung "eine Runde weiter" trägt.
 
+<a name="design-sponsoren"></a>
 ### Sponsoren
 todo
 
@@ -106,34 +117,44 @@ todo
 #### Wettbewerb mit 3 Vorrunden mit je 4 Slammer, kein Finale und 7er-Jury
 todo
 
+
 <a name="slammer-conf"></a>
 ## Slammer eintragen
 ![slammerConf](img/48_icon-slammerConf.png) Alle Namen der Slammer können vorab eingetragen werden über den Bildschirm Slammer-Erfassen. Hierzu trage einfach den Namen ins entsprechende Feld ein und drücke dann die Tab-Taste oder klicke mit der Maus irgendwo auf den Bildschirm.
-
-# Bedienung während des Contests
-## Laden des Wettbewerbs
-![contest](img/48_icon-contest.png) Im Start-Bildschirm über den Button "Daten aus einer Datei lesen" die entsprechende ssb einlesen, falls nicht schon gemacht. Dann über Button "Auswählen" die gewünschte Veranstaltung laden.
-
-## Bestimmen und ändern der Auftrittsreihenfolge
-![addAndRemove](img/48_icon-addAndRemove.png) Falls die Slammer bereits Gruppen zugewiesen sind, kannst du die Auftrittsreihenfolge anpassen in dem du im Veranstaltungsbildschrim auf eine Gruppe klickst und anschliessend im Gruppen-Bildschirm per drag und drop die Reihenfolge der gelisteten Namen anpasst. Falls noch keine Namen erfasst sind, klicke auf "Slammer hinzufügen", dann erscheint ein Drop-down-Menu, mit welchem du Slammer einer Gruppe zuteilen kannst. Ebenfalls kannst du so Slammer aus einer Gruppe entfernen ("hinfort" Button)
-
-## Beginn der Veranstalung
-Üblicherweise wird der Pausen-Bildschirm gezeigt vor Veranstaltungsbeginn, nach Veranstaltungsende und während der Pause. Vom Pausenbildschirm gelangst du zur Gruppe oder zur Veranstaltung. Bei Beginn der Veranstaltung wähle "Zurück zur Veranstalung". Dadurch wird der Veranstaltungsbildschirm angezeigt, welcher eine Übersicht über alle Runden und Gruppen gibt. Kurz vor Beginn des ersten Auftritts kann dann in den Gruppen-Bildschirm gewechselt werden und von da in den Slammer-Bildschirm, welcher während des Auftritts projeziert wird.
-
-## Eingeben der Resultate
-![sort](img/48_icon-sort.png) Ausser im Cup-Modus ist es zu empfehlen, die Resultat im Gruppen-Bildschirm einzugeben. Nach einem Auftritt wechsle in den Gruppen-Bildschirm zurück ("zurück zur Gruppe"). Dort kannst du die Bewertung eingeben. Wichtig: Dezimalstellen mit Punkt abtrennen, weiter mit Tab-Taste oder Maus.
-Das Total wird berechnet sobald ins alle Wertungen eingegeben sind und z.B. ins Totalfeld geklickt wurde. Nun kannst du falls gewünscht die bereits bewerteten Slammer aufsteigend nach Punktetotal sortieren ("Slammer sortieren").
-
-## Bestimmen der Slammer der 2. oder folgenden Runden
-
-## Pause (bzw. vor und während der Veranstaltung)
-![pause](img/48_icon-pause.png) todo
-
 
 <a name="saving"></a>
 ## Speichern der Resultate
 
 ![floppy](img/48_icon-floppy.png) Man kann die mit SSB erstellten `.ssb`-Dateien auf irgendwelche Speichermedien ablegen. Wir empfehlen **Floppy-Disketten**, weswegen wir eine solche auch als Icon für Speichern und Laden verwenden.
+
+<a name="operator-stuff"></a>
+# Bedienung während des Contests
+
+<a name="loading-from-disk"></a>
+## Laden des Wettbewerbs
+![contest](img/48_icon-contest.png) Im Start-Bildschirm über den Button "Daten aus einer Datei lesen" die entsprechende ssb einlesen, falls nicht schon gemacht. Dann über Button "Auswählen" die gewünschte Veranstaltung laden.
+
+<a name="slammer-assigning"></a>
+## Bestimmen und ändern der Auftrittsreihenfolge
+![addAndRemove](img/48_icon-addAndRemove.png) Falls die Slammer bereits Gruppen zugewiesen sind, kannst du die Auftrittsreihenfolge anpassen in dem du im Veranstaltungsbildschrim auf eine Gruppe klickst und anschliessend im Gruppen-Bildschirm per drag und drop die Reihenfolge der gelisteten Namen anpasst. Falls noch keine Namen erfasst sind, klicke auf "Slammer hinzufügen", dann erscheint ein Drop-down-Menu, mit welchem du Slammer einer Gruppe zuteilen kannst. Ebenfalls kannst du so Slammer aus einer Gruppe entfernen ("hinfort" Button)
+
+<a name="start-of-show"></a>
+## Beginn der Veranstalung
+Üblicherweise wird der Pausen-Bildschirm gezeigt vor Veranstaltungsbeginn, nach Veranstaltungsende und während der Pause. Vom Pausenbildschirm gelangst du zur Gruppe oder zur Veranstaltung. Bei Beginn der Veranstaltung wähle "Zurück zur Veranstalung". Dadurch wird der Veranstaltungsbildschirm angezeigt, welcher eine Übersicht über alle Runden und Gruppen gibt. Kurz vor Beginn des ersten Auftritts kann dann in den Gruppen-Bildschirm gewechselt werden und von da in den Slammer-Bildschirm, welcher während des Auftritts projeziert wird.
+
+<a name="enter-results"></a>
+## Eingeben der Resultate
+![sort](img/48_icon-sort.png) Ausser im Cup-Modus ist es zu empfehlen, die Resultat im Gruppen-Bildschirm einzugeben. Nach einem Auftritt wechsle in den Gruppen-Bildschirm zurück ("zurück zur Gruppe"). Dort kannst du die Bewertung eingeben. Wichtig: Dezimalstellen mit Punkt abtrennen, weiter mit Tab-Taste oder Maus.
+Das Total wird berechnet sobald ins alle Wertungen eingegeben sind und z.B. ins Totalfeld geklickt wurde. Nun kannst du falls gewünscht die bereits bewerteten Slammer aufsteigend nach Punktetotal sortieren ("Slammer sortieren").
+
+<a name="define-next-round"></a>
+## Bestimmen der Slammer der 2. oder folgenden Runden
+Todo
+
+<a name="pause"></a>
+## Pause (bzw. vor und während der Veranstaltung)
+![pause](img/48_icon-pause.png) todo
+
 
 <a name="tips"></a>
 # Tipps
@@ -145,3 +166,15 @@ Du hast’s erlickt: Die Zuschauer sollten nicht deine Bookmarks und deine letzt
 
 * `F11`
 * `CTRL` + `⇧` (Umschalttaste) + `F` (bei Mac: `⌘` + `⇧` (Umschalttaste) + `F`)
+
+<a name="correctSize"></a>
+## Wie kann ich die Schriftgrösse erhöhen? Ich habe nur 4 Slammer in einer Gruppe. Diese erscheinen viel zu klein.
+
+SlamScoreBoard ist darauf ausgerichtet, dass es mit einem [Full-HD](http://de.wikipedia.org/wiki/Full_HD)-Beamer und mit ca. 8 bis 14 Slammer in einer Gruppe gut aussieht.
+
+Wir haben darauf geachtet, dass es auch bei anderer Auflösung noch ansprechend aussieht, aber je exotischer die Anzahl Slammer oder die Beamer-Auflösung, desto schwieriger wird eine optimale Darstellung. Daneben gibt es natürlich noch weitere Faktoren, die für ein designtechnisch unausgewogenes Bild sorgen können, z.B. eine sehr grosse Anzahl Jurymitglieder, oder Slammernamen die aus gigantisch vielen Buchstaben bestehen.
+
+Ein paar Tricks gibts natürlich dennoch:
+
+* Die meisten Browser bieten **Zoom** an (`CTRL` + Maus-Scrollrad zum Zoomen, `CTRL` + `0` zum Zurücksetzen)
+* Manchmal kommt es vor, dass der Inhalt mehr Platz beansprucht, als der Webbrowser auf einmal anzeigen kann. Dann erscheint rechts ein für Beamer-Anwendungen sehr hässlicher **Scrollbalken**. Webkit-Browsern (z.B. [Chrome](https://www.google.de/chrome/browser/desktop/)) bieten uns Entwicklern die Möglichkeit, diese Scrollbalken auszublenden. Andere Browser (Firefox, Opera, Internet Explorer) bieten leider keine solche Möglichkeit. Also: **Chrome verwenden**!
