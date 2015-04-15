@@ -22,7 +22,7 @@
 
 
         <style>
-            body { margin-bottom: 60px; }
+            body { margin-bottom: 600px; }
 
             .videoOuterWrapper { max-width: 720px; }
             .videoWrapper {
@@ -33,6 +33,15 @@
 	            position: absolute;
 	            top: 0; left: 0; width: 100%; height: 100%;
             }
+
+            .buttonminitext {
+                font-size: 0.625em;
+                display: block;
+            }
+
+            .downloadButton { min-height: 60px; line-height: 38px; }
+            .downloadButton,
+            button[disabled="disabled"]  { margin-bottom: 6px; }
 
         </style>
 
@@ -72,35 +81,29 @@
 
             <p class="lead">Beamer-Anzeigetafel für <a href="http://de.wikipedia.org/wiki/Poetry_Slam">Poetry-Slam</a>-Veranstaltungen</p>
 
-            <p>Mit SSB ist die Projektion der Poetry-Slam-Resultate ein Kinderspiel. Die Projektion der Resultate kann individuell angepasst werden (wie viele Runden, welche Jury, etc.). Die Bedienung erfolgt einfach über einen Webbrowser. Dadurch musst du keine zusätzlichen Anwendungen installieren sondern nur ein SSB Verzeichnis erstellen und darin die Webseite-Daten speichern.</p>
+            <p>Mit SSB ist die Projektion der Poetry-Slam-Resultate ein Kinderspiel. Die Projektion der Resultate kann individuell angepasst werden (wie viele Runden, welche Jury, etc.).</p>
+            <p>Die Bedienung erfolgt über einen Webbrowser. Dadurch musst du keine zusätzlichen Anwendungen installieren. Es wird auch keine Internetverbindung benötigt.</p>
 
             <h2>Das Wichtigste in Kürze</h2>
             <ul>
+                <li>SSB läuft im Webbrowser.</li>
+                <li>SSB ist ein Offline-Tool.</li>
                 <li>Die gängigsten Wettbewerbmodi können eingestellt werden (z.B. Vorrunden-Finale, Cup-Modus, etc.).</li>
                 <li>Jurywertung kann angepasst werden (z.B. Noten mit einer Dezimalstelle, Streichnoten, Applaus, etc.).</li>
                 <li>Einstellungen können vorab gespeichert und dann kurz vor der Veranstaltung wieder geladen werden.</li>
-                <li>Exportieren der Resultate in einer html- oder csv-Tabelle ist möglich.</li>
-                <li>SSB läuft auf den gängisten Browsern (Firefox, Chrome, Internet Explorer).</li>
+                <li><span style="opacity: 0.4;">Exportieren der Resultate in einer html- oder csv-Tabelle ist möglich.</span> (Demnächst)</li>             <li><span style="opacity: 0.4;">Neben Deutsch auch in unseren anderen Lieblingssprachen erhältlich: Französisch und Englisch</span> (Demnächst, Sprachexperten bitte <a href="#contact">melden</a>)</li>
+
             </ul>
 
-
-            <h2>Im Video erklärt</h2>
-            <p>Das folgende Video führt tonlos durch die Applikation (Stand: Februar 2015). Momentan wird das Tool stark umgestaltet. Also bitte den Fokus besser auf die Funktionen richten und weniger aufs Aussehen:</p>
-            <div class="videoOuterWrapper">
-                <div class="videoWrapper">
-                    <iframe src="//player.vimeo.com/video/121011160?byline=0" width="500" height="299" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-                </div>
-            </div>
-
-
+            <a name="installation"></a>
             <h2>Inbetriebnahme</h2>
 
             <ol>
                 <li>Download ZIP-Datei
                     <p>
-                        <a class="btn btn-success btn-lg" href="https://github.com/bespr/SlamScoreBoard/archive/master.zip">Neuste Developer-Version</a>
+                        <a class="btn btn-success btn-lg downloadButton" href="https://github.com/bespr/SlamScoreBoard/archive/master.zip">Neuste Developer-Version</a>
 
-                        <button type="button" class="btn btn-success btn-lg" disabled="disabled">Stabiler Release (Kommt bald oder irgendwann mal)</button>
+                        <button type="button" class="btn btn-success btn-lg" disabled="disabled">Stabiler Release<span class="buttonminitext">(Bald oder irgendwann mal)</span></button>
 
                     </p>
                 </li>
@@ -111,15 +114,44 @@
                 <li>
                     <code>SlamScoreBoard.html</code> in deinem Lieblingswebbrowser öffnen
                 </li>
-				<li><a href="https://github.com/bespr/SlamScoreBoard/blob/master/documentation/UserManual.md">Manual</a> zu Gemüte führen.
+            </ol>
 
-                </li>
+            <h2>Bedienungsanleitung</h2>
+
+            <p>Wir haben ein sehr langes <a href="https://github.com/bespr/SlamScoreBoard/blob/master/documentation/UserManual.md">User Manual</a> verfasst, und bitten dich, es dir zu Gemüte zu führen. Falls etwas im Manual ungeklärt bleibt, bitte <a href="#contact">unverzüglich melden</a>.
+
+            <p><a href="https://github.com/bespr/SlamScoreBoard/blob/master/documentation/UserManual.md" class="btn btn-primary btn-lg">User Manual online ansehen</a></p>
+
+
+
+            <h2>Herumspielen mit Test-Daten</h2>
+
+            <p>Schon klar: Als Slam-Master hast du alle Hände voll zu tun, und kannst dich unmöglich noch um Software-Evaluationen kümmern. Deshalb haben wir schon eine Datei mit Test-Daten vorbereitet, damit du nicht zuerst eine Test-Veranstaltung und zwei Test-Runden und fünf Test-Zwischenrunden und 15 Test-Slammer und 800 Test-Noten eingeben musst.</p>
+
+            <p>Das geht so:</p>
+            <ol>
+                <li>SSB in Betrieb nehmen (siehe <a href="#installation">Inbetriebnahme</a>)</li>
+                <li>Auf der Startseite auf «<b>Daten aus Datei laden</b>» klicken</li>
+                <li>Datei im Verzeichnis <code>[[Pfad-zu-deinem-SSB-Download]]/SlamScoreBoard/saved_slams/test1.ssb</code> auswählen.</li>
+                <li>Die Test-Daten sind nun geladen. Du darfst sie beliebig verändern und herumspielen. Wenn du auf den Geschmack gekommen bist, und gerne selber von vorne starten willst, kannst du auf «<b>Alles ratzfatz löschen</b>» klicken, um die geladenen Daten wieder loszuwerden.</li>
             </ol>
 
 
+
+            <h2>Im Video erklärt</h2>
+            <p>Das folgende Video führt tonlos durch die Applikation. Das Video stammt vom Februar 2015. Der Zustand der Applikation ist mittlerweile viel besser als damals. Also bitte den Fokus besser auf die Funktionen richten und weniger aufs Aussehen:</p>
+            <div class="videoOuterWrapper">
+                <div class="videoWrapper">
+                    <iframe src="//player.vimeo.com/video/121011160?byline=0" width="500" height="299" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                </div>
+            </div>
+            <p>Ein aktuelleres Video sollte demnächst mal nachgeliefert werden.</p>
+
+
+            <a name="contact"></a>
             <h2>Kontakt</h1>
 
-            Ivo Engeler (<script>writeEm('ch', 'ivoangular', 'ivo')</script>) und Beat Oberholzer (<script>writeEm('li', 'oberholzer', 'beat')</script>)
+            <p>Ivo Engeler (<script>writeEm('ch', 'ivoangular', 'ivo')</script>) und Beat Oberholzer (<script>writeEm('li', 'oberholzer', 'beat')</script>)</p>
 
             <p>Falls du das Tool verbesserst, zögere nicht, die Änderungen als Pull Request in den <a href="https://github.com/bespr/SlamScoreBoard">Github-Master-Branch</a> zurückzuspielen</p>
 
