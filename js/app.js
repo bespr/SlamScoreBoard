@@ -17,6 +17,7 @@ var app = app || {};
         id: false
     };
 
+    app.availableLanguages = ['de', 'en', 'fr'];
 
     app.updateScreen = function(forceUpdate) {
         forceUpdate = forceUpdate ? true : false;
@@ -98,7 +99,7 @@ var app = app || {};
         } else {
             console.warn('Function for screen ' + app.currentScreen.name + ' does not exists');
         }
-    }
+    };
 
 
     // Start

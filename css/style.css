@@ -138,6 +138,8 @@ option { background: #444; color: #ccc; }
 .bi.saveToFile:before,
 .bi.readFromFile:before { content: 'd'; }
 
+.bi.changeLanguage:before { content: attr(data-current-language); font-family: monospace; }
+
 /* Title Icons */
 .icon { font-family: 'icomoon'; font-size: 1.5em; margin-right: 0.5em; font-weight: normal; }
 .icon-home:before { content: 'h'; }

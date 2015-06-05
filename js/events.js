@@ -28,6 +28,25 @@ var ENTER_KEY = 13;
     };
 
 
+    /**
+     * Change Language
+     */
+    $(document).on('click', '.changeLanguage', function() {
+        var index = app.availableLanguages.indexOf(app.data.designConf.language);
+        if (index === -1) {
+            index = 1;
+        } else {
+            index = parseInt(index, 10);
+            index++;
+            if (index >= app.availableLanguages.length) {
+                index = 0;
+            }
+        }
+        app.data.designConf.language = app.availableLanguages[index];
+        app.utils.persistData();
+        app.updateScreen(true);
+    });
+
     /*
      * Change Screen
      */

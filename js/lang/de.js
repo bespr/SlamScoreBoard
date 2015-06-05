@@ -1,7 +1,6 @@
 var lang = lang || {};
 lang.de = {
 
-    'config_title': 'Konfiguration',
     'rounds': 'Runden',
     'add_new_round': 'Neue Runde hinzufügen',
     'add_new_slammer': 'Neuen Slammer eintragen',
@@ -54,4 +53,5 @@ lang.de = {
     'pause': 'Pause',
     'mark_style_a_color': 'Farbe der Markierung A',
     'mark_style_b_color': 'Farbe der Markierung B',
+    'change_language': 'Sprache wechseln'
 };

@@ -235,6 +235,7 @@ var app = app || {};
         tmpl += '</div>';
 
         tmpl += '<div class="buttonBox">';
+        tmpl += '<div type="button" class="changeLanguage bl bi" data-current-language="' + app.data.designConf.language + '">' + l('change_language') + '</div>';
         tmpl += '<div type="button" class="saveToFile bl bi">' + l('save_to_file') + '</div>';
         tmpl += '<div type="button" class="readFromFile bl bi">' + l('read_from_file') + '</div>';
         tmpl += '<div type="button" class="changeScreen bl bi" data-screen="designConf">' + l('design_configuration') + '</div>';
