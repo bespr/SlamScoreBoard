@@ -270,13 +270,26 @@ var app = app || {};
 
     /**
      * Marks or unmarks the slammer with style "a" or style "b"
+     *
+     * @param {number} slammerId
+     * @param {string} style - 'a' or 'b'
+     * @param {number} groupId - optional, default = last active group
      */
-    app.manip.toggleSlammerMark = function(slammerId, style) {
+    app.manip.toggleSlammerMark = function(slammerId, style, groupId) {
         if (style !== 'b') {
             style = 'a';
         }
 
         var index = app.getRndAndGroupIndex();
+
+        if (groupId !== undefined) {
+            for (var i = 0, len = app.data.contests[app.selected.contest].rounds[index.rnd].groups.length; i < len; i++) {
+                if (app.data.contests[app.selected.contest].rounds[index.rnd].groups[i].id == groupId) {
+                    index.group = i;
+                }
+            }
+        }
+
         var slammer = app.data.contests[app.selected.contest].rounds[index.rnd].groups[index.group].slammer;
         for (var i = 0, len = slammer.length; i < len; i++) {
             if (slammer[i].id == slammerId) {

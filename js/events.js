@@ -332,15 +332,17 @@ var ENTER_KEY = 13;
      */
     $(document).on('click', '.contestContainer .group li', function(ev) {
         var slammerId = $(this).attr('data-slammer-id');
+        var groupId = $(this).parents('.group').attr('data-screen-id');
+
         // Mark slammer with StyleA or StyleB
         if (ev.ctrlKey || ev.metaKey) {
             // StyleB
             if (ev.shiftKey) {
-                app.manip.toggleSlammerMark(slammerId, 'b');
+                app.manip.toggleSlammerMark(slammerId, 'b', groupId);
             }
             // StyleA
             else {
-                app.manip.toggleSlammerMark(slammerId, 'a');
+                app.manip.toggleSlammerMark(slammerId, 'a', groupId);
             }
             ev.stopPropagation();
         }
