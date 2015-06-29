@@ -1,5 +1,5 @@
 var lang = lang || {};
-lang.de = {
+lang.tg = {
 
     'rounds': 'Rundä',
     'add_new_round': 'Neui Rundi däzuätuä',

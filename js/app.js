@@ -17,7 +17,7 @@ var app = app || {};
         id: false
     };
 
-    app.availableLanguages = ['de', 'en', 'fr'];
+    app.availableLanguages = ['de', 'en', 'fr', 'tg'];
 
     app.updateScreen = function(forceUpdate) {
         forceUpdate = forceUpdate ? true : false;
