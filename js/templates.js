@@ -87,7 +87,10 @@ var app = app || {};
 
         var tmpl = '<p>' + app.data.contests[app.selected.contest].name + '</p>';
         tmpl += '<h1>' + slammer.name + '</h1>';
-        tmpl += '<span class="changeScreen bl bh bi" data-screen="group" data-screen-id="' + app.selected.group + '">' + l('back_to_group') + '</span>';
+        tmpl += '<div class="buttonBox">';
+            tmpl += '<div class="changeScreen bl bh bi" data-screen="contest" data-screen-id="' + app.selected.contest + '">' + l('back_to_contest') + '</div>';
+            tmpl += '<div class="changeScreen bl bh bi" data-screen="group" data-screen-id="' + app.selected.group + '">' + l('back_to_group') + '</div>';
+        tmpl += '</div>'
         return tmpl;
     };
 

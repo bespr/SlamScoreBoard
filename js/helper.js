@@ -182,7 +182,7 @@ var app = app || {};
         ];
         app.sheet.insertRule(borderStyleSelectors.join(', ') + ' { border-color: ' + app.data.designConf.fontColor + '; }', 0);
         var rgba = app.utils.getRgba(app.data.designConf.fontColor, 0.3);
-        app.sheet.insertRule('.contestContainer .rnd .inner { border-color: ' + rgba + '; }', 0);
+        app.sheet.insertRule('.template-contest .contestContainer .rnd .inner { border-color: ' + rgba + '; }', 0);
 
         // Make Input Placeholder Color half transparent
         rgba = app.utils.getRgba(app.data.designConf.fontColor, 0.5);

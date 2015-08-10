@@ -331,6 +331,7 @@ var ENTER_KEY = 13;
      * Contest: Click on Slammer Name
      */
     $(document).on('click', '.contestContainer .group li', function(ev) {
+
         var slammerId = $(this).attr('data-slammer-id');
         var groupId = $(this).parents('.group').attr('data-screen-id');
 
@@ -345,6 +346,14 @@ var ENTER_KEY = 13;
                 app.manip.toggleSlammerMark(slammerId, 'a', groupId);
             }
             ev.stopPropagation();
+        } else {
+            var xpos = ev.offsetX === undefined ? ev.originalEvent.layerX : ev.offsetX;
+            if (xpos < 40) {
+                ev.stopPropagation();
+                app.selected.group = groupId;
+                app.currentScreen = { name: 'slammer', id: slammerId };
+                app.updateScreen();
+            }
         }
     });
 
@@ -468,6 +477,7 @@ var ENTER_KEY = 13;
     });
 
     /* Window Resize */
+    /*
     $(window).on('resize', function() {
         $('#overlay').remove();
         var a = '<div id="overlay">';
@@ -481,6 +491,7 @@ var ENTER_KEY = 13;
             $('#overlay').remove();
         }, 1200);
     });
+    */
 
 
 }());
