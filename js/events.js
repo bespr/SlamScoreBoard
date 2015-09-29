@@ -347,8 +347,8 @@ var ENTER_KEY = 13;
             }
             ev.stopPropagation();
         } else {
-            var xpos = ev.offsetX === undefined ? ev.originalEvent.layerX : ev.offsetX;
-            if (xpos < 40) {
+            var xpos = (ev.offsetX === undefined ? ev.originalEvent.layerX : ev.offsetX);
+            if (xpos < 20) {
                 ev.stopPropagation();
                 app.selected.group = groupId;
                 app.currentScreen = { name: 'slammer', id: slammerId };

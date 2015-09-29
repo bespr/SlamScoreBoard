@@ -55,6 +55,8 @@
 .template-contest .contestContainer .rnd .group { border: 1px solid #f84; margin-bottom: 10px; padding: 10px; cursor: pointer; }
 .template-contest .contestContainer .rnd .group ul { display: table; table-layout: fixed; width: 100%; }
 .template-contest .contestContainer .rnd .group ul li { display: table-row; }
+.template-contest .contestContainer .rnd .group ul li .slammerScreenLinkHelper { width: 20px; height: 20px; border: 1px solid yellow; display: block; opacity: 0; }
+.template-contest .contestContainer .rnd .group ul li .slammerScreenLinkHelper:hover { opacity: 0.5; }
 .template-contest .contestContainer .rnd .group ul li > span { display: table-cell; font-size: 1.25em; line-height: 1.75em; }
 .template-contest .contestContainer .rnd .group ul li > span.name { padding-right: 8px; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width: 75%; }
 .template-contest .contestContainer .rnd .group ul li > span.total { width: 25%; }

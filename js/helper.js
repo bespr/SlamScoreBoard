@@ -176,6 +176,7 @@ var app = app || {};
         var borderStyleSelectors = [
             '.template-start .contestSelect li',
             '.template-contest .contestContainer .rnd .group',
+            '.template-contest .contestContainer .rnd .group ul li .slammerScreenLinkHelper',
             '.template-group ul.groupList',
             '.template-group ul.groupList li',
             '.template-group ul.groupList li .grades input.total'
