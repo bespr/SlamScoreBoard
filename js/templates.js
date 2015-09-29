@@ -161,7 +161,7 @@ var app = app || {};
                                 extraClass += 'markB ';
                             }
                         }
-                        tmpl += '<li class="' + extraClass + '" data-slammer-id="' + g.slammer[k].id + '">';
+                        tmpl += '<li class="cf ' + extraClass + '" data-slammer-id="' + g.slammer[k].id + '">';
                         if (app.slammerById[g.slammer[k].id] !== undefined) {
                             tmpl += '<i class="slammerScreenLinkHelper"></i>';
                             tmpl += '<span class="name">' + app.slammerById[g.slammer[k].id].name + '</span>';

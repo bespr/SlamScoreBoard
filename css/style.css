@@ -159,6 +159,12 @@ option { background: #444; color: #ccc; }
 /* Overlay */
 #overlay { border: 6px solid green; width: 80%; position: fixed; top: 10%; left: 10%; background: #111; padding: 10px; }
 
+/* Draggable jQuery Style */
+.ui-draggable-dragging { min-width: 200px; background: rgba(255, 255, 255, 0.05); }
 
 /* SSB Logo */
 #ssbLogo { position: absolute; top: 4px; right: 4px; width: 100px;  }
+
+/* Clearfix */
+.cf:before, .cf:after { content: ' '; display: table; }
+.cf:after { clear: both; }

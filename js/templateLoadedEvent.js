@@ -9,6 +9,30 @@ var app = app || {};
 
 
     /**
+     * Contest
+     */
+    app.templateLoadedEvent.contest = function() {
+        $('.contestContainer .rnd .group ul li span.name').draggable({
+            helper: 'clone',
+            revert: 'invalid',
+        });
+        $('.contestContainer .rnd .group ul').droppable({
+
+            drop: function(ev, ui) {
+                var originalRound = ui.draggable.parents('.rnd');
+                var targetRound = $(this).parents('.rnd');
+                if (originalRound.index() < targetRound.index()) {
+                    ui.draggable.attr('data-slammer-id');
+
+                    // More to come here
+                }
+            }
+
+        });
+    };
+
+
+    /**
      * Group
      */
     app.templateLoadedEvent.group = function() {
