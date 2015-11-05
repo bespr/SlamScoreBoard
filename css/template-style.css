@@ -55,8 +55,8 @@
 .template-contest .contestContainer .rnd .group { border: 1px solid #f84; margin-bottom: 10px; padding: 10px; cursor: pointer; }
 .template-contest .contestContainer .rnd .group ul { width: 100%; }
 .template-contest .contestContainer .rnd .group ul li { position: relative; }
-.template-contest .contestContainer .rnd .group ul li .slammerScreenLinkHelper { width: 20px; height: 100%; border: 1px solid yellow; display: block; opacity: 0; position: absolute; top: 0; left: 0; }
-.template-contest .contestContainer .rnd .group ul li .slammerScreenLinkHelper:hover { opacity: 0.5; }
+.template-contest .contestContainer .rnd .group ul li .slammerScreenLinkHelper { width: 50px; height: 100%; border: 1px solid yellow; display: block; opacity: 0; position: absolute; top: 0; left: 0; }
+.template-contest .contestContainer .rnd .group ul li .slammerScreenLinkHelper:hover { opacity: 0.3; }
 .template-contest .contestContainer .rnd .group ul li > span { float: left; font-size: 1.25em; line-height: 1.75em; }
 .template-contest .contestContainer .rnd .group ul li > span.name { padding-right: 8px; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width: 80%; }
 .template-contest .contestContainer .rnd .group ul li > span.total { width: 10%; text-align: right; }
