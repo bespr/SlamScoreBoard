@@ -81,14 +81,18 @@ var app = app || {};
         return contestNames;
     };
 
-    app.getRndAndGroupIndex = function() {
+    app.getRndAndGroupIndex = function(groupId) {
+        if (groupId === undefined) {
+            groupId = app.selected.group;
+        }
+
         var rnds = app.data.contests[app.selected.contest].rounds;
         var rndIndex = false;;
         var groupIndex = false;
 
         for (var i = 0, len = rnds.length; i < len; i++) {
             for (var j = 0, lenj = rnds[i].groups.length; j < lenj; j++) {
-                if (rnds[i].groups[j].id == app.selected.group) {
+                if (rnds[i].groups[j].id == groupId) {
                     return { 'rnd': i, 'group': j };
                 }
             }

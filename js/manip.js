@@ -133,42 +133,55 @@ var app = app || {};
      *
      */
     app.manip.assignSlammer = function(slId) {
-        var rnds = app.data.contests[app.selected.contest].rounds;
-
-        // TODO: Use app.getRndAndGroupIndex();
-        outOfLoop:
-        for (var i = 0, len = rnds.length; i < len; i++) {
-            for (var j = 0, lenj = rnds[i].groups.length; j < lenj; j++) {
-                if (rnds[i].groups[j].id == app.selected.group) {
-                    app.data.contests[app.selected.contest].rounds[i].groups[j].slammer.push({ 'id': slId });
-                    break outOfLoop;
-                }
-            }
-        }
+        var index = app.getRndAndGroupIndex();
+        app.data.contests[app.selected.contest].rounds[index.rnd].groups[index.group].slammer.push({ 'id': slId });
 
         app.updateByIdValues();
         app.utils.persistData();
         app.updateScreen(true);
     };
 
+
     /**
      *
      */
-    app.manip.unassignSlammer = function(slId) {
-        var rnds = app.data.contests[app.selected.contest].rounds;
+    app.manip.assignSlammerToGroup = function(slId, groupId) {
+        var index = app.getRndAndGroupIndex(groupId);
+        if (!app.manip.isSlammerAlreadyAssignedToGroup(slId, app.data.contests[app.selected.contest].rounds[index.rnd].groups[index.group].slammer)) {
+            app.data.contests[app.selected.contest].rounds[index.rnd].groups[index.group].slammer.push({ 'id': slId });
+            app.updateByIdValues();
+            app.utils.persistData();
+            app.updateScreen(true);
+        } else {
+            console.warn('Slammer ' + slId + ' was already assigned to group ' + groupId);
+        }
+    };
 
-        // TODO: Use app.getRndAndGroupIndex();
-        outOfLoop:
-        for (var i = 0, len = rnds.length; i < len; i++) {
-            for (var j = 0, lenj = rnds[i].groups.length; j < lenj; j++) {
-                if (rnds[i].groups[j].id == app.selected.group) {
-                    for (var k = 0, lenk = rnds[i].groups[j].slammer.length; k < lenk; k++) {
-                        if (rnds[i].groups[j].slammer[k].id == slId) {
-                            app.data.contests[app.selected.contest].rounds[i].groups[j].slammer.splice(k, 1);
-                            break outOfLoop;
-                        }
-                    }
-                }
+
+    /**
+     *
+     */
+    app.manip.isSlammerAlreadyAssignedToGroup = function(slammerId, slammerArray) {
+        for (var i = 0, len = slammerArray.length; i < len; i++) {
+            if (slammerArray[i].id == slammerId) {
+                return true;
+            }
+        }
+        return false;
+    };
+
+
+    /**
+     *
+     */
+    app.manip.unassignSlammer = function(slId, groupId) {
+        var index = app.getRndAndGroupIndex(groupId);
+        var slammer = app.data.contests[app.selected.contest].rounds[index.rnd].groups[index.group].slammer;
+
+        for (var i = 0, len = slammer.length; i < len; i++) {
+            if (slammer[i].id == slId) {
+                app.data.contests[app.selected.contest].rounds[index.rnd].groups[index.group].slammer.splice(i, 1);
+                break;
             }
         }
 

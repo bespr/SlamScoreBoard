@@ -10,30 +10,52 @@ var app = app || {};
 
     /**
      * Contest
+     *
+     * Drag-n-Drop Slammer in Next Round
      */
     app.templateLoadedEvent.contest = function() {
-        $('.contestContainer .rnd .group ul li span.name').draggable({
+        $('.contestContainer .rnd .group ul li').draggable({
             helper: 'clone',
             revert: 'invalid',
+            start: function() {
+                app.isDragging = true;
+            },
+            stop: function(ev) {
+                setTimeout(function() {
+                    app.isDragging = false;
+                }, 200);
+            }
         });
-        $('.contestContainer .rnd .group ul').droppable({
-
+        $('.contestContainer .rnd .group').droppable({
             drop: function(ev, ui) {
-                var originalRound = ui.draggable.parents('.rnd');
-                var targetRound = $(this).parents('.rnd');
-                if (originalRound.index() < targetRound.index()) {
-                    ui.draggable.attr('data-slammer-id');
+                var originalRnd = ui.draggable.parents('.rnd');
+                var targetRnd = $(this).parents('.rnd');
 
-                    // More to come here
+                // Add to next round
+                if (originalRnd.index() < targetRnd.index()) {
+                    var slammerId = ui.draggable.attr('data-slammer-id');
+                    var groupId = $(this).attr('data-screen-id');
+                    if (slammerId !== undefined && groupId !== undefined) {
+                        app.manip.assignSlammerToGroup(slammerId, groupId);
+                    }
+                }
+                // Remove (dragging to the previous round)
+                else if (originalRnd.index() > targetRnd.index()) {
+                    var slammerId = ui.draggable.attr('data-slammer-id');
+                    var groupId = ui.draggable.parents('.group').attr('data-screen-id');
+                    if (slammerId !== undefined && groupId !== undefined) {
+                        app.manip.unassignSlammer(slammerId, groupId);
+                    }
                 }
             }
-
         });
     };
 
 
     /**
-     * Group
+     * Group:
+     *
+     * Sort order of slammers
      */
     app.templateLoadedEvent.group = function() {
         $('ul.grades').each(function() {

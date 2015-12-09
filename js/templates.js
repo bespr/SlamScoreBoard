@@ -141,7 +141,7 @@ var app = app || {};
         tmpl += '<div class="contestContainer numOfRnds-' + numOfRnds + '">';
         for (var i = 0; i < numOfRnds; i++) {
             var rnd = dataContest.rounds[i];
-            tmpl += '<div class="rnd"><div class="inner">';
+            tmpl += '<div class="rnd" data-rnd-id="' + rnd.id + '"><div class="inner">';
             tmpl += '<h3>' + rnd.name + '</h3>';
             for (var j = 0, lenj = rnd.groups.length; j < lenj; j++) {
                 var g = rnd.groups[j];

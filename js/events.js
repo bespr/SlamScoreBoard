@@ -51,8 +51,10 @@ var ENTER_KEY = 13;
      * Change Screen
      */
     $(document).on('click', '.changeScreen', function() {
-        app.currentScreen = { name: $(this).attr('data-screen'), id: $(this).attr('data-screen-id') };
-        app.updateScreen();
+        if (!app.isDragging) {
+            app.currentScreen = { name: $(this).attr('data-screen'), id: $(this).attr('data-screen-id') };
+            app.updateScreen();
+        }
     });
 
     /*
@@ -332,27 +334,32 @@ var ENTER_KEY = 13;
      */
     $(document).on('click', '.contestContainer .group li', function(ev) {
 
-        var slammerId = $(this).attr('data-slammer-id');
-        var groupId = $(this).parents('.group').attr('data-screen-id');
-
-        // Mark slammer with StyleA or StyleB
-        if (ev.ctrlKey || ev.metaKey) {
-            // StyleB
-            if (ev.shiftKey) {
-                app.manip.toggleSlammerMark(slammerId, 'b', groupId);
-            }
-            // StyleA
-            else {
-                app.manip.toggleSlammerMark(slammerId, 'a', groupId);
-            }
+        if (app.isDragging) {
             ev.stopPropagation();
         } else {
-            var xpos = (ev.offsetX === undefined ? ev.originalEvent.layerX : ev.offsetX);
-            if (xpos < 50) {
+
+            var slammerId = $(this).attr('data-slammer-id');
+            var groupId = $(this).parents('.group').attr('data-screen-id');
+
+            // Mark slammer with StyleA or StyleB
+            if (ev.ctrlKey || ev.metaKey) {
+                // StyleB
+                if (ev.shiftKey) {
+                    app.manip.toggleSlammerMark(slammerId, 'b', groupId);
+                }
+                // StyleA
+                else {
+                    app.manip.toggleSlammerMark(slammerId, 'a', groupId);
+                }
                 ev.stopPropagation();
-                app.selected.group = groupId;
-                app.currentScreen = { name: 'slammer', id: slammerId };
-                app.updateScreen();
+            } else {
+                var xpos = (ev.offsetX === undefined ? ev.originalEvent.layerX : ev.offsetX);
+                if (xpos < 50) {
+                    ev.stopPropagation();
+                    app.selected.group = groupId;
+                    app.currentScreen = { name: 'slammer', id: slammerId };
+                    app.updateScreen();
+                }
             }
         }
     });
@@ -492,6 +499,16 @@ var ENTER_KEY = 13;
         }, 1200);
     });
     */
+
+
+    /* General Keys */
+    $(document).on('keyup', function(ev) {
+        switch (ev.which) {
+            case 27: // Esc
+                history.back();
+                break;
+        }
+    });
 
 
 }());

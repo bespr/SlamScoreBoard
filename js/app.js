@@ -19,6 +19,8 @@ var app = app || {};
 
     app.availableLanguages = ['de', 'en', 'fr', 'tg'];
 
+    app.isDragging = false;
+
     app.updateScreen = function(forceUpdate) {
         forceUpdate = forceUpdate ? true : false;
         var suffix = '';
