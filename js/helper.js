@@ -149,6 +149,8 @@ var app = app || {};
     };
 
     app.utils.clearAllData = function() {
+        app.currentScreen = { name: 'start', id: false };
+        app.updateScreen();
         localStorage.clear();
         app.utils.loadData();
     };
