@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <!-- <meta name="buildDate" content="2016-02-09 00:53:53"> -->
+        <!-- <meta name="buildDate" content="2016-02-11 09:49:33"> -->
         <script>
             var host = "bespr.github.io";
             if ((host == window.location.host) && (window.location.protocol != "https:")) {
@@ -15,12 +15,14 @@
 
         <title>SlamScoreBoard</title>
         <meta name="description" content="SlamScoreBoard (Slam-Score-Board) is a projection tool (Beamer Scoreboard) for poetry slam events." />
-        <meta name="robots" content="noindex, nofollow">
+        <meta name="robots" content="index, follow">
 
 
 
         <link rel="canonical" href="https://bespr.github.io/SlamScoreBoard/index_en.html" />
+        
         <link rel="alternate" href="https://bespr.github.io/SlamScoreBoard/index.html" hreflang="de" />
+        <link rel="alternate" href="https://bespr.github.io/SlamScoreBoard/index_en.html" hreflang="en" />
 
 
         <!-- Bootstrap -->
@@ -105,114 +107,110 @@
             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 English <span class="caret"></span>
             </button>
-            <ul class="dropdown-menu"><li><a href="index.html">Deutsch</a></li></ul>
+            <ul class="dropdown-menu"><li><a href="index.html">Deutsch</a></li><li><a href="index_en.html">English</a></li></ul>
             </div></nav>
 
             <img src="logo_ssb.svg" alt="Logo SSB" style="width: 100%; margin-bottom: 20px;">
 
             <h1>Slam Score Board</h1>
 
-            <p class="lead">Beamer Scoreboard / Projection Tool for <a href="https://en.wikipedia.org/wiki/Poetry_slam">Poetry Slam</a>-events</p>
+            <p class="lead">Beamer Scoreboard / Projection Tool for <a href="https://en.wikipedia.org/wiki/Poetry_slam">Poetry Slam</a> events</p>
 
-            <p>Mit SSB ist die Projektion der Poetry-Slam-Resultate ein Kinderspiel. Die Projektion der Resultate kann individuell angepasst werden (wie viele Runden, welche Jury, etc.).</p>
-            <p>Die Bedienung erfolgt über einen Webbrowser. Dadurch musst du keine zusätzlichen Anwendungen installieren. Es wird auch keine Internetverbindung benötigt.</p>
+            <p>With SSB it's very simple to project results of your poetry slam event. SSB allows a wide range of configuration adjustment according to your modalities (number of rounds, jury type, etc.).</p>
+            <p>SSB runs completely in the webbrowser. No additional software have to be installed. And it's an offline tool. No internet connection is needed.</p>
 
-            <h2>Das Wichtigste in Kürze</h2>
+            <h2>Features</h2>
             <ul>
-                <li>SSB läuft im Webbrowser.</li>
-                <li>SSB ist ein Offline-Tool.</li>
-                <li>Die gängigsten Wettbewerbmodi können eingestellt werden (z.B. Vorrunden-Finale, Cup-Modus, etc.).</li>
-                <li>Jurywertung kann angepasst werden (z.B. Noten mit einer Dezimalstelle, Streichnoten, Applaus, etc.).</li>
-                <li>Einstellungen können vorab gespeichert und dann kurz vor der Veranstaltung wieder geladen werden.</li>
-				<li>Neben Deutsch auch in unseren anderen Lieblingssprachen erhältlich: Französisch, Englisch, Thurgauerdialekt.</li>
-				<li style="opacity: 0.4;">Exportieren der Resultate in einer html- oder csv-Tabelle ist möglich. (Demnächst)</li>
+                <li>SSB runs in the webbrowser.</li>
+                <li>SSB is an offline tool.</li>
+                <li>Choose between all popular contest modes (e.g. preliminary/final round, knock-out tournaments, etc.).</li>
+                <li>Adaptable judges settings (e.g. decimal place off/on, dropping grades, applause meter, etc.).</li>
+                <li>Configuration, settings and slammer setup may be saved in advance, and loaded just before the event.</li>
+				<li>Available in all our favourite languages: English, German, French, Thurgovian Dialect.</li>
+				<li style="opacity: 0.4;">Export your results as html or csv table (Coming soon)</li>
 
             </ul>
 
             <a name="get"></a>
-            <h2>Inbetriebnahme</h2>
+            <h2>Installation</h2>
 
             <ol>
-                <li>Download ZIP-Datei
+                <li>Download ZIP file
                     <p>
-                        <a class="btn btn-success btn-lg downloadButton" href="https://github.com/bespr/SlamScoreBoard/archive/master.zip">Neuste Developer-Version</a>
-                        <button type="button" class="btn btn-success btn-lg" disabled="disabled">Stabiler Release<span class="buttonminitext">(Bald oder irgendwann mal)</span></button>
+                        <a class="btn btn-success btn-lg downloadButton" href="https://github.com/bespr/SlamScoreBoard/archive/master.zip">Latest developer version</a>
+                        <button type="button" class="btn btn-success btn-lg" disabled="disabled">stable release<span class="buttonminitext">(Soon or less soon)</span></button>
                     </p>
                 </li>
 
-                <li>Entpacken
-
-                </li>
-                <li>
-                    <code>SlamScoreBoard.html</code> in deinem Lieblingswebbrowser öffnen
-                </li>
+                <li>Unpack</li>
+                <li>Open <code>SlamScoreBoard.html</code> in your favourite webbrowser</li>
             </ol>
 
             <a name="video"></a>
-            <h2>Im Video erklärt</h2>
+            <h2>Explanation Video (German)</h2>
             <div class="videoOuterWrapper">
                 <div class="videoWrapper">
                     <iframe src="https://player.vimeo.com/video/140849306?title=0&byline=0&portrait=0" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
                 </div>
             </div>
             <ul>
-                <li>Im Video auf die Schaltfläche <b>CC</b> klicken, um deutsche oder englische Untertitel einzublenden.</li>
-                <li>Im Video auf das <b>Vimeo-Logo</b> klicken, um das Video <b>in HD-Qualität</b> (viel lesbarer) zu sehen</li>
+                <li>Click on <b>CC</b> to enable <b>English Subtitles</b>.</li>
+                <li>Click on the <b>Vimeo logo</b>, to watch the video <b>in HD quality</b> (much more readable)</li>
             </ul>
 
-            <h2>Bedienungsanleitung</h2>
+            <h2>Manual</h2>
 
-            <p>Wir haben ein sehr langes <a href="https://github.com/bespr/SlamScoreBoard/blob/master/documentation/UserManual.md">User Manual</a> verfasst, und bitten dich, es dir zu Gemüte zu führen. Falls etwas im Manual ungeklärt bleibt, bitte <a href="#contact">unverzüglich melden</a>.</p>
+            <p>We wrote a very long <a href="https://github.com/bespr/SlamScoreBoard/blob/master/documentation/UserManual.md">User Manual</a>. We ask you to learn German and to read it.</p>
 
-            <p><a href="https://github.com/bespr/SlamScoreBoard/blob/master/documentation/UserManual.md" class="btn btn-primary btn-lg">User Manual online ansehen</a></p>
+            <p><a href="https://github.com/bespr/SlamScoreBoard/blob/master/documentation/UserManual.md" class="btn btn-primary btn-lg">To the German Online User Manual</a></p>
 
 
 
-            <h2>Herumspielen mit Test-Daten</h2>
+            <h2>Play around with test data</h2>
 
-            <p>Schon klar: Als Slam-Master hast du alle Hände voll zu tun, und kannst dich unmöglich noch um Software-Evaluationen kümmern. Deshalb haben wir eine Datei mit Test-Daten vorbereitet, damit du nicht zuerst eine Test-Veranstaltung und zwei Test-Runden und fünf Test-Zwischenrunden und 15 Test-Slammer und 800 Test-Noten eingeben musst.</p>
+            <p>As Slam Master you probably have a lot to do, and may find it impossible to evaluate beamer projection software from scratch. Therefore we provide a test file, which contains some sample data.</p>
 
-            <p>Das geht so:</p>
+            <p>That's how it works:</p>
             <ol>
-                <li>SSB in Betrieb nehmen (siehe <a href="#installation">Inbetriebnahme</a>)</li>
-                <li>Auf der Startseite auf «<b>Daten aus Datei laden</b>» klicken</li>
-                <li>Datei im Verzeichnis <code>[[Pfad-zu-deinem-SSB-Download]]/SlamScoreBoard/saved_slams/test1.ssb</code> auswählen.</li>
-                <li>Die Test-Daten sind nun geladen. Du darfst sie beliebig verändern und herumspielen. Wenn du auf den Geschmack gekommen bist, und gerne selber von vorne starten willst, kannst du auf «<b>Alles ratzfatz löschen</b>» klicken, um die geladenen Daten wieder loszuwerden.</li>
+                <li>Install SSB (see <a href="#installation">Installation</a>)</li>
+                <li>Click on «<b>Load Data from file</b>»</li>
+                <li>Choose the file in the folder <code>[[Pfad-zu-deinem-SSB-Download]]/SlamScoreBoard/saved_slams/test1.ssb</code>.</li>
+                <li>The test data are now loaded. You can play around. If you like SSB and want to start from scratch, click on  «<b>Clear everything</b>».</li>
             </ol>
 
             <a name="license"></a>
-			<h2>Lizenz und Nutzungsbedingungen</h2>
-			<p>SSB ist Open Source und läuft unter der MIT-Lizenz. Das heisst, kurz zusammengefasst, dass du SSB gratis benutzen darfst, sooft du willst,uns aber nicht verklagen kannst, wenn etwas schief läuft.</p>
-			<p>Die MIT-Lizenz regelt das Rechtliche. Zusätzlich haben wir eine weitere fakultative Anforderung an die Benutzung des Tools: Schreib uns doch einige Tage vor dem Slam, dass du SSB einsetzen willst, damit wir den Anlass auf unsere Referenzliste setzen können und unsere Seele sich mit Stolz erfüllt. Ausserdem freuen wir uns über Einladungen zu Slam-Veranstaltungen und/oder über ein Gratis-Bier. Sehr hilfreich für die erfolgreiche Weiterentwicklung des Tools ist auch Feedback nach der Veranstaltung. Am besten mit Foto! Am besten mit Foto, wo im Vordergrund der Sieger mitten in der Performance und im Hintergrund das SlamScoreBoard zu sehen ist.</p>
+			<h2>License</h2>
+			<p>SSB is Open Source and released under the <a href="https://tldrlegal.com/license/mit-license">MIT license</a>. That means, shortly summarized, that you may use SSB free of charge, but you can not take us to court, if something goes wrong.</p>
+			<p>The license defines the legal issues. Additionally we have an optional requirement for using SSB: Please write to us, if you organize a Poetry slam event, where you want to use SSB, so that we can put the event to our reference list, and our souls are filled with pride. Furthermore we would be very pleased if we receive an invitation to your event and/or a free beer. Your feedback after the event ist very helpful for the further development of SSB. Best with photo! Best with photo, where the slam winner is in the foreground, and a SSB projection in the background...</p>
 
             <a name="ref"></a>
-            <h2>Veranstaltungen, die SSB eingesetzt haben</h2>
+            <h2>Events, which have used SSB so far</h2>
             <ul>
-                <li><strong>April 2015</strong>: Schweizermeisterschaften 2015 im Schiffbau in Zürich (<a href="https://www.facebook.com/poetryslamzuerich">link</a>)</li>
-                <li><strong>Oktober 2015</strong>: Wild Word Wallis im Zeughaus in Brig (<a href="https://www.facebook.com/perronslam">link</a>)
+                <li><strong>April 2015</strong>: Swiss Championship 2015 at Schiffbau in Zurich (<a href="https://www.facebook.com/poetryslamzuerich">link</a>)</li>
+                <li><strong>October 2015</strong>: Wild Word Wallis at Zeughaus in Brig (<a href="https://www.facebook.com/perronslam">link</a>)
 
                     <div class="photos">
                         <a href="img/wild_word_wallis_2015_1.jpg"><img src="img/wild_word_wallis_2015_1.jpg" /></a>
                         <a href="img/wild_word_wallis_2015_2.jpg"><img src="img/wild_word_wallis_2015_2.jpg" /></a>
                     </div>
                 </li>
-                <li><strong>März 2016</strong>: Schweizermeisterschaften 2016 in 3 Locations in St. Gallen (<a href="http://slamgallen.ch/schweizermeisterschaften-2016">link</a>) [geplant]</li>
-                <li><span style="opacity: 0.4">Super-Slam in der Allianz-Arena, München (Angefragt)</li>
-                <li><span style="opacity: 0.4">Power-Slam im Stade de France, St-Denis (Angefragt)</li>
-                <li><span style="opacity: 0.4">Mega-Slam im Madison Square Garden, New York (Angefragt)</li>
-                <li>Dein Slam? Bitte melde es uns, falls du SSB benutzten willst oder benutzt hast. Wir freuen uns sehr darüber.</li>
+                <li><strong>March 2016</strong>: Swiss Championship 2016 at 3 Locations in St. Gallen (<a href="http://slamgallen.ch/schweizermeisterschaften-2016">link</a>) [planned]</li>
+                <li><span style="opacity: 0.4">Super-Slam at Allianz arena, Munich (requested)</li>
+                <li><span style="opacity: 0.4">Power-Slam at Stade de France, St-Denis (requested)</li>
+                <li><span style="opacity: 0.4">Mega-Slam at Madison Square Garden, New York (requested)</li>
+                <li>Your Poetry Slam Event? Please tell us, if you want to use SSB or if you already have used it. We are always delighted about feedback.</li>
             </ul>
 
 
             <a name="contact"></a>
-            <h2>Kontakt</h1>
+            <h2>Contact</h1>
 
-            <p>Ivo Engeler (<script>writeEm('ch', 'ivoangular', 'ivo')</script>) und Beat Oberholzer (<script>writeEm('li', 'oberholzer', 'beat')</script>)</p>
+            <p>Ivo Engeler (<script>writeEm('ch', 'ivoangular', 'ivo')</script>) and Beat Oberholzer (<script>writeEm('li', 'oberholzer', 'beat')</script>)</p>
 
-            <p>Falls du das Tool verbesserst, zögere nicht, die Änderungen als Pull Request in den <a href="https://github.com/bespr/SlamScoreBoard">Github-Master-Branch</a> zurückzuspielen.</p>
+            <p>If you want to improve SSB, don't hesitate to send a Pull Request to our <a href="https://github.com/bespr/SlamScoreBoard">Github Master Branch</a>.</p>
 
             <a name="twitter"></a>
-            <h2>Ganz aktuelles Zeugs via Twitter</h2>
+            <h2>Very up-to-date stuff via Twitter</h2>
 
             <a class="twitter-timeline" href="https://twitter.com/SlamScoreBoard" data-widget-id="588248841981468672">Tweets by @SlamScoreBoard</a>
             <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>

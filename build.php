@@ -26,7 +26,7 @@ class Builder
 
         $this->langs = array('de' => 'Deutsch', 'en' => 'English', 'fr' => 'Français', 'tg' => 'Thurgauerdialekt');
         $this->realLangCode = array('de' => 'de', 'en' => 'en', 'fr' => 'fr', 'tg' => 'de-ch-tg');
-        $this->activeStatus = array('de' => true, 'en' => false, 'fr' => false, 'tg' => false);
+        $this->activeStatus = array('de' => true, 'en' => true, 'fr' => false, 'tg' => false);
         $this->mainLang = 'de';
 
         $this->specialTags = array('metaRobots', 'alternativeLangLinks', 'langCode', 'langNav', 'buildDate');
@@ -127,7 +127,7 @@ class Builder
 
 
     private function getAlternateLinks() {
-        $o = '';
+        $o = PHP_EOL;
         foreach ($this->langs as $langCode => $langName) {
             if ($this->activeStatus[$langCode]) {
                 $langSuffix = '_' . $langCode;
@@ -135,7 +135,7 @@ class Builder
                     $langSuffix = '';
                 }
 
-                $o .= '<link rel="alternate" href="https://bespr.github.io/SlamScoreBoard/index' . $langSuffix . '.html" hreflang="' . $this->realLangCode[$langCode] . '" />' . PHP_EOL;
+                $o .= '        <link rel="alternate" href="https://bespr.github.io/SlamScoreBoard/index' . $langSuffix . '.html" hreflang="' . $this->realLangCode[$langCode] . '" />' . PHP_EOL;
             }
         }
 

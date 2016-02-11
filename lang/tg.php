@@ -30,7 +30,7 @@ $lang['tg'] = array(
     'Installation_DownloadStable' => 'Stabiler Release',
     'Installation_DownloadStableNotes' => 'Bald oder irgendwann mal',
     'Installation_Unpack' => 'Entpacken',
-    'Installation_OpenInBrowser' => 'in deinem Lieblingswebbrowser öffnen',
+    'Installation_OpenInBrowser' => '<code>SlamScoreBoard.html</code> in deinem Lieblingswebbrowser öffnen',
 
     'Video_Title' => 'Im Video erklärt',
     'Video_Note01' => 'Im Video auf die Schaltfläche <b>CC</b> klicken, um deutsche oder englische Untertitel einzublenden.',
@@ -49,7 +49,7 @@ $lang['tg'] = array(
     'DryRun_ListItem04' => 'Die Test-Daten sind nun geladen. Du darfst sie beliebig verändern und herumspielen. Wenn du auf den Geschmack gekommen bist, und gerne selber von vorne starten willst, kannst du auf «<b>Alles ratzfatz löschen</b>» klicken, um die geladenen Daten wieder loszuwerden.',
 
     'License_Title' => 'Lizenz und Nutzungsbedingungen',
-    'License_Note01' => 'SSB ist Open Source und läuft unter der MIT-Lizenz. Das heisst, kurz zusammengefasst, dass du SSB gratis benutzen darfst, sooft du willst,uns aber nicht verklagen kannst, wenn etwas schief läuft.',
+    'License_Note01' => 'SSB ist Open Source und läuft unter der <a href="https://tldrlegal.com/license/mit-license">MIT-Lizenz</a>. Das heisst, kurz zusammengefasst, dass du SSB gratis benutzen darfst, sooft du willst,uns aber nicht verklagen kannst, wenn etwas schief läuft.',    
     'License_Note02' => 'Die MIT-Lizenz regelt das Rechtliche. Zusätzlich haben wir eine weitere fakultative Anforderung an die Benutzung des Tools: Schreib uns doch einige Tage vor dem Slam, dass du SSB einsetzen willst, damit wir den Anlass auf unsere Referenzliste setzen können und unsere Seele sich mit Stolz erfüllt. Ausserdem freuen wir uns über Einladungen zu Slam-Veranstaltungen und/oder über ein Gratis-Bier. Sehr hilfreich für die erfolgreiche Weiterentwicklung des Tools ist auch Feedback nach der Veranstaltung. Am besten mit Foto! Am besten mit Foto, wo im Vordergrund der Sieger mitten in der Performance und im Hintergrund das SlamScoreBoard zu sehen ist.',
 
     'Ref_Title' => 'Veranstaltungen, die SSB eingesetzt haben',
