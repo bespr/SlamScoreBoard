@@ -33,6 +33,7 @@ class Builder
 
         $this->constructTargets();
         $this->createTargetFiles();
+        $this->createMetaFiles();
     }
 
 
@@ -130,16 +131,37 @@ class Builder
         $o = PHP_EOL;
         foreach ($this->langs as $langCode => $langName) {
             if ($this->activeStatus[$langCode]) {
-                $langSuffix = '_' . $langCode;
-                if ($langCode == 'de') {
-                    $langSuffix = '';
+                $langFileName = '/index_' . $langCode . '.html';
+                if ($langCode === $this->mainLang) {
+                    $langFileName = '';
                 }
-
-                $o .= '        <link rel="alternate" href="https://bespr.github.io/SlamScoreBoard/index' . $langSuffix . '.html" hreflang="' . $this->realLangCode[$langCode] . '" />' . PHP_EOL;
+                $o .= '        <link rel="alternate" href="https://bespr.github.io/SlamScoreBoard' . $langFileName . '" hreflang="' . $this->realLangCode[$langCode] . '" />' . PHP_EOL;
             }
         }
 
         return $o;
+    }
+
+
+    private function createMetaFiles()
+    {
+        $o = '<?xml version="1.0" encoding="UTF-8"?>' . PHP_EOL;
+        $o .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . PHP_EOL;
+        foreach ($this->langs as $langCode => $langName) {
+            if ($this->activeStatus[$langCode]) {
+                $langFileName = '/index_' . $langCode . '.html';
+                if ($langCode === $this->mainLang) {
+                    $langFileName = '';
+                }
+                $urlLoc = 'https://bespr.github.io/SlamScoreBoard' . $langFileName;
+                $o .= '    <url>' . PHP_EOL;
+                $o .= '        <loc>' . $urlLoc . '</loc>' . PHP_EOL;
+                $o .= '    </url>' . PHP_EOL;
+            }
+        }
+        $o .= '</urlset>' . PHP_EOL;
+
+        file_put_contents('sitemap.xml', $o);
     }
 
 

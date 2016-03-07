@@ -7,7 +7,7 @@ if (!isset($lang) || !is_array($lang)) {
 $lang['fr'] = array(
     'Meta_Title' => 'SlamScoreBoard',
     'Meta_Description' => 'SlamScoreBoard (Slam-Score-Board) is a projection tool (Beamer Scoreboard) for poetry slam events.',
-    'Meta_CanonicalUrl' => 'https://bespr.github.io/SlamScoreBoard/index_en.html',
+    'Meta_CanonicalUrl' => 'https://bespr.github.io/SlamScoreBoard',
 
     'Page_MainTitle' => 'Slam Score Board',
     'Page_Lead' => 'Beamer Scoreboard / Projection Tool for <a href="https://en.wikipedia.org/wiki/Poetry_slam">Poetry Slam</a>-events',

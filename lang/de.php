@@ -7,7 +7,7 @@ if (!isset($lang) || !is_array($lang)) {
 $lang['de'] = array(
     'Meta_Title' => 'SlamScoreBoard',
     'Meta_Description' => 'SlamScoreBoard (Slam-Score-Board) ist ein Projektionstool (Beamer-Anzeigetafel, Projektion-Tool) für Poetry-Slam-Veranstaltungen.',
-    'Meta_CanonicalUrl' => 'https://bespr.github.io/SlamScoreBoard/index.html',
+    'Meta_CanonicalUrl' => 'https://bespr.github.io/SlamScoreBoard',
 
     'Page_MainTitle' => 'Slam Score Board',
     'Page_Lead' => 'Beamer-Anzeigetafel / Projektionstool für <a href="http://de.wikipedia.org/wiki/Poetry_Slam">Poetry-Slam</a>-Veranstaltungen',
