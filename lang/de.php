@@ -55,7 +55,9 @@ $lang['de'] = array(
     'Ref_Title' => 'Veranstaltungen, die SSB eingesetzt haben',
     'Ref_Item01' => '<strong>April 2015</strong>: Schweizermeisterschaften 2015 im Schiffbau in Zürich (<a href="https://www.facebook.com/poetryslamzuerich">link</a>)',
     'Ref_Item02' => '<strong>Oktober 2015</strong>: Wild Word Wallis im Zeughaus in Brig (<a href="https://www.facebook.com/perronslam">link</a>)',
-    'Ref_Item03' => '<strong>März 2016</strong>: Schweizermeisterschaften 2016 in 3 Locations in St. Gallen (<a href="http://slamgallen.ch/schweizermeisterschaften-2016">link</a>) [geplant]',
+    'Ref_Item03' => '<strong>März 2016</strong>: Schweizermeisterschaften 2016 in 3 Locations in St. Gallen (<a href="http://slamgallen.ch/schweizermeisterschaften-2016">link</a>)',
+    'Ref_Item04' => '<strong>März 2017</strong>: Schweizermeisterschaften 2017 in Olten [geplant]',
+
 
     'Ref_FakeItem01' => 'Super-Slam in der Allianz-Arena, München (Angefragt)',
     'Ref_FakeItem02' => 'Power-Slam im Stade de France, St-Denis (Angefragt)',
