@@ -237,6 +237,29 @@ var app = app || {};
             location.reload();
         }
     };
+    
+    /**
+     * Set Styles on Group Screen According to number of Slammers and Number of Judges
+     */
+    app.utils.updateDynamicGroupSize = function() {
+        var numOfRows = $('.groupList li').length;
+        var numOfInputs = parseInt(app.data.contests[app.selected.contest].config.numOfGrades) + 1;
+        
+        var groupFontSize = '1.5em';
+        
+        if (numOfRows <= 10) {
+            if (numOfRows > 6) {
+                groupFontSize = '2em';
+            } else {
+                groupFontSize = '2.5em';
+            }            
+        }
+        $('.template-group ul.groupList').css('font-size', groupFontSize);
+        
+        var totalInputsWidth = $('.template-group ul.groupList li .grades').width();
+        var totalInputsWidthWithoutMargins = totalInputsWidth - (numOfInputs * 20) - 4;
+        $('.template-group ul.groupList li .grades input').width(totalInputsWidthWithoutMargins / numOfInputs);
+    };
 
 
     app.utils.getTechTime = function(d) {

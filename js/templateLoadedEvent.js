@@ -77,6 +77,8 @@ var app = app || {};
                 app.manip.saveRearrangedSlammer(slammerIds);
             }
         });
+        
+        app.utils.updateDynamicGroupSize();
 
     };
 
