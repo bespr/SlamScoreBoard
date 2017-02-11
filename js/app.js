@@ -1,5 +1,8 @@
 var app = app || {};
 
+app.version = '0.91';
+app.versionDate = '12. Feb. 2017';
+
 (function () {
     'use strict';
 

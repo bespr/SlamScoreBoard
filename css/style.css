@@ -167,6 +167,10 @@ option { background: #444; color: #ccc; }
 
 /* SSB Logo */
 #ssbLogo { position: absolute; top: 4px; right: 4px; width: 100px;  }
+#ssbLogo a { display: block; text-decoration: none; }
+#ssbLogo svg { display: block; margin-bottom: 2px; }
+#ssbLogo .version { color: #806682; font-size: 12px; line-height: 14px; display: block; text-align: right; }
+
 
 /* Clearfix */
 .cf:before, .cf:after { content: ' '; display: table; }
