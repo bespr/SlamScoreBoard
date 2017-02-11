@@ -162,6 +162,9 @@ option { background: #444; color: #ccc; }
 /* Draggable jQuery Style */
 .ui-draggable-dragging { min-width: 200px; background: rgba(255, 255, 255, 0.05); }
 
+/* Resolution Hint */
+#resolutionHint { font-size: 12px; color: red; }
+
 /* SSB Logo */
 #ssbLogo { position: absolute; top: 4px; right: 4px; width: 100px;  }
 

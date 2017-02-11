@@ -90,7 +90,7 @@ var app = app || {};
         tmpl += '<div class="buttonBox">';
             tmpl += '<div class="changeScreen bl bh bi" data-screen="contest" data-screen-id="' + app.selected.contest + '">' + l('back_to_contest') + '</div>';
             tmpl += '<div class="changeScreen bl bh bi" data-screen="group" data-screen-id="' + app.selected.group + '">' + l('back_to_group') + '</div>';
-        tmpl += '</div>'
+        tmpl += '</div>';
         return tmpl;
     };
 
@@ -214,7 +214,8 @@ var app = app || {};
     app.screens.start = function () {
         var contestNames = app.getContestNames();
 
-        var tmpl = app.screens.parts.ssbLogo();
+        var tmpl = app.screens.parts.resolutionHint();
+        tmpl += app.screens.parts.ssbLogo();
         tmpl += '<h1><span class="icon icon-home"></span>' + l('start_title') + '</h1>';
         tmpl += '<h2>' + l('select_contest') + '</h2>';
         if (contestNames.length > 0) {
@@ -298,13 +299,15 @@ var app = app || {};
                     tmpl += '<input type="text" class="margin" data-margin-name="bottom" value="' + app.data.designConf.marginBottom + '" />';
                     tmpl += '</div>';
                 tmpl += '<p class="desc">' + l('desc_margins') + '</p>';
-                tmpl += '</li>';
+            tmpl += '</li>';
 
+/*
             tmpl += '<li>';
                 tmpl += '<label>' + l('logo') + '</label>';
                 tmpl += '<input type="text" class="logo" placeholder="' + l('placeholder_logo') + '" value="' + app.data.designConf.logo + '" />';
                 tmpl += '<p class="desc">' + l('desc_logo') + '</p>';
             tmpl += '</li>';
+            */
             tmpl += '<li>';
                 tmpl += '<label>' + l('sponsors') + '</label>';
                 tmpl += '<textarea class="sponsors" placeholder="' + l('placeholder_sponsors') + '">' + app.data.designConf.sponsors + '</textarea>';
@@ -509,6 +512,16 @@ var app = app || {};
         tmpl += '</select>';
         return tmpl;
     }
+    
+    
+    /**
+     * Resolution Hint
+     */
+    app.screens.parts.resolutionHint = function () {
+        var tmpl = '<div id="resolutionHint">';
+        tmpl += '</div>';
+        return tmpl;
+    }    
 
 
     /**

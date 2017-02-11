@@ -53,5 +53,7 @@ lang.de = {
     'pause': 'Pause',
     'mark_style_a_color': 'Farbe der Markierung A',
     'mark_style_b_color': 'Farbe der Markierung B',
-    'change_language': 'Sprache wechseln'
+    'change_language': 'Sprache wechseln',
+    'screen_size': 'Bildschirm-Grösse:',
+    'recommended': 'Empfohlen:'
 };

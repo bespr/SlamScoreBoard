@@ -1,7 +1,7 @@
 var app = app || {};
 
 (function () {
-	'use strict';
+    'use strict';
 
     app.selected = {
         contest: false,
@@ -183,13 +183,18 @@ var app = app || {};
             '.template-start .contestSelect li',
             '.template-contest .contestContainer .rnd .group',
             '.template-contest .contestContainer .rnd .group ul li .slammerScreenLinkHelper',
-            '.template-group ul.groupList',
-            '.template-group ul.groupList li',
             '.template-group ul.groupList li .grades input.total'
         ];
         app.sheet.insertRule(borderStyleSelectors.join(', ') + ' { border-color: ' + app.data.designConf.fontColor + '; }', 0);
+        
+        var borderTransparentStyleSelectors = [
+            '.template-group ul.groupList',
+            '.template-group ul.groupList li',
+            '.template-contest .contestContainer .rnd .inner'
+        ];        
+        
         var rgba = app.utils.getRgba(app.data.designConf.fontColor, 0.3);
-        app.sheet.insertRule('.template-contest .contestContainer .rnd .inner { border-color: ' + rgba + '; }', 0);
+        app.sheet.insertRule(borderTransparentStyleSelectors.join(', ') + ' { border-color: ' + rgba + '; }', 0);
 
         // Make Input Placeholder Color half transparent
         rgba = app.utils.getRgba(app.data.designConf.fontColor, 0.5);

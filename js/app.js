@@ -1,7 +1,7 @@
 var app = app || {};
 
 (function () {
-	'use strict';
+    'use strict';
 
     // Panic hash
     if (location.hash === '#panic-hash') {

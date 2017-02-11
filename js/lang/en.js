@@ -52,7 +52,10 @@ lang.en = {
     'pause': 'Pause',
     'mark_style_a_color': 'Color of label A',
     'mark_style_b_color': 'Color of label B',
-    'change_language': 'Change language'
+    'change_language': 'Change language',
+    'screen_size': 'Screen size:',
+    'recommended': 'Recommended:'
+    
 
 
 }

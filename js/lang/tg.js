@@ -53,5 +53,7 @@ lang.tg = {
     'pause': 'Pausä',
     'mark_style_a_color': 'Farb vo dä Markiärig A',
     'mark_style_b_color': 'Farb vo dä Markiärig B',
-    'change_language': 'Sproch wäxlä'
+    'change_language': 'Sproch wäxlä',
+    'screen_size': 'Monitorgrössi :',
+    'recommended': 'Empfolä :'        
 };

@@ -7,7 +7,7 @@ var ENTER_KEY = 13;
 
 
 (function () {
-	'use strict';
+    'use strict';
 
     /**
      * Handle "Hidden" Buttons
@@ -484,22 +484,22 @@ var ENTER_KEY = 13;
     });
 
     /* Window Resize */
-    /*
     $(window).on('resize', function() {
-        $('#overlay').remove();
-        var a = '<div id="overlay">';
-        a += '<h2>' + l('new_browser_size') + '</h2>';
-        a += '<p>' + $(window).width() + ' x ' + $(window).height() + '</p>';
-        a += '</div>';
-        $('body').append(a);
-
-        window.clearInterval(app.timeoutIds.overlay);
-        app.timeoutIds.overlay = window.setTimeout(function() {
-            $('#overlay').remove();
-        }, 1200);
+        app.updateResolutionHint();
     });
-    */
-
+    app.updateResolutionHint = function() {
+        var hintEl = $('#resolutionHint');
+        if (hintEl.length > 0) {
+            var w = $(window).width();
+            var h = $(window).height();
+            if (w < 1900 || h < 1060) {
+                hintEl.html(l('screen_size') + ' ' + w + ' ✕ ' + h + '. ' + l('recommended') + ' 1920 ✕ 1080 (HD)');
+            } else {
+                hintEl.html('');
+            }
+        }
+    };
+   
 
     /* General Keys */
     $(document).on('keyup', function(ev) {

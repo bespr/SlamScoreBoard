@@ -2,10 +2,15 @@ var app = app || {};
 
 
 (function () {
-	'use strict';
+    'use strict';
 
     app.templateLoadedEvent = {};
     app.timeoutIds = {};
+    
+    
+    app.templateLoadedEvent.start = function() {
+        app.updateResolutionHint();
+    };
 
 
     /**
