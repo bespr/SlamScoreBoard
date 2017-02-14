@@ -10,7 +10,7 @@ var ENTER_KEY = 13;
     'use strict';
 
     /**
-     * Handle "Hidden" Buttons
+     * Handle "Hidden" Buttons & Hidden Cursor
      */
     app.showButtons = false;
     app.showButtonsTimeoutId = false;
@@ -18,6 +18,7 @@ var ENTER_KEY = 13;
         if (app.showButtons === false) {
             app.showButtons = true;
             $('.bh').addClass('visible');
+            $('html').removeClass('hideCursor');
         }
         window.clearTimeout(app.showButtonsTimeoutId);
         app.showButtonsTimeoutId = window.setTimeout(app.hideButtons, 1000);
@@ -25,6 +26,7 @@ var ENTER_KEY = 13;
     app.hideButtons = function() {
         app.showButtons = false;
         $('.bh').removeClass('visible');
+        $('html').addClass('hideCursor');
     };
 
 
@@ -485,7 +487,11 @@ var ENTER_KEY = 13;
 
     /* Window Resize */
     $(window).on('resize', function() {
-        app.updateResolutionHint();
+        if (app.currentScreen.name == 'start') {
+            app.updateResolutionHint();
+        } else if (app.currentScreen.name == 'group') {
+            app.utils.updateDynamicGroupSize();
+        }
     });
     app.updateResolutionHint = function() {
         var hintEl = $('#resolutionHint');

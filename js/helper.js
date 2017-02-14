@@ -245,13 +245,13 @@ var app = app || {};
         var numOfRows = $('.groupList li').length;
         var numOfInputs = parseInt(app.data.contests[app.selected.contest].config.numOfGrades) + 1;
         
-        var groupFontSize = '1.5em';
+        var groupFontSize = '1.4em';
         
         if (numOfRows <= 10) {
             if (numOfRows > 6) {
-                groupFontSize = '2em';
+                groupFontSize = '1.8em';
             } else {
-                groupFontSize = '2.5em';
+                groupFontSize = '2.2em';
             }            
         }
         $('.template-group ul.groupList').css('font-size', groupFontSize);

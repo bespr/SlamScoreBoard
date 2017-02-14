@@ -79,6 +79,9 @@ body.montserrat { font-family: 'Montserrat', sans-serif; }
 .buttonBox { margin-top: 1em; }
 .buttonBox > div:first-child { margin-left: 0; }
 
+/* Cursor (hide) */
+html.hideCursor * { cursor: none; }
+
 
 /* Input */
 input, textarea {
