@@ -50,6 +50,7 @@ lang.en = {
     'back_to_group': 'Back to group',
     'back_to_contest': 'Back to contest',
     'pause': 'Pause',
+    'full_screen': 'FullScreen',
     'mark_style_a_color': 'Color of label A',
     'mark_style_b_color': 'Color of label B',
     'change_language': 'Change language',

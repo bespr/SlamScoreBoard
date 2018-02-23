@@ -51,6 +51,7 @@ lang.fr = {
     'back_to_group': 'Retour au groupe',
     'back_to_contest': 'Retour à l\'événement',
     'pause': 'Pause',
+    'full_screen': 'FullScreen',
     'mark_style_a_color': 'Couleur du marquage A',
     'mark_style_b_color': 'Couleur du marquage A',
     'change_language': 'Changer de langue',

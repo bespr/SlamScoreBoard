@@ -14,7 +14,11 @@ var app = app || {};
         app.selected.group = groupId;
         app.selected.rnd = group.round.id;
 
-        var tmpl = '<h1>' + group.round.name + '</h1>';
+        var tmpl = '';
+
+        if (parseInt(app.data.contests[app.selected.contest].config.hideHeaderLine) == 0){
+            tmpl += '<h1>' + group.round.name + '</h1>';
+        }
 
         tmpl += '<ul class="groupList">';
         var slammer = app.getSlammer(group.slammer);
@@ -68,6 +72,7 @@ var app = app || {};
 
         tmpl += '<div class="buttonBox">';
             tmpl += '<div class="bl bh bi sortSlammer">' + l('sort_slammer') + '</div>';
+            tmpl += '<div class="bl bh bi fullScreen">' + l('full_screen') + '</div>';
             tmpl += '<div class="bl bh bi showSlammerDropdown">' + l('assign_slammer') + '</div>';
 
             tmpl += '<div class="changeScreen bl bh bi" data-screen="contest" data-screen-id="' + app.selected.contest + '">' + l('contest_screen') + '</div>';
@@ -93,7 +98,6 @@ var app = app || {};
         tmpl += '</div>';
         return tmpl;
     };
-
 
     /*
      * pause
@@ -353,6 +357,9 @@ var app = app || {};
         if (contestData.config.numOfMinDropGrades === undefined) {
             contestData.config.numOfMinDropGrades = 1;
         }
+        if (contestData.config.hideHeaderLine === undefined) {
+            contestData.config.hideHeaderLine = 0;
+        }
 
         var nextRndId = 1;
         for (var rndId in app.rndById) {
@@ -381,6 +388,10 @@ var app = app || {};
         tmpl += '<li>';
         tmpl += '<input class="contestConf" name="numOfMinDropGrades" type="text" value="' + contestData.config.numOfMinDropGrades + '"  />';
         tmpl += '<label>Anzahl Streichnoten gegen unten</label>';
+        tmpl += '</li>';
+        tmpl += '<li>';
+        tmpl += '<input class="contestConf" name="hideHeaderLine" type="text" value="' + contestData.config.hideHeaderLine + '"  />';
+        tmpl += '<label>Titelzeile Verstecken</label>';
         tmpl += '</li>';
         tmpl += '</ul>';
 

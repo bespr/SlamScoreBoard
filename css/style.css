@@ -136,6 +136,7 @@ option { background: #444; color: #ccc; }
 .bi.clearAllData:before { content: 'm'; }
 .bi.addGroup:before { content: 'p'; }
 .bi.sortSlammer:before { content: 'o'; }
+.bi.fullScreen:before { content: 'F'; }
 .bi.showSlammerDropdown:before { content: 'M'; }
 
 .bi.saveToFile:before,

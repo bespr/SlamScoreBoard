@@ -51,6 +51,7 @@ lang.tg = {
     'back_to_group': 'Zrugg zu dä Gruppä',
     'back_to_contest': 'Zrugg zu dä Veraschtaltig',
     'pause': 'Pausä',
+    'full_screen': 'PhullSkriin',
     'mark_style_a_color': 'Farb vo dä Markiärig A',
     'mark_style_b_color': 'Farb vo dä Markiärig B',
     'change_language': 'Sproch wäxlä',

@@ -210,6 +210,7 @@ var app = app || {};
 
         // Set Background Color
         app.sheet.insertRule('body { background-color: ' + app.data.designConf.backgroundColor + '; }', 0);
+        app.sheet.insertRule('html { background-color: ' + app.data.designConf.backgroundColor + '; }', 0);
 
         $('body').removeClass().addClass(app.data.designConf.fontFamily);
         if (app.data.designConf.backgroundImage != '') {
