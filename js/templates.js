@@ -16,9 +16,7 @@ var app = app || {};
 
         var tmpl = '';
 
-        if (parseInt(app.data.contests[app.selected.contest].config.hideHeaderLine) == 0){
-            tmpl += '<h1>' + group.round.name + '</h1>';
-        }
+        tmpl += '<h1>' + group.round.name + '</h1>';
 
         tmpl += '<ul class="groupList">';
         var slammer = app.getSlammer(group.slammer);
@@ -295,6 +293,13 @@ var app = app || {};
                 tmpl += '<p class="desc">' + l('desc_background_image') + '</p>';
             tmpl += '</li>';
             tmpl += '<li>';
+                tmpl += '<label>' + l('hide_title') + '</label>';
+                tmpl += '<select class="hideTitle">'
+                    + '<option value="none" ' + ( app.data.designConf.hideTitle ? 'selected' : '') + '>Yes</option>'
+                    + '<option value="block" ' + ( app.data.designConf.hideTitle ? '' : 'selected') + '>No</option>'
+                    + '</select>';
+            tmpl += '</li>';
+            tmpl += '<li>';
                 tmpl += '<label>' + l('margins') + '</label>';
                 tmpl += '<div class="marginBox">';
                     tmpl += '<input type="text" class="margin" data-margin-name="left" value="' + app.data.designConf.marginLeft + '" />';
@@ -357,9 +362,6 @@ var app = app || {};
         if (contestData.config.numOfMinDropGrades === undefined) {
             contestData.config.numOfMinDropGrades = 1;
         }
-        if (contestData.config.hideHeaderLine === undefined) {
-            contestData.config.hideHeaderLine = 0;
-        }
 
         var nextRndId = 1;
         for (var rndId in app.rndById) {
@@ -388,10 +390,6 @@ var app = app || {};
         tmpl += '<li>';
         tmpl += '<input class="contestConf" name="numOfMinDropGrades" type="text" value="' + contestData.config.numOfMinDropGrades + '"  />';
         tmpl += '<label>Anzahl Streichnoten gegen unten</label>';
-        tmpl += '</li>';
-        tmpl += '<li>';
-        tmpl += '<input class="contestConf" name="hideHeaderLine" type="text" value="' + contestData.config.hideHeaderLine + '"  />';
-        tmpl += '<label>Titelzeile Verstecken</label>';
         tmpl += '</li>';
         tmpl += '</ul>';
 
@@ -523,8 +521,8 @@ var app = app || {};
         tmpl += '</select>';
         return tmpl;
     }
-    
-    
+
+
     /**
      * Resolution Hint
      */
@@ -532,7 +530,7 @@ var app = app || {};
         var tmpl = '<div id="resolutionHint">';
         tmpl += '</div>';
         return tmpl;
-    }    
+    }
 
 
     /**

@@ -465,6 +465,13 @@ var ENTER_KEY = 13;
         app.utils.adaptDesign();
     });
 
+    /* Hide Title */
+    $(document).on('blur', '.hideTitle', function() {
+        app.data.designConf.hideTitle = $(this).val();
+        app.utils.persistData();
+        app.utils.adaptDesign();
+    });
+    
     /* Margins */
     $(document).on('blur', '.margin', function() {
         var attr = $(this).attr('data-margin-name');

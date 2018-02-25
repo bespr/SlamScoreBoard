@@ -12,7 +12,6 @@ var app = app || {};
                     numOfMinDropGrades: 1,
                     numOfMaxDropGrades: 1,
                     numOfDecimalDigits: 1,
-                    hideHeaderLine: 0,
                 },
                 slammer: [
                     { id: '1', name: 'Sepp' },
