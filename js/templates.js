@@ -14,7 +14,9 @@ var app = app || {};
         app.selected.group = groupId;
         app.selected.rnd = group.round.id;
 
-        var tmpl = '<h1>' + group.round.name + '</h1>';
+        var tmpl = '';
+
+        tmpl += '<h1>' + group.round.name + '</h1>';
 
         tmpl += '<ul class="groupList">';
         var slammer = app.getSlammer(group.slammer);
@@ -68,6 +70,7 @@ var app = app || {};
 
         tmpl += '<div class="buttonBox">';
             tmpl += '<div class="bl bh bi sortSlammer">' + l('sort_slammer') + '</div>';
+            tmpl += '<div class="bl bh bi fullScreen">' + l('full_screen') + '</div>';
             tmpl += '<div class="bl bh bi showSlammerDropdown">' + l('assign_slammer') + '</div>';
 
             tmpl += '<div class="changeScreen bl bh bi" data-screen="contest" data-screen-id="' + app.selected.contest + '">' + l('contest_screen') + '</div>';
@@ -93,7 +96,6 @@ var app = app || {};
         tmpl += '</div>';
         return tmpl;
     };
-
 
     /*
      * pause
@@ -289,6 +291,13 @@ var app = app || {};
                 tmpl += '<label>' + l('background_image') + '</label>';
                 tmpl += '<input type="text" class="backgroundImage" placeholder="' + l('placeholder_background_image') + '" value="' + app.data.designConf.backgroundImage + '" />';
                 tmpl += '<p class="desc">' + l('desc_background_image') + '</p>';
+            tmpl += '</li>';
+            tmpl += '<li>';
+                tmpl += '<label>' + l('hide_title') + '</label>';
+                tmpl += '<select class="hideTitle">'
+                    + '<option value="none" ' + ( app.data.designConf.hideTitle ? 'selected' : '') + '>Yes</option>'
+                    + '<option value="block" ' + ( app.data.designConf.hideTitle ? '' : 'selected') + '>No</option>'
+                    + '</select>';
             tmpl += '</li>';
             tmpl += '<li>';
                 tmpl += '<label>' + l('margins') + '</label>';
@@ -512,8 +521,8 @@ var app = app || {};
         tmpl += '</select>';
         return tmpl;
     }
-    
-    
+
+
     /**
      * Resolution Hint
      */
@@ -521,7 +530,7 @@ var app = app || {};
         var tmpl = '<div id="resolutionHint">';
         tmpl += '</div>';
         return tmpl;
-    }    
+    }
 
 
     /**

@@ -51,6 +51,8 @@ lang.de = {
     'back_to_group': 'Zurück zur Gruppe',
     'back_to_contest': 'Zurück zur Veranstaltung',
     'pause': 'Pause',
+    'hide_title': 'Titel verstecken',
+    'full_screen': 'FullScreen',
     'mark_style_a_color': 'Farbe der Markierung A',
     'mark_style_b_color': 'Farbe der Markierung B',
     'change_language': 'Sprache wechseln',

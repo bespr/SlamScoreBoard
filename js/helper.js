@@ -164,6 +164,7 @@ var app = app || {};
         app.data.designConf.markAColor = app.data.designConf.markAColor || '#88ff88';
         app.data.designConf.markBColor = app.data.designConf.markBColor || '#ff8888';
         app.data.designConf.backgroundImage = app.data.designConf.backgroundImage || '';
+        app.data.designConf.hideTitle = app.data.designConf.hideTitle || 'block';
         app.data.designConf.logo = app.data.designConf.logo || '';
         app.data.designConf.sponsors = app.data.designConf.sponsors || "";
         app.data.designConf.marginLeft = app.data.designConf.marginLeft || "1%";
@@ -186,13 +187,13 @@ var app = app || {};
             '.template-group ul.groupList li .grades input.total'
         ];
         app.sheet.insertRule(borderStyleSelectors.join(', ') + ' { border-color: ' + app.data.designConf.fontColor + '; }', 0);
-        
+
         var borderTransparentStyleSelectors = [
             '.template-group ul.groupList',
             '.template-group ul.groupList li',
             '.template-contest .contestContainer .rnd .inner'
-        ];        
-        
+        ];
+
         var rgba = app.utils.getRgba(app.data.designConf.fontColor, 0.3);
         app.sheet.insertRule(borderTransparentStyleSelectors.join(', ') + ' { border-color: ' + rgba + '; }', 0);
 
@@ -208,15 +209,21 @@ var app = app || {};
             app.sheet.insertRule(':-ms-input-placeholder { color:: ' + rgba + '; }', 0);
         } catch (e) { }
 
-        // Set Background Color
-        app.sheet.insertRule('body { background-color: ' + app.data.designConf.backgroundColor + '; }', 0);
+        app.sheet.insertRule('html { background-color: ' + app.data.designConf.backgroundColor + '; }', 0);
 
         $('body').removeClass().addClass(app.data.designConf.fontFamily);
         if (app.data.designConf.backgroundImage != '') {
-            $('body').css('background-image', 'url(_YOUR_FILES_/background/' + app.data.designConf.backgroundImage + ')');
+            $('html').css({
+                background: 'url(_YOUR_FILES_/background/' + app.data.designConf.backgroundImage + ') no-repeat center center fixed',
+                backgroundSize: 'cover',
+                height: '100%',
+                overflow: 'hidden'
+            });
         } else {
-            $('body').css('background-image', 'none');
+            $('html').css('background-image', 'none');
         }
+        app.sheet.insertRule('.template-group h1, .template-pause h1, .template-slammer > p { display: ' + app.data.designConf.hideTitle + ' }',0);
+
         $('#appplace').css({
             'margin-left': app.data.designConf.marginLeft,
             'margin-top': app.data.designConf.marginTop,
@@ -237,25 +244,25 @@ var app = app || {};
             location.reload();
         }
     };
-    
+
     /**
      * Set Styles on Group Screen According to number of Slammers and Number of Judges
      */
     app.utils.updateDynamicGroupSize = function() {
         var numOfRows = $('.groupList li').length;
         var numOfInputs = parseInt(app.data.contests[app.selected.contest].config.numOfGrades) + 1;
-        
+
         var groupFontSize = '1.4em';
-        
+
         if (numOfRows <= 10) {
             if (numOfRows > 6) {
                 groupFontSize = '1.8em';
             } else {
                 groupFontSize = '2.2em';
-            }            
+            }
         }
         $('.template-group ul.groupList').css('font-size', groupFontSize);
-        
+
         var totalInputsWidth = $('.template-group ul.groupList li .grades').width();
         var totalInputsWidthWithoutMargins = totalInputsWidth - (numOfInputs * 20) - 4;
         $('.template-group ul.groupList li .grades input').width(totalInputsWidthWithoutMargins / numOfInputs);

@@ -89,6 +89,7 @@ todo
 * Anzahl Jurymitglieder
 * Mögliche Stellen nach dem Komma bei Bewertungen
 * Streichnoten
+* Kopfzeile verstecken
 
 <a name="contest-examples"></a>
 ### Beispiele

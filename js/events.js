@@ -309,6 +309,7 @@ var ENTER_KEY = 13;
         app.manip.sortSlammer();
     });
 
+
     /**
      * Group: Click on Slammer Name
      */
@@ -398,6 +399,29 @@ var ENTER_KEY = 13;
 
     });
 
+    /**
+     * Click to toggel fullscreen
+     */
+    $(document).on('click', '.fullScreen', function() {
+        if ((document.fullScreenElement && document.fullScreenElement !== null) ||
+           (!document.mozFullScreen && !document.webkitIsFullScreen)) {
+           if (document.documentElement.requestFullScreen) {
+               document.documentElement.requestFullScreen();
+           } else if (document.documentElement.mozRequestFullScreen) {
+               document.documentElement.mozRequestFullScreen();
+           } else if (document.documentElement.webkitRequestFullScreen) {
+               document.documentElement.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
+           }
+        } else {
+            if (document.cancelFullScreen) {
+              document.cancelFullScreen();
+            } else if (document.mozCancelFullScreen) {
+              document.mozCancelFullScreen();
+            } else if (document.webkitCancelFullScreen) {
+              document.webkitCancelFullScreen();
+            }
+        }
+    });
 
     /* ColorChooser: Font */
     $(document).on('change', '.fontColorChooser', function() {
@@ -441,6 +465,13 @@ var ENTER_KEY = 13;
         app.utils.adaptDesign();
     });
 
+    /* Hide Title */
+    $(document).on('blur', '.hideTitle', function() {
+        app.data.designConf.hideTitle = $(this).val();
+        app.utils.persistData();
+        app.utils.adaptDesign();
+    });
+    
     /* Margins */
     $(document).on('blur', '.margin', function() {
         var attr = $(this).attr('data-margin-name');
@@ -505,7 +536,7 @@ var ENTER_KEY = 13;
             }
         }
     };
-   
+
 
     /* General Keys */
     $(document).on('keyup', function(ev) {

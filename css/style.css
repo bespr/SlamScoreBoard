@@ -6,7 +6,7 @@ ul { list-style-type: none; margin: 0; padding: 0; }
 button { font-size: inherit; }
 
 /* Background */
-body { background: #000000; font-family: sans-serif; margin: 0; padding: 0; background-size: 100%; background-repeat: no-repeat;  }
+body { font-family: sans-serif; margin: 0; padding: 0; background-size: 100%; background-repeat: no-repeat;  }
 #appplace { border: 1px transparent dashed; overflow: hidden; margin: 4%; transition: border-color 10s; }
 #appplace.visible { border-color: yellow; transition: none; }
 
@@ -136,6 +136,7 @@ option { background: #444; color: #ccc; }
 .bi.clearAllData:before { content: 'm'; }
 .bi.addGroup:before { content: 'p'; }
 .bi.sortSlammer:before { content: 'o'; }
+.bi.fullScreen:before { content: 'F'; }
 .bi.showSlammerDropdown:before { content: 'M'; }
 
 .bi.saveToFile:before,

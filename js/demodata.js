@@ -11,7 +11,7 @@ var app = app || {};
                     numOfGrades: 7,
                     numOfMinDropGrades: 1,
                     numOfMaxDropGrades: 1,
-                    numOfDecimalDigits: 1
+                    numOfDecimalDigits: 1,
                 },
                 slammer: [
                     { id: '1', name: 'Sepp' },
@@ -77,7 +77,7 @@ var app = app || {};
             {
                 name: 'Aha aha test Slam (ohne Data)',
                 slammer: [
-                    
+
                 ],
                 rounds: []
             }
