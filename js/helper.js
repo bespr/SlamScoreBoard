@@ -213,7 +213,12 @@ var app = app || {};
 
         $('body').removeClass().addClass(app.data.designConf.fontFamily);
         if (app.data.designConf.backgroundImage != '') {
-            $('html').css('background-image', 'url(_YOUR_FILES_/background/' + app.data.designConf.backgroundImage + ')');
+            $('html').css({
+                background: 'url(_YOUR_FILES_/background/' + app.data.designConf.backgroundImage + ') no-repeat center center fixed',
+                backgroundSize: 'cover',
+                height: '100%',
+                overflow: 'hidden'
+            });
         } else {
             $('html').css('background-image', 'none');
         }
