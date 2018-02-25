@@ -400,7 +400,7 @@ var ENTER_KEY = 13;
     });
 
     /**
-     * Click to toggel fullscreen
+     * Click to toggle fullscreen
      */
     $(document).on('click', '.fullScreen', function() {
         if ((document.fullScreenElement && document.fullScreenElement !== null) ||
@@ -471,7 +471,7 @@ var ENTER_KEY = 13;
         app.utils.persistData();
         app.utils.adaptDesign();
     });
-    
+
     /* Margins */
     $(document).on('blur', '.margin', function() {
         var attr = $(this).attr('data-margin-name');

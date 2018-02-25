@@ -1,7 +1,7 @@
 var app = app || {};
 
-app.version = '0.92';
-app.versionDate = '14. Feb. 2017';
+app.version = '0.9.3';
+app.versionDate = '25. Feb. 2018';
 
 (function () {
     'use strict';
@@ -116,5 +116,3 @@ app.versionDate = '14. Feb. 2017';
     }
 
 }());
-
-
